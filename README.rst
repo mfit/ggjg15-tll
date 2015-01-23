@@ -1,98 +1,40 @@
 About
 =====
 
-Reusable initial state for an HTML5 game project based on phaserJS
-and including helpful boilerplate code for common components like
-controls, tiledmap and event handling.
+A game about ... (it's a secret, still)
 
 
-Contents
-=====
+Install + Build
+================
 
-Basics:
-^^^^^^^
-- phaser template setup via generator-phaser-official
-    https://github.com/codevinsky/generator-phaser-official
+Prerequisites
+-------------
 
-- replace template content + assets
+Install npm / node (javascript package manager)
 
-Exmaples + Boilerplate:
-^^^^^^^^^^^^^^^^^^^^^^^
-- add example + boilerplate for sprites, animations, sound
-- add example + helpers for tiled map loading
-- sprite grouping, layering, physics + collision detection example code
-- resize / fullscreen
+http://nodejs.org/
 
-Fonts + Image generation
-^^^^^^^^^^^^^^^^^^^^^^^^
-- add a bitmap font
-- image tasks ( e.g. button generator, imagemagick spritemaps )
-- bitmap write example (create sprite)
-- widget controls (bar-meter), menu system
+e.g. $ sudo apt-get install node
 
-Controls
-^^^^^^^^
-- keyboard controller boilerplate
-- controller helper + boilerplate
-- controller abstraction, optionally event/FRP based
-- boilerplate or library for menu / mousebuttons interaction
+Install grunt
+http://gruntjs.com/installing-grunt
+
+(Javascript task runner)
 
 
-Configuration
-^^^^^^^^^^^^^
-- options screen
-- behavior live-setup (change parameters during game runtime)
-
-
-Reactive
-^^^^^^^^
-- add bacon.js
-- bacon.js integration / UI
-
-
-Multiplayer
-^^^^^^^^^^^
- - node / socket.io master server
- - boilerplate , communications example
-
-
-Misc
-^^^^
-- Coffe script (grunt tasks, project layout, ..)
-- Presspackage (Presskit, readme generator, presentation generator)
-- AI library + boilerplate
-
-
-
-Build
-=====
-
-Yoman
+Install
 -------
 
-The project was created with the 'generator-phaser-official' yeoman generator
-(see https://github.com/codevinsky/generator-phaser-official) .
+Checkout the source
 
-::
-    npm install -g generator-phaser-official
-    yo phaser-official
-
-Two subgenerators exist:
-
-::
-
-    yo phaser-official:state "stateName"
-    yo phaser-official:prefab "prefabName"
+$ npm install
+$ bower install
 
 
+Run development server
+-----------------------
 
-Resources / Credits
-===================
+$ grunt serve
 
-Credits:
-jamjump(tm) team
-
-bitmap fonts:
-http://www.dafont.com/bitmap.php
 
 
