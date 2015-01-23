@@ -2,7 +2,6 @@
 function Vertex(name, data) {
   this.init(name, data);
 }
-   
 
 Vertex.prototype = {
   init: function(name, data) {
