@@ -17,45 +17,44 @@
 
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
-      //
-      // Add player sprite
-      //
-      this.sprite = this.game.add.sprite(
-        this.game.width/2,
-        this.game.height/2,
-        'runner');
-      this.sprite.inputEnabled = true;
-      this.sprite.scale.x=2.5;
-      this.sprite.scale.y=2.5;
-      this.sprite.anchor.setTo(0.5, 0.5);
-
-      this.sprite.animations.add('run', [0,1,0,2]);
-      this.sprite.animations.play('run', 8, true);
-
-
       var myDemoSound = this.game.add.audio('actionsound');
 
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
 
-      // Setting up a controller
-      this.game.controller = new contr.KeyboardController(
-              this.game.input.keyboard,
-              {left:Phaser.Keyboard.A,
-                right: Phaser.Keyboard.D,
-                up: Phaser.Keyboard.W,
-                down: Phaser.Keyboard.S,
-                jump: Phaser.Keyboard.W,
-                block: Phaser.Keyboard.S
-              }
-      );
 
+      var bg = this.game.add.sprite(
+        0,
+        0,
+        'background');
+      bg.scale.setTo(0.2,0.2);
 
+      // //
+      // // Add player sprite
+      // // Setting up a controller
+      // this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'runner');
+      // this.sprite.inputEnabled = true;
+      // this.sprite.scale.setTo(2.5, 2.5);
+      // this.sprite.anchor.setTo(0.5, 0.5);
+      // this.sprite.animations.add('run', [0,1,0,2]);
+      // this.sprite.animations.play('run', 8, true);
+      // this.game.controller = new contr.KeyboardController(
+      //         this.game.input.keyboard,
+      //         {left:Phaser.Keyboard.A,
+      //           right: Phaser.Keyboard.D,
+      //           up: Phaser.Keyboard.W,
+      //           down: Phaser.Keyboard.S,
+      //           jump: Phaser.Keyboard.W,
+      //           block: Phaser.Keyboard.S
+      //         }
+      // );
+
+      //
       // use a group for other characters
       //
       this.npcs = this.game.add.group();
       var pers = this.game.add.sprite(
         this.game.width/3,
-        this.game.height/2,
+        2*this.game.height/3,
         'person');
       pers.anchor.setTo(0.5, 0.5);
       pers.inputEnabled = true;
@@ -67,7 +66,7 @@
 
       var pers2 = this.game.add.sprite(
         2* this.game.width/3,
-        this.game.height/3,
+        3*this.game.height/5,
         'person');
       pers2.anchor.setTo(0.5, 0.5);
       pers2.scale.setTo(0.7, 0.7);
@@ -78,30 +77,29 @@
       pers2.persName = "Suzy";
       this.npcs.add(pers2);
 
-      //
-      // Buttons
-      //
+      // //
+      // // Buttons
+      // //
+      // var buttonBmp = display.makeButton(this.game, 80, 30, "Button1", 'b1');
+      // var buttonBmp2 = display.makeButton(this.game, 80, 30, "XYZ .. 2",'b2');
+      // var buttonBmp3 = display.makeButton(this.game, 80, 30, "----", 'b3');
 
-      var buttonBmp = display.makeButton(this.game, 80, 30, "Button1", 'b1');
-      var buttonBmp2 = display.makeButton(this.game, 80, 30, "XYZ .. 2",'b2');
-      var buttonBmp3 = display.makeButton(this.game, 80, 30, "----", 'b3');
+      // // button from sprite
+      // var mybutton = this.game.add.sprite(50, 10, buttonBmp);
+      // mybutton.inputEnabled = true; // have to enable input to capture events
+      // mybutton.events.onInputDown.add(
+      //   function(sprite) {
+      //     // switching to another state on click:
+      //     this.game.state.start('gameover');
+      //   }, this);
 
-      // button from sprite
-      var mybutton = this.game.add.sprite(50, 10, buttonBmp);
-      mybutton.inputEnabled = true; // have to enable input to capture events
-      mybutton.events.onInputDown.add(
-        function(sprite) {
-          // switching to another state on click:
-          this.game.state.start('gameover');
-        }, this);
+      // // button from factory
+      // var mybutton2 = this.game.add.button(160, 10, buttonBmp2, function() {
+      //   myDemoSound.play();
+      // }, this, buttonBmp3, buttonBmp);
+      // mybutton2.onInputOver.add(function() { console.log("over"); });
 
-      // button from factory
-      var mybutton2 = this.game.add.button(160, 10, buttonBmp2, function() {
-        myDemoSound.play();
-      }, this, buttonBmp3, buttonBmp);
-      mybutton2.onInputOver.add(function() { console.log("over"); });
-
-      // background = game.add.tileSprite(0, 0, 800, 600, 'background');
+      // // background = game.add.tileSprite(0, 0, 800, 600, 'background');
 
 
     },
@@ -111,8 +109,8 @@
       //
       // controller, sample direction at update time use for movement
       //
-      var contrDir;
-      contrDir = this.game.controller.getDirection();
+      // var contrDir;
+      // contrDir = this.game.controller.getDirection();
 
       // Move by adding to sprite's absolute body x,y
       //
