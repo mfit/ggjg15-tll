@@ -19,6 +19,8 @@ Preload.prototype = {
     this.load.image('character', 'assets/character.png');
     this.load.image('person', 'assets/person.png');
 
+    this.load.image('background', 'assets/vorgluehraum.png');
+
     //
     // Load text / config
     //
