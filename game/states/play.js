@@ -3,7 +3,8 @@
 
   var contr = require('../helper/controller');
   var display = require('../helper/display');
-  var Bacon = require('baconjs');
+
+  var dialog = require('../helper/dialog');
 
   function Play() {}
   Play.prototype = {
@@ -14,12 +15,10 @@
       //
       this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
+      this.dialogHelper = new dialog.DialogHandler(this.game);
+
       //
-      // Add a sprite
-      // ... on which you can click
-      // ... that is scaled, anchor set to center
-      // ... set up + start an animation
-      // ... enable physics for the sprite (it gets sprite.body)
+      // Add player sprite
       //
       this.sprite = this.game.add.sprite(
         this.game.width/2,
@@ -33,11 +32,10 @@
       this.sprite.animations.add('run', [0,1,0,2]);
       this.sprite.animations.play('run', 8, true);
 
-      this.game.physics.arcade.enable(this.sprite);
-      this.sprite.body.collideWorldBounds = true;
-      this.sprite.body.bounce.setTo(0.2,0.2); // small bounce
 
       var myDemoSound = this.game.add.audio('actionsound');
+
+      this.game.textData = JSON.parse(this.game.cache.getText('textData'));
 
       // Setting up a controller
       this.game.controller = new contr.KeyboardController(
@@ -51,18 +49,34 @@
               }
       );
 
-      // Moving with physics ...
-      // ...
-      // this.sprite.body.velocity.x = 20;
-      // etc.
 
-      this.sprite.events.onInputDown.add(
-        function(sprite) {
-            console.log('the sprite was clicked');
-            console.log(sprite);
-            myDemoSound.play();
-        }, this);
+      // use a group for other characters
+      //
+      this.npcs = this.game.add.group();
+      var pers = this.game.add.sprite(
+        this.game.width/3,
+        this.game.height/2,
+        'person');
+      pers.anchor.setTo(0.5, 0.5);
+      pers.inputEnabled = true;
+      pers.persName = "Fritz";
 
+      pers.events.onInputDown.add(this.dialogHelper.startLobbyingDialog, this);
+
+      this.npcs.add(pers);
+
+      var pers2 = this.game.add.sprite(
+        2* this.game.width/3,
+        this.game.height/3,
+        'person');
+      pers2.anchor.setTo(0.5, 0.5);
+      pers2.scale.setTo(0.7, 0.7);
+      pers2.inputEnabled = true;
+
+      // Add click handler ( handler, context )
+      pers2.events.onInputDown.add(this.dialogHelper.startLobbyingDialog, this);
+      pers2.persName = "Suzy";
+      this.npcs.add(pers2);
 
       //
       // Buttons
@@ -90,13 +104,6 @@
       // background = game.add.tileSprite(0, 0, 800, 600, 'background');
 
 
-        // use a group for other characters
-        //
-        this.npcs = this.game.add.group();
-
-        // sprite = ...
-        // this.npcs.add(sprite)
-
     },
     update: function() {
 
@@ -113,8 +120,8 @@
       // this.sprite.body.y += 3 * contrDir.y;
 
       // Move by setting the velocity
-      var playerSpeed = 150;
-      this.sprite.body.velocity.setTo(150 * contrDir.x, 150 * contrDir.y);
+      // var playerSpeed = 150;
+      // this.sprite.body.velocity.setTo(150 * contrDir.x, 150 * contrDir.y);
     },
   };
 
