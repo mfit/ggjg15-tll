@@ -17,6 +17,13 @@ Preload.prototype = {
     // Load a single image
     //
     this.load.image('character', 'assets/character.png');
+    this.load.image('person', 'assets/person.png');
+
+    //
+    // Load text / config
+    //
+    this.game.load.text('textData', 'assets/texts.json');
+
 
     //
     // Load a spritesheet ... with params:
@@ -50,13 +57,8 @@ Preload.prototype = {
   },
   update: function() {
     if(!!this.ready) {
-
-
-      // switch to state menu
-      // this.game.state.start('menu');
-
       // switch directly to 'play' state
-      this.game.state.start('menu');
+      this.game.state.start('play');
     }
   },
   onLoadComplete: function() {
