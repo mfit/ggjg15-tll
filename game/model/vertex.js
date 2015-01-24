@@ -14,7 +14,7 @@ Vertex.prototype = {
     this._edges.push(edges);
   },
 
-  getNeighborWithMaxProperty: function(name, property, graphObj) {
+  getNeighborWithMaxProperty: function(property, graphObj) {
     if (this._edges.length == 0) {
       return null;
     }
@@ -22,7 +22,7 @@ Vertex.prototype = {
     return graphObj.getVertexWithMaxProperty(property, this.getVerticesOfEdges(graphObj));
   },
 
-  getNeighborWithMinProperty: function(name, property, graphObj) {
+  getNeighborWithMinProperty: function(property, graphObj) {
     if (this._edges.length == 0) {
       return null;
     }
@@ -38,7 +38,39 @@ Vertex.prototype = {
     }
 
     return vertices;
-  }
+  },
+
+  getVertexWithMinPropertyEdge: function(property, graphObj) {
+    var vertex = null;
+    var minVal = undefined;
+    for (var i = 0; i < this._edges.length; i++) {
+        if (this._edges[i]._data != undefined && (
+            this._edges[i]._data[property] < minVal ||
+            minVal == undefined)) {
+          minVal = this._edges[i]._data[property];
+          vertex = graphObj._vertices[this._edges[i]._to];
+        }
+    }
+
+    return vertex;
+  },
+
+  getVertexWithMaxPropertyEdge: function(property, graphObj) {
+    var vertex = null;
+    var minVal = undefined;
+    for (var i = 0; i < this._edges.length; i++) {
+        if (this._edges[i]._data != undefined && (
+            this._edges[i]._data[property] > minVal ||
+            minVal == undefined)) {
+          minVal = this._edges[i]._data[property];
+          vertex = graphObj._vertices[this._edges[i]._to];
+        }
+    }
+
+    return vertex;
+  },
+
+
 }
 
 

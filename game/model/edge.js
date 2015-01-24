@@ -1,6 +1,6 @@
 'use strict';
-function Edge(name, data) {
-  this.init(name, data);
+function Edge(from, to, data) {
+  this.init(from, to, data);
 }
 
 Edge.prototype = {
