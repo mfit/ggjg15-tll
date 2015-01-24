@@ -24,15 +24,16 @@
     },
     "edges": {
           "influence": {
-            "George" :  {               "Jack": 0.3, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
+            "George" :  {               "Jack": 0.3, "Sandy": 0.4, "Candy": 0.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
           , "Jack" :    {"George": 0.3,              "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
           , "Sandy" :   {"George": 0.3, "Jack": 1.0,               "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
           , "Candy" :   {"George": 0.3, "Jack": 1.0, "Sandy": 1.0,               "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
           , "Hans" :    {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0,              "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
-          , "Gremila" : {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0,                 "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0}
+          , "Gremila" : {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0,                 "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
           , "David" :   {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0,               "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
           , "Jasmine" : {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0,                 "TUG15": 1.0, "Player": 1.0}
           , "TUG15" :   {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0              , "Player": 1.0}
+          , "Player" :  {"George": 0.5, "Jack": 0.5, "Sandy": 0.5, "Candy": 0.5, "Hans": 0.5, "Gremila": 0.5, "David": 0.5, "Jasmine": 0.5, "TUG15": 0.5               }
           }
         , "anotherMapThatIsAutomaticallyAddedToTheGraph": {
             "George" :  {               "Jack": 0.3, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
@@ -44,6 +45,7 @@
           , "David" :   {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0,               "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
           , "Jasmine" : {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0,                 "TUG15": 1.0, "Player": 1.0}
           , "TUG15" :   {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0              , "Player": 1.0}
+          , "Player" :  {"George": 0.5, "Jack": 0.5, "Sandy": 0.5, "Candy": 0.5, "Hans": 0.5, "Gremila": 0.5, "David": 0.5, "Jasmine": 0.5, "TUG15": 0.5               }
           }
     },
     "persons": [
