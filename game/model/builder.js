@@ -20,11 +20,13 @@
       var myRoom = new world.RoomState(world.Decision);
 
       // Set up all persons
-      for ( var name in config.persons ) {
+      for ( personIndex in config.persons ) {
+        var name = config.persons[personIndex].name;
+        var startPos = config.persons[personIndex].startPosition;
         var personPrefs = Object.keys(config.prefs).map(function(k) {
           return config.prefs[k][name];
         });
-        myRoom.addPerson(new world.Person(name, myRoom, propDomain, personPrefs));
+        myRoom.addPerson(new world.Person(name,myRoom,startPos,propDomain, personPrefs));
       }
 
       // Set up decicionOptions

@@ -22,8 +22,12 @@ Graph.prototype = {
   },
 
   addEdge: function(from, to, data) {
-    this._edges[to] = new Edge(from, to, data);
-    this._vertices[from].addEdges(this._edges[to]);
+      if (!this._edges.hasOwnProperty(from))
+      {
+          this._edges[from] = {};
+      }
+    this._edges[from][to] = new Edge(from, to, data);
+    this._vertices[from].addEdges(this._edges[from][to]);
   },
 
   getVertexWithMaxProperty: function(property, dataset) {

@@ -22,7 +22,7 @@
       }
     };
 
-    var WorldPerson = function(name, room, initOptions, prefs) {
+    var WorldPerson = function(name, room, startPos, initOptions, prefs) {
       // Init the person with its 'set of believes'
       // attitudes towards things
       //
@@ -33,7 +33,7 @@
 
       this.room = room;
       this.name = name;
-
+      this.startPos = startPos;
       var k;
 
       this.preferences = {};
