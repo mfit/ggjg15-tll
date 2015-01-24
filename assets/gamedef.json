@@ -57,10 +57,30 @@
     {"name": "Jasmine", "startPosition":[600, 600]},
     {"name": "TUG15", "startPosition":[750, 400]}]
     , "baseDialogOptions" : [
-       [ "MusicIsSweet", "The Canteen Band released a new album!", {"talk": 0.2, "music": 0.8}]
-       , [ "DanceWithMe", "Did you go to the dance lessons last night?", {"dance": 0.8, "talk": -0.3}]
-       , ["Intellectual", "The new book about dolphins is amazing, isn#t it", {"talk": 0.8, "tidy":0.5}]
-       , ["DrunkNSmoky", "Let's go for a smoke and get wasted!!!", {"music":0.8, "smoke":0.6, "drunk":1.0}]
+         [ "MusicIsSweet", "The Canteen Band released a new album!", {"talk": 0.2, "music": 0.8}
+         , ["Nice!", "Cool", "Fuck off"], {"Jack": "Cool I love Star Wars"}]
+       , [ "DanceWithMe", "Did you go to the dance lessons last night?", {"dance": 0.8, "talk": -0.3}
+         , ["Yes, I really liked it!", "No, I'm sorry.", "Do I look like I care?"], {"Hans": "I had to."}]
+       , ["Intellectual", "The new book about dolphins is amazing, isn#t it", {"talk": 0.8}
+         , ["Yes, it was very interesting!", "Sure, it was okay.", "Reading is for losers."], {"Sandy": "I liked fifty shaded of gray."}]
+       , ["Attraction", "For some reason, I'm attracted to you.", {}
+         , ["You know ... I kinda feel the same about you", "...", "Oh gosh."], {"George": "Last Christmas, I gave you my heart."}]
+     //  , ["Lemonade", "You don't think that was just lemonade in your glass, do you?", {}
+       //  , ["", "...", "Oh gosh."], {"George": "Last Christmas, I gave you my heart."}]
+       , ["Trouble", "It looks like you're in trouble. Can I help?", {}
+         , ["Yes, you are a lifesaver.", "No, thanks.", "Not from you!"], {"Candy": "Do you play chess?"}]
+       , ["Darts", "Do you play darts?", {}
+         , ["I'm hell of a player!", "Maybe later.", "No way!"], {"Jack": "I'm busy with my training schedule."}]
+       , ["Movie", "The new Star Wars movie just started.", {}
+         , ["Yes, I'm a huge fan!", "I've already seen it.", "Do I look like a nerd?"], {"Gremila": "Jar Jar Binks is my favorite character."}]
+       , ["Disco", "Do you like the moonwalk?", {}
+         , ["Of course.", "Not my style", "No, I don't like it."], {"Hans": "I already walked on the moon."}]
+       , ["Dog", "You wanna go for a walk with the dog?", {}
+         , ["Let's get some fresh air.", "Maybe later.", "I'm rather a cat person."], {"Hans": "I'm not that used to oxygen yet."}]
+       , ["Culture", "Do you want to enjoy the biggest cultural achievements of mankind?", {}
+         , ["I am very interested in this experience.", "Why not.", "What a waste of time!"], {"Hans": "I'm not that used to oxygen yet."}]
+       , ["DrunkNSmoky", "Let's go for a smoke and get wasted!!!", {"music":0.8, "drunk":1.0}
+         , ["Yeah, dude.", "Yes, why not.", "I do not smoke."], {"TUG15": "101010!!!!"}]
         ],
     "decisionOptions": {
         "Disco": {
