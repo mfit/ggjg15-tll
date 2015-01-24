@@ -5,6 +5,7 @@
   var display = require('../helper/display');
 
   var dialog = require('../helper/dialog');
+  var decision = require('../model/decision');
 
   function Play() {}
   Play.prototype = {
@@ -17,7 +18,8 @@
 
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
-      var myDemoSound = this.game.add.audio('actionsound');
+      var backgroundAudio = this.game.add.audio('background');
+      backgroundAudio.play();
 
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
 

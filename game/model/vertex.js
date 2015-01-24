@@ -70,7 +70,13 @@ Vertex.prototype = {
     return vertex;
   },
 
-
+  assignPerson: function(person) {
+    /**
+     * set reference to person / vertex and vice versa
+     */
+    this.person = person;
+    person.vertex = this;
+  }
 }
 
 
