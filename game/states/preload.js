@@ -22,6 +22,11 @@ Preload.prototype = {
 
     this.load.image('background', 'assets/vorgluehraum2.png');
     this.load.image('vodkaBottle', 'assets/vodka.png');
+    this.load.image('beerBottle', 'assets/beer.png');
+    this.load.image('cup', 'assets/cup.png');
+    this.load.image('clock', 'assets/uhr.png');
+    this.load.image('beerBottle', 'assets/beer.png');
+    this.load.image('beerBottle', 'assets/beer.png');
 
     //
     // Load text / config
