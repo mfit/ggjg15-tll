@@ -4,6 +4,7 @@
   var display = require('../helper/display');
 
   var dialog = require('../helper/dialog');
+  var builder = require('../model/builder');
 
   function Play() {}
   Play.prototype = {
@@ -15,7 +16,6 @@
       var backgroundAudio = this.game.add.audio('background');
       backgroundAudio.play();
 
-      this.game.textData = JSON.parse(this.game.cache.getText('textData'));
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
       var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
 

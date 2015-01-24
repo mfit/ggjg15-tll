@@ -17,7 +17,7 @@
       //
 
       var propDomain = config.attributes;
-      var myRoom = new RoomState(new world.VectorDecision());
+      var myRoom = new world.RoomState(world.Decision);
 
       // Set up all persons
       for ( name in config.persons ) {
