@@ -57,6 +57,7 @@ Preload.prototype = {
     var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
     for (var p in gameSetup.persons) {
       this.game.load.image(gameSetup.persons[p].name, 'assets/' + gameSetup.persons[p].icon);
+      this.game.load.image('profile_' + gameSetup.persons[p].name, 'assets/profiles/' + gameSetup.persons[p].name.toLowerCase() + '_normal_01.png');
     }
 
   },

@@ -63,7 +63,7 @@ var display = require('../helper/display');
 
         var dialogBox = this.game.add.sprite(0, 500, rt);
 
-        var profile = this.game.add.sprite(500, 400, 'sandy_profile');
+        var profile = this.game.add.sprite(500, 400, 'profile_' + wo.name);
         profile.anchor.setTo(1.3, 0);
 
         var amountOfOptions = this.data.options.length;
