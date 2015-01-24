@@ -16,6 +16,8 @@ var display = require('../helper/display');
       },
       showLobbyingDialogPanel: function(sprite) {
 
+        var player = this.game.room.persons["Player"];
+        console.log(player);
         var opt_list = [],
                   wo = sprite.worldObject;
 
@@ -24,7 +26,7 @@ var display = require('../helper/display');
           opt_list.push(
                   {text:     wo.getOptions()[i].text,
                    callback: (function(option, worldObject) {
-                       return function() { return wo.handleComment(worldObject, option); };
+                       return function() { return wo.handleComment(player, option); };
                    })(wo.getOptions()[i], wo)
                   }
           );
