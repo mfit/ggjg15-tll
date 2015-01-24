@@ -6,6 +6,7 @@
 
       this.options = {};
       this.persons = {};
+      this.dialogs = {};
 
     };
 
@@ -14,11 +15,14 @@
         this.persons[p.name] = p;
       },
       addOption: function(o) {
-        this.options[o.name] = o;
+        this.options[o.name] = {"txt":o[1], "key":o[0], "prefs":o[2]};
+      },
+      addDialog: function(key, text, prefs) {
+          this.dialogs[key] = {"text":text, "prefs":prefs};
       }
     };
 
-    var WorldPerson = function(name, initOptions, prefs) {
+    var WorldPerson = function(name, room, initOptions, prefs) {
       // Init the person with its 'set of believes'
       // attitudes towards things
       //
@@ -27,6 +31,7 @@
 
       // Init all options to zero , weigth zero
 
+      this.room = room;
       this.name = name;
 
       var k;
@@ -53,42 +58,39 @@
     };
 
     WorldPerson.prototype = {
-        npcTalk: function() {
-            //TODO choose npcName
-            selectNPC(npcName);
-            getOptions();
-            //TODO choose optionId
-            selectOption(optionId);
-            handleComment();
-        },
-
         getOptions: function() {
+        //+ Jonas Raoni Soares Silva
+        //@ http://jsfromhell.com/array/shuffle [v1.0]
+           var shuffle = function(o){ //v1.0
+           for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+               return o;
+           };
+
+           console.log(this.room);
+           var dialogValues = [];
+           for (var key in this.room.dialogs) {
+               dialogValues.push(this.room.dialogs[key]);
+           }
+           var opt = shuffle(dialogValues);
+
            //TODO choose 3 options
-           return [{id:"HALLO",  txt:"Hallo"},
-                   {id:"HALLO2", txt:"Hallo2"},
-                   {id:"HALLO3", txt:"Hallo3"}
-           ];
+           return [opt[0], opt[1], opt[2]];
         },
 
-        selectNPC: function(npcName) {
-            this.npc = npcName;
-        },
-
-        selectOption: function(id) {
-            this.option = id;
-        },
 
         /**
          * @opt_id opt id
          * other_character ? can be undefined, then it's the player ...
          */
-        handleComment: function(opt_id, other_character) {
+        handleComment: function(other_character, option) {
+            console.log(option);
+            console.log(other_character);
 
-            var response = undefined;
+            var importance = VectorDecision(this, option.prefs);
+            console.log(importance);
             // TODO something with this.npc
             // TODO something with this.option
-            response = "blabla";
-            return response;
+            return "blablabla";
         },
     };
 
@@ -114,21 +116,22 @@
 
     }
 
-    function VectorDecision(person, options) {
+    function VectorDecision(person, option) {
       //
       // Calculate preference
       //
 
       var allkeys = Object.keys(person.preferences);
 
-      return options.map(function(option) {
         // forall options :
         return Math.sqrt(allkeys.map(function(k) {
-          var attrweight = Math.pow(person.preferences[k] - option.attributes[k], 2) *
+            if (!option.hasOwnProperty(k)) {
+                option[k] = 0.0;
+            }
+            var attrweight = Math.pow(person.preferences[k] - option[k], 2) *
             person.prefWeights[k];
-          return attrweight;
+            return attrweight;
         }).reduce(function(v, o) {return v+o;}));
-      });
     };
 
 

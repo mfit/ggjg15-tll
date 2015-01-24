@@ -20,9 +20,14 @@ var display = require('../helper/display');
                   wo = sprite.worldObject;
 
         for (var i=0; i < wo.getOptions().length; i++) {
-          opt_list.push({text: wo.getOptions()[i].txt, callback: function() {
-            wo.handleComment(i);
-          }});
+            console.log(wo.getOptions());
+          opt_list.push(
+                  {text:     wo.getOptions()[i].text,
+                   callback: (function(option, worldObject) {
+                       return function() { return wo.handleComment(worldObject, option); };
+                   })(wo.getOptions()[i], wo)
+                  }
+          );
         }
 
         this.data = {text:"Startsay", options: opt_list};
@@ -71,6 +76,7 @@ var display = require('../helper/display');
                         buttons[index].kill();
                     }
 
+                    var responseTxt = self.data.options[buttonIdx].callback();
                     var name = new Phaser.BitmapText(rt,
                                                      self.game.width - 400,
                                                      0,
@@ -81,13 +87,14 @@ var display = require('../helper/display');
                     rt.render(spr,  {x:  0, y:0});
                     rt.render(name, {x:400, y:0});
 
+                    console.log(responseTxt);
                     var answer = display.makeButton(self.game,
                                                     self.game.width - 400,
                                                     170,
-                                                    self.game.textData.BYE,
+                                                    responseTxt,
                                                     'a1');
 
-                    var answerButton = self.game.add.sprite(400,530, answer);
+                    var answerButton = self.game.add.sprite(400, 530, answer);
                     answerButton.inputEnabled = true;
 
 

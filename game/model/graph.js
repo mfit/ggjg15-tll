@@ -13,6 +13,10 @@ Graph.prototype = {
     this._edges    = {};
   },
 
+  getVertex: function(name) {
+      return this._vertices[name];
+  },
+
   addVertex: function(name, data) {
     this._vertices[name] = new Vertex(name, data);
   },

@@ -20,37 +20,56 @@
       var myRoom = new world.RoomState(world.Decision);
 
       // Set up all persons
-      for ( name in config.persons ) {
+      for ( var name in config.persons ) {
         var personPrefs = Object.keys(config.prefs).map(function(k) {
           return config.prefs[k][name];
         });
-        myRoom.addPerson(new world.Person(name, propDomain, personPrefs));
+        myRoom.addPerson(new world.Person(name, myRoom, propDomain, personPrefs));
       }
 
       // Set up decicionOptions
-      for (name in config.decicionOptions) {
+      for (var name in config.decicionOptions) {
         myRoom.addOption(name, propDomain, config.decicionOptions[name]);
       }
 
       // Dialog options pool
-      myRoom.dialog = config.baseDialogOptions;
+      for (var i = 0; i < config.baseDialogOptions.length; i++)
+      {
+          var dialogOption = config.baseDialogOptions[i];
+          myRoom.addDialog(dialogOption[0], dialogOption[1], dialogOption[2]);
+      }
 
       //
       // TODO :  setup graph from config
       //
 
-      // var g = new Graph();
-      // for (pname in myRoom.person) {
-      //   g.addVertex(pname);
-      //   g.getVertex(pname).assignPerson(myRoom.person[pname]);
-      // }
+      var g = new graph();
+      for (pname in myRoom.persons) {
+         g.addVertex(pname);
+         g.getVertex(pname).assignPerson(myRoom.persons[pname]);
+      }
 
-      // g.addEdge("Fritz",  "Tommy" , {influence: 0.5});
-      // g.addEdge("Fritz",  "Dora" , {influence: 0.5});
-      // g.addEdge("Tommy",  "Fritz" , {influence: 0.5});
-      // g.addEdge("Tommy",  "Dora" , {influence: 0.5});
-      // g.addEdge("Dora",  "Fritz" , {influence: 0.5});
-      // g.addEdge("Dora",  "Tommy" , {influence: 0.5});
+      var edgeAttrs = {};
+      for (attribute in config.edges) {
+        for (from in config.edges[attribute]) {
+            if (!edgeAttrs.hasOwnProperty(from))
+                edgeAttrs[from] = {};
+            for (to in config.edges[attribute][from]) {
+                if (!edgeAttrs[from].hasOwnProperty(to)) {
+                    edgeAttrs[from][to] = {};
+                }
+                edgeAttrs[from][to][attribute] = config.edges[attribute][from][to];
+            }
+        }
+      }
+
+      for (from in edgeAttrs) {
+          for (to in edgeAttrs[from]) {
+            g.addEdge(from, to, edgeAttrs[from][to]);
+          }
+      }
+
+      console.log(g._edges);
 
       console.log(myRoom);
       return myRoom;
@@ -107,22 +126,6 @@
   //     //
   //     // Set up the social graph
   //     //
-
-  //     var g = new Graph();
-  //     for (pname in myRoom.person) {
-  //       g.addVertex(pname);
-  //       g.getVertex(pname).assignPerson(myRoom.person[pname]);
-  //     }
-
-  //     g.addEdge("Fritz",  "Tommy" , {influence: 0.5});
-  //     g.addEdge("Fritz",  "Dora" , {influence: 0.5});
-  //     g.addEdge("Tommy",  "Fritz" , {influence: 0.5});
-  //     g.addEdge("Tommy",  "Dora" , {influence: 0.5});
-  //     g.addEdge("Dora",  "Fritz" , {influence: 0.5});
-  //     g.addEdge("Dora",  "Tommy" , {influence: 0.5});
-
-  //     return myRoom;
-  // };
 
   module.exports = {
     WorldBuilder: WorldBuilder
