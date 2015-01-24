@@ -68,28 +68,59 @@
     {"name": "TUG15", "startPosition":[750, 400], "icon":"tug15Klein.png"},
     {"name": "Candy", "startPosition":[470, 610], "icon":"candyKlein.png"}]
     , "baseDialogOptions" : [
-         [ "MusicIsSweet", "The Canteen Band released a new album!", {"talk": 0.2, "music": 0.8}
-         , ["Nice!", "Cool", "Fuck off"], {"Jack": "Cool I love Star Wars"}]
-       , [ "DanceWithMe", "Did you go to the dance lessons last night?", {"dance": 0.8, "talk": -0.3}
+         [ "Disco1", "The Canteen Band released a new album!", {"dance": 0.8, "music": 0.8, "drunk": 0.4}
+         , ["Nice!", "Cool", "Fuck off"], {"Jack": "Cool, I love Star Wars"}]
+       , [ "Disco2", "Did you go to the dance lessons last night?", {"dance": 1, "talk": -0.3}
          , ["Yes, I really liked it!", "No, I'm sorry.", "Do I look like I care?"], {"Hans": "I had to."}]
-       , ["Intellectual", "The new book about dolphins is amazing, isn#t it", {"talk": 0.8}
-         , ["Yes, it was very interesting!", "Sure, it was okay.", "Reading is for losers."], {"Sandy": "I liked fifty shaded of gray."}]
-       , ["Attraction", "For some reason, I'm attracted to you.", {}
-         , ["You know ... I kinda feel the same about you", "...", "Oh gosh."], {"George": "Last Christmas, I gave you my heart."}]
-       , ["Trouble", "It looks like you're in trouble. Can I help?", {}
-         , ["Yes, you are a lifesaver.", "No, thanks.", "Not from you!"], {"Candy": "Do you play chess?"}]
-       , ["Darts", "Do you play darts?", {}
-         , ["I'm hell of a player!", "Maybe later.", "No way!"], {"Jack": "I'm busy with my training schedule."}]
-       , ["Movie", "The new Star Wars movie just started.", {}
-         , ["Yes, I'm a huge fan!", "I've already seen it.", "Do I look like a nerd?"], {"Gremila": "Jar Jar Binks is my favorite character."}]
-       , ["Disco", "Do you like the moonwalk?", {"dance":0.9}
+       , ["Disco3", "Do you like the moonwalk?", {"dance":0.9}
          , ["Of course.", "Not my style", "No, I don't like it."], {"Hans": "I already walked on the moon."}]
-       , ["Dog", "You wanna go for a walk with the dog?", {}
-         , ["Let's get some fresh air.", "Maybe later.", "I'm rather a cat person."], {"Hans": "I'm not that used to oxygen yet."}]
-       , ["Culture", "Do you want to enjoy the biggest cultural achievements of mankind?", {"talk":1.0}
-         , ["I am very interested in this experience.", "Why not.", "What a waste of time!"], {"Hans": "I'm not that used to oxygen yet."}]
-       , ["DrunkNSmoky", "Let's go for a smoke and get wasted!!!", {"music":0.8, "drunk":1.0}
+       , ["Disco4", "What kind of music to you like?", {"dance":0.9}
+         , ["I like Rock.", "Just what they are playing at the radio.", "I hate music."], {"TUG15": "I just like electronic music."}]
+
+
+       , ["Bar1", "Do you play darts?", {}
+         , ["I'm hell of a player!", "Maybe later.", "No way!"], {"Jack": "I'm busy with my training schedule."}]
+       , ["Bar2", "Let's go for a smoke and get wasted!!!", {"music":0.8, "drunk":1.0}
          , ["Yeah, dude.", "Yes, why not.", "I do not smoke."], {"TUG15": "101010!!!!"}]
+       , ["Bar3", "Is the Pub open?", {}
+         , ["Let's find it out.", "Maybe.", "I don't like that pub."], {"Gremila": "I really like coffee."}]
+       , ["Bar4", "Don't they have a karaoke night at the bar tonight?", {}
+         , ["Yeah, I wanna sing.", "Oh, I can't sing.", "My ears are still bleeding from the last time."], {"Candy": "I looooooooooove Rock'n'Roll!"}]
+
+
+       , ["Movie1", "The new Star Wars movie just started.", {}
+         , ["Yes, I'm a huge fan!", "I've already seen it.", "Do I look like a nerd?"], {"Gremila": "Jar Jar Binks is my favorite character."}]
+       , ["Movie2", "Do you like Steven Spielberg?", {}
+         , ["Yes, I really like his movies.", "I don't know.", "I rather like Michael Bay."], {"Hans": "E.T. was my favorite movie."}]
+       , ["Movie3", "Do you know any famous movie quotes?", {}
+         , ["'Rosebud'", "I can't remember right now.", "I just like the action scenes."], {"George": "I like 'Black Beauty'"}]
+       , ["Movie4", "Movies are much better than TV series!", {}
+         , ["You are right.", "I like both.", "No, TV series are so much better."], {"TUG15": "'All my circuits' is the best TV series."}]
+
+
+       , ["Park1", "You wanna go for a walk with the dog?", {}
+         , ["Let's get some fresh air.", "Maybe later.", "I'm rather a cat person."], {"Hans": "I'm not that used to oxygen yet."}]
+       , ["Park2", "It's a really nice summer evening, isn't it?", {}
+         , ["Yeah, let's go.", "Indeed.", "I like rain more."], {"Jasmine": "I'll go and get my dog."}]
+       , ["Park3", "What about a barbecue?", {}
+         , ["Yummy.", "It might rain soon.", "I have already eaten."], {"Sandy": "Those poor animals!"}]
+
+
+       , ["Museum1", "Do you want to enjoy the biggest cultural achievements of mankind?", {"talk":1.0}
+         , ["I am very interested in this experience.", "Why not.", "What a waste of time!"], {"Hans": "I'm not that used to oxygen yet."}]
+       , ["Museum2", "There is a new Picasso exhibition.", {}
+         , ["Finally. I've waited for years.", "I don't know if i like Picasso.", "I'm more the Van Gogh person."], {"David": "Do they have any cat pictures as well?"}]
+       , ["Museum3", "Mum always says: 'education is important'.", {}
+         , ["Definitely.", "Hmm...", "I'm already a doctor."], {"Sandy": "My mum always said: 'The others are stupid'."}]
+
+
+       , ["Misc1", "The new book about dolphins is amazing, isn#t it", {"talk": 0.8}
+         , ["Yes, it was very interesting!", "Sure, it was okay.", "Reading is for losers."], {"Sandy": "I liked fifty shaded of gray."}]
+       , ["Misc2", "For some reason, I'm attracted to you.", {}
+         , ["You know ... I kinda feel the same about you", "...", "Oh gosh."], {"George": "Last Christmas, I gave you my heart."}]
+       , ["Misc3", "It looks like you're in trouble. Can I help?", {}
+         , ["Yes, you are a lifesaver.", "No, thanks.", "Not from you!"], {"Candy": "Do you play chess?"}]
+
         ],
     "decisionOptions": {
         "Disco": {
