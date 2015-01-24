@@ -6,19 +6,18 @@
   var dialog = require('../helper/dialog');
   var builder = require('../model/builder');
 
-  var objectPositions = {onStereo : {x : 1250, y :410},
-                         onTable : {x : 600, y : 530},
-                         onBookShelf : {x : 60, y : 345},
-                         onCommode : {x : 890, y : 370}
+  var objectPositions = {onStereo : {x : 1270, y :490},
+                         onTable : {x : 660, y : 615},
+                         onBookShelf : {x : 100, y : 430},
+                         onCommode : {x : 930, y : 460}
                          };
 
-  var _placeObject = function(context, sObject, place){
-    var object = context.add.sprite(
-        place.x,
-        place.y,
-        sObject);
-    return object;
+  var _placeObject = function(object, place){
+    object.x = place.x - object.width;
+    object.y = place.y - object.height;
   };
+
+  var fishBounds = {upper_x : 1210, lower_x : 1170, left: true};
 
   function Play() {}
   Play.prototype = {
@@ -41,12 +40,20 @@
         'background');
       bg.scale.setTo(0.25,0.25);
 
+      // beerBottle
+      // vodkaBottle
+      // clock
+
       this.partyObjects = this.game.add.group();
-      var vBottle1 = _placeObject(this.game, 'vodkaBottle', objectPositions.onStereo);
+      var vBottle1 = this.game.add.sprite(
+        0,
+        0,
+        "beerBottle");
       vBottle1.scale.setTo(0.04,0.04);
+      _placeObject(vBottle1, objectPositions.onCommode);
       vBottle1.inputEnabled = false;
       vBottle1.events.onInputDown.add(this.dialogHelper.startObjectDialogPanel, this);
-      vBottle1.objName = "vodkaBottle";
+      vBottle1.objName = "beerBottle";
       this.partyObjects.add(vBottle1);
 
       // //
@@ -73,7 +80,7 @@
       // use a group for other characters
       //
       this.npcs = this.game.add.group();
-      var xcount = 0;
+      var xcount = 150;
       for (var pName in this.game.myRoom.persons) {
         var pers = this.game.add.sprite(
           this.game.myRoom.persons[pName].startPos[0],
@@ -161,6 +168,16 @@
         output, style);
       this.instructionsText.anchor.setTo(0.5, 0.5);
 
+      this.fish = this.game.add.sprite(
+        0,
+        0,
+        "fish");
+      this.fish.scale.setTo(-0.2,0.2);
+      this.fish.anchor.setTo(0.5,0.5);
+      this.fish.x = fishBounds.upper_x;
+      this.fish.angle = 15;
+      this.fish.y = 530;
+
       this.IsStartTextOn = true;
 
       // //
@@ -205,6 +222,26 @@
           return;
         }
       }
+
+      if(fishBounds.left){
+          this.fish.y -= 0.05;
+          this.fish.x -= 0.2;
+          if(this.fish.x < fishBounds.lower_x + 2 && this.fish.x > fishBounds.lower_x){
+            this.fish.scale.setTo(0.2,0.2);
+            this.fish.angle = 30;
+            fishBounds.left = false;
+          }
+        }
+        else{
+          this.fish.y += 0.05;
+          this.fish.x += 0.2;
+          if(this.fish.x > fishBounds.upper_x-2 && this.fish.x < fishBounds.upper_x)
+          {
+            this.fish.angle = 15;
+            this.fish.scale.setTo(-0.2,0.2);
+            fishBounds.left = true;
+          }
+        }
 
       //
       // controller, sample direction at update time use for movement
