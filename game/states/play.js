@@ -83,8 +83,13 @@
       // use a group for other characters
       //
       this.npcs = this.game.add.group();
-      var xcount = 150;
       for (var pName in this.game.myRoom.persons) {
+
+        if (pName == "Player") {
+          // don't add player as sprite ..
+          continue;
+        }
+
         var pers = this.game.add.sprite(
           this.game.myRoom.persons[pName].startPos[0],
           this.game.myRoom.persons[pName].startPos[1],
@@ -107,7 +112,6 @@
         // add to group
         this.npcs.add(pers);
 
-        xcount+=100;
 
       }
 

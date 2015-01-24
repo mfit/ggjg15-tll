@@ -50,7 +50,7 @@
     },
     "persons": [
     {"name": "Player", "startPosition":[850, 400], "icon":"person.png"},
-    {"name": "George", "startPosition":[850, 400], "icon":"person.png"},
+    {"name": "George", "startPosition":[850, 400], "icon":"georgeKlein.png"},
     {"name": "Jack", "startPosition":[1100, 430], "icon":"jackKlein.png"},
     {"name": "Sandy", "startPosition":[1100, 750], "icon":"sandyKlein.png"},
     {"name": "Candy", "startPosition":[470, 610], "icon":"candyKlein.png"},
