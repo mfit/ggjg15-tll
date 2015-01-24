@@ -13,43 +13,107 @@ Graph.prototype = {
     this._edges    = {};
   },
 
-  add: function(name, data) {
+  addVertex: function(name, data) {
     this._vertices[name] = new Vertex(name, data);
-    this._edges[name]    = new Edge(name, data); //TODO
-    this._vertices[name].addEdges(this._edges[name]);
   },
 
-  getVertexWithMinByName: function(name) {
+  addEdge: function(from, to, data) {
+    this._edges[to] = new Edge(from, to, data);
+    this._vertices[from].addEdges(this._edges[to]);
+  },
 
+  getVertexWithMaxProperty: function(property, dataset) {
     // naive way
-    var vertex   = null;
-    var maxValue = 0;
+    var vertex   = undefined;
+    var maxValue = undefined;
 
-    for (var key in this._vertices) {
-        if (this._vertices[key]._data.influence > maxValue) {
-          vertex   = this._vertices[key];
-          maxValue = vertex._data.influence;
+    if (dataset == undefined) {
+        dataset = this._vertices;
+    }
+
+    for (var key in dataset) {
+        if (dataset[key]._data != undefined &&
+            (dataset[key]._data[property] > maxValue || maxValue == undefined)) {
+          vertex   = dataset[key];
+          maxValue = vertex._data[property];
         }
     }
 
     return vertex;
   },
 
-  getVertexWithMaxByName: function(name) {
+  getVertexWithMinProperty: function(property, dataset) {
     // naive way
-    var vertex   = null;
-    var minValue = -1;
+    var vertex   = undefined;
+    var minValue = undefined;
 
-    for (var key in this._vertices) {
-        if (minValue == -1 || this._vertices[key]._data.influence < minValue) {
-          vertex   = this._vertices[key];
-          minValue = vertex._data.influence;
+    if (dataset == undefined) {
+        dataset = this._vertices;
+    }
+
+    for (var key in dataset) {
+        if (dataset[key]._data != undefined &&
+            (minValue == undefined || dataset[key]._data[property] < minValue)
+           ) {
+          vertex   = dataset[key];
+          minValue = vertex._data[property];
         }
     }
 
     return vertex;
   },
+
+  getNeighborWithMaxProperty: function(name, property) {
+      return this._vertices[name].getNeighborWithMaxProperty(property, this);
+  },
+
+  getNeighborWithMinProperty: function(name, property) {
+      return this._vertices[name].getNeighborWithMinProperty(property, this);
+  },
+
+  getVertexWithMaxPropertyEdge: function(name, property) {
+     return this._vertices[name].getVertexWithMaxPropertyEdge(property, this);
+  },
+
+  getVertexWithMinPropertyEdge: function(name, property) {
+      return this._vertices[name].getVertexWithMinPropertyEdge(property, this);
+  },
+
+
+}
+
+
+function test()
+{
+  var g = new Graph();
+  g.addVertex('Susi',  {data: 5});
+  g.addVertex('Fritz', {data: 10});
+  g.addVertex('Sarah', {data: 15});
+  g.addVertex('HAL9000');
+  g.addEdge("Susi",  "Sarah" , {influence: 5});
+  g.addEdge("Susi",  "Fritz" , {influence: 10});
+  g.addEdge("Fritz", "Susi"  , {influence: 20});
+  g.addEdge("Fritz", "Sarah" , {influence: 10});
+  g.addEdge("HAL9000", "Fritz");
+
+  console.log(g.getVertexWithMaxProperty("data")._name === "Sarah");
+  console.log(g.getVertexWithMinProperty("data")._name === "Susi");
+  console.log(g.getNeighborWithMinProperty("Susi", "data")._name  === "Fritz");
+  console.log(g.getNeighborWithMaxProperty("Susi", "data")._name  === "Sarah");
+  console.log(g.getNeighborWithMaxProperty("Fritz", "data")._name === "Sarah");
+  console.log(g.getNeighborWithMinProperty("Fritz", "data")._name === "Susi");
+  console.log(g.getVertexWithMinPropertyEdge("Fritz", "influence")._name === "Sarah");
+  console.log(g.getVertexWithMaxPropertyEdge("Fritz", "influence")._name === "Susi");
+  console.log(g.getVertexWithMinPropertyEdge("Susi", "influence")._name  === "Sarah");
+  console.log(g.getVertexWithMaxPropertyEdge("Susi", "influence")._name  === "Fritz");
+  console.log(g.getVertexWithMaxPropertyEdge("HAL9000", "influence") == undefined);
+  console.log(g.getVertexWithMinPropertyEdge("HAL9000", "influence") == undefined);
+
 }
 
 
 module.exports = Graph;
+
+if (require.main === module) {
+    test();
+}
