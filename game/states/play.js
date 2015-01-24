@@ -51,17 +51,34 @@
       // use a group for other characters
       //
       this.npcs = this.game.add.group();
-      var pers = this.game.add.sprite(
-        this.game.width/3,
-        2*this.game.height/3,
-        'person');
-      pers.anchor.setTo(0.5, 0.5);
-      pers.inputEnabled = false;
-      pers.persName = "Fritz";
+      var xcount = 0;
+      for (var pName in this.game.myRoom.persons) {
+        var pers = this.game.add.sprite(
+          xcount,
+          2*this.game.height/3,
 
-      pers.events.onInputDown.add(this.dialogHelper.showLobbyingDialogPanel, this);
+          'person' // TODO real asset
+          );
 
-      this.npcs.add(pers);
+        pers.anchor.setTo(0.5, 0.5);
+        pers.inputEnabled = false;
+        pers.persName = pName;
+
+        // references
+        pers.worldObject = this.game.myRoom.persons[pName];
+        this.game.myRoom.persons[pName].sprite = pers;
+
+        pers.events.onInputDown.add(this.dialogHelper.showLobbyingDialogPanel, this);
+
+        // add to group
+        this.npcs.add(pers);
+
+        xcount+=100;
+
+      }
+
+
+
 
       var pers2 = this.game.add.sprite(
         2* this.game.width/3,

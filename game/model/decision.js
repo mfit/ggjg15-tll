@@ -78,7 +78,12 @@
             this.option = id;
         },
 
-        handleComment: function() {
+        /**
+         * @opt_id opt id
+         * other_character ? can be undefined, then it's the player ...
+         */
+        handleComment: function(opt_id, other_character) {
+
             var response = undefined;
             // TODO something with this.npc
             // TODO something with this.option
