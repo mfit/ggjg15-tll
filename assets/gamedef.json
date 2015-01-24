@@ -4,11 +4,7 @@
         "talk":0,
         "dance":0,
         "games":0,
-        "drunk":0,
-
-        "light":0,
-        "tidy":0,
-        "smoke":0
+        "drunk":0
     },
     "prefs": { "music":
 {"George":[1, 0.4], "Jack":[1, 0.7], "Sandy":[1, 1], "Candy":[-1, 0.4], "Hans":[1, 0.2], "Gremila":[1, 0.9], "David":[1, 0.5], "Jasmine":[1, 0.7],
@@ -22,15 +18,6 @@
         , "games":
 {"George":[1, 0.7], "Jack":[-1, 0.9], "Sandy":[-1, 0.8], "Candy":[1, 0.6], "Hans":[1, 0.7], "Gremila":[1, 1], "David":[1, 0.6], "Jasmine":[-1, 0.8],
  "TUG15": [1, 0.8]}
-        , "light":
-{"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
- "TUG15": [0, 0.5]}
-        , "tidy":
-{"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
- "TUG15": [0, 0.5]}
-        , "smoke":
-{"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
- "TUG15": [0, 0.5]}
         , "drunk":
 {"George":[1, 0.5], "Jack":[1, 0.8], "Sandy":[1, 0.6], "Candy":[0, 0], "Hans":[-1, 1], "Gremila":[1, 0.9], "David":[1, 0.9], "Jasmine":[1, 0.95],
  "TUG15": [-1, 1]}
@@ -72,32 +59,45 @@
     , "baseDialogOptions" : [
        [ "MusicIsSweet", "The Canteen Band released a new album!", {"talk": 0.2, "music": 0.8}
        , "DanceWithMe", "Did you go to the dance lessons last night?", {"dance": 0.8, "talk": -0.3}
-       , "Intellectual", "The new book about dolphins is amazing, isn#t it", {"talk": 0.8, "tidy":0.5}
-       , "DrunkNSmoky", "Let's go for a smoke and get wasted!!!", {"music":0.8, "smoke":0.6, "drunk":1.0}
+       , "Intellectual", "The new book about dolphins is amazing, isn#t it", {"talk": 0.8}
+       , "DrunkNSmoky", "Let's go for a smoke and get wasted!!!", {"music":0.8, "drunk":1.0}
        ]
     ],
     "decisionOptions": {
-        "Skybar": {
-          "music":0,
-          "talk":0,
-          "dance":0,
-          "games":0,
-          "drunk":0,
-
-          "light":0,
-          "tidy":0,
-          "smoke":0
+        "Disco": {
+          "music":1,
+          "talk":-1,
+          "dance":1,
+          "games":-1,
+          "drunk":1
           },
-        "The Shelter": {
+        "Park": {
           "music":0,
-          "talk":0,
+          "talk":1,
+          "dance":-1,
+          "games":1,
+          "drunk":1
+          },
+        "Museum": {
+          "music":-1,
+          "talk":1,
+          "dance":-1,
+          "games":-1,
+          "drunk":-1
+          },
+        "Bar": {
+          "music":1,
+          "talk":1,
           "dance":0,
-          "games":0,
-          "drunk":0,
-
-          "light":0,
-          "tidy":0,
-          "smoke":0
+          "games":1,
+          "drunk":1
+          },
+        "Cinema": {
+          "music":0,
+          "talk":-1,
+          "dance":-1,
+          "games":-1,
+          "drunk":-1
         }
       }
 }
