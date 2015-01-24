@@ -76,13 +76,14 @@
       var xcount = 0;
       for (var pName in this.game.myRoom.persons) {
         var pers = this.game.add.sprite(
-          xcount,
-          2*this.game.height/3,
+          this.game.myRoom.persons[pName].startPos[0],
+          this.game.myRoom.persons[pName].startPos[1],
 
           'person' // TODO real asset
           );
-
+//console.log(this.game.myRoom.persons[pName].startPos);
         pers.anchor.setTo(0.5, 0.5);
+        pers.scale.setTo((400+pers.y)/this.game.height, (400+pers.y)/this.game.height);
         pers.inputEnabled = false;
         pers.persName = pName;
 

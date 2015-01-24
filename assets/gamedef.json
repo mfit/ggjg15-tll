@@ -59,7 +59,16 @@
           , "TUG15" :   {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0              }
           }
     },
-    "persons": ["George", "Jack", "Sandy", "Candy", "Hans", "Gremila", "David", "Jasmine", "TUG15"]
+    "persons": [
+    {"name": "George", "startPosition":[850, 400]},
+    {"name": "Jack", "startPosition":[1100, 430]},
+    {"name": "Sandy", "startPosition":[1100, 750]},
+    {"name": "Candy", "startPosition":[470, 610]},
+    {"name": "Hans", "startPosition":[1000, 350]},
+    {"name": "Gremila", "startPosition":[250, 500]},
+    {"name": "David", "startPosition":[400, 350]},
+    {"name": "Jasmine", "startPosition":[600, 600]},
+    {"name": "TUG15", "startPosition":[750, 400]}]
     , "baseDialogOptions" : [
        [ "MusicIsSweet", "The Canteen Band released a new album!", {"talk": 0.2, "music": 0.8}
        , "DanceWithMe", "Did you go to the dance lessons last night?", {"dance": 0.8, "talk": -0.3}
