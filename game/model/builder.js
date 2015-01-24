@@ -35,6 +35,9 @@
       // Dialog options pool
       myRoom.dialog = config.baseDialogOptions;
 
+      //
+      // TODO :  setup graph from config
+      //
 
       // var g = new Graph();
       // for (pname in myRoom.person) {

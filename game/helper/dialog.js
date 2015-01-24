@@ -15,7 +15,17 @@ var display = require('../helper/display');
         console.log("OBJECT: " + sprite.objName);
       },
       showLobbyingDialogPanel: function(sprite) {
-        data = {text:"Startsay", options: [{text:"Text", callback:function () {}}]};
+
+        var opt_list = [],
+          wo = sprite.worldObject;
+
+        for (var i=0; i < wo.getOptions.length; i++) {
+          opt_list.push({text: wo.getOptions[i].txt, callback: function() {
+            wo.handleComment(i);
+          }});
+        }
+
+        data = {text:"Startsay", options: opt_list};
 
       if(this.game.dialog_open)
       {
@@ -68,7 +78,7 @@ var display = require('../helper/display');
 
         //var options;
 
-        for(var i = 0; i < data.options.length(); i++)
+        for(var i = 0; i < data.options.length; i++)
         {
           if(i == 0)
           {
