@@ -59,7 +59,7 @@
         2*this.game.height/3,
         'person');
       pers.anchor.setTo(0.5, 0.5);
-      pers.inputEnabled = true;
+      pers.inputEnabled = false;
       pers.persName = "Fritz";
 
       pers.events.onInputDown.add(this.dialogHelper.showLobbyingDialogPanel, this);
@@ -72,7 +72,7 @@
         'person');
       pers2.anchor.setTo(0.5, 0.5);
       pers2.scale.setTo(0.7, 0.7);
-      pers2.inputEnabled = true;
+      pers2.inputEnabled = false;
 
       // Add click handler ( handler, context )
       pers2.events.onInputDown.add(this.dialogHelper.showLobbyingDialogPanel, this);
@@ -126,6 +126,7 @@
          this.game.world.centerY,
         text, style);
       this.instructionsText.anchor.setTo(0.5, 0.5);
+      this.IsStartTextOn = true;
 
       // //
       // // Buttons
@@ -156,8 +157,15 @@
     update: function() {
       if(this.game.input.activePointer.justPressed()) {
       // move to antoher game state on button-press
-        this.instructionsText.destroy();
-        this.dialogBox.destroy();
+        if(this.IsStartTextOn) {          
+          this.instructionsText.destroy();
+          this.dialogBox.destroy();
+          this.IsStartTextOn = false;
+          this.npcs.forEach(function(item){
+            item.inputEnabled = true;
+          });
+          return;
+        }
       }
 
       //
