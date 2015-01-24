@@ -5,6 +5,7 @@
 
   var dialog = require('../helper/dialog');
   var builder = require('../model/builder');
+  var player = require('../model/player.js');
 
   var objectPositions = {onStereo : {x : 1270, y :490},
                          onTable : {x : 660, y : 615},
@@ -32,7 +33,9 @@
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
       var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
 
-      this.game.myRoom = new builder.WorldBuilder().buildFromConfig(gameSetup);
+      //this.game.player = new player.Player();
+
+      this.game.myRoom = new builder.WorldBuilder().buildFromConfig(this.game, gameSetup);
 
       var bg = this.game.add.sprite(
         0,
@@ -180,6 +183,27 @@
       this.fish.y = 530;
 
       this.IsStartTextOn = true;
+
+      this.game.input.keyboard.onDownCallback = function(e){
+        if(e.keyCode >= 49 && e.keyCode <= 57){
+          var num = e.keyCode-49;
+          var counter = 0;
+          for (var pName in this.game.myRoom.persons) {
+            if(counter == num) {
+              console.log("*********************************");
+              console.log("NAME: " + pName);
+              console.log("*********************************");
+              console.log("MUSIC: " + this.game.myRoom.persons[pName].preferences.music);
+              console.log("TALK : " + this.game.myRoom.persons[pName].preferences.talk);
+              console.log("DANCE: " + this.game.myRoom.persons[pName].preferences.dance);
+              console.log("GAMES: " + this.game.myRoom.persons[pName].preferences.games);
+              console.log("DRUNK: " + this.game.myRoom.persons[pName].preferences.drunk);
+              console.log("*********************************");
+            }
+            counter++;
+          }
+        }
+      };
 
       // //
       // // Buttons

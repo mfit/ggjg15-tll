@@ -11,7 +11,8 @@
   function WorldBuilder() {};
 
   WorldBuilder.prototype = {
-    buildFromConfig: function(config) {
+    buildFromConfig: function(game, config) {
+        this.game = game;
       //
       // Init a world by config object
       //
@@ -19,15 +20,24 @@
       var propDomain = config.attributes;
       var myRoom = new world.RoomState(world.Decision);
 
+      var g = new graph();
       // Set up all persons
       for ( personIndex in config.persons ) {
         var name = config.persons[personIndex].name;
         var startPos = config.persons[personIndex].startPosition;
-        var personPrefs = Object.keys(config.prefs).map(function(k) {
+        var personPrefs2 = Object.keys(config.prefs).map(function(k) {
           return config.prefs[k][name];
         });
-        myRoom.addPerson(new world.Person(name,myRoom,startPos,propDomain, personPrefs));
+        personPrefs = {};
+        for (var i = 0; i < personPrefs2.length; i++)
+        {
+          var keys = Object.keys(config.prefs);
+          personPrefs[keys[i]] = personPrefs2[i];
+        }
+        myRoom.addPerson(new world.Person(name,g,myRoom,startPos,propDomain, personPrefs));
       }
+
+      this.game.room = myRoom;
 
       // Set up decicionOptions
       for (var name in config.decicionOptions) {
@@ -45,7 +55,6 @@
       // TODO :  setup graph from config
       //
 
-      var g = new graph();
       for (pname in myRoom.persons) {
          g.addVertex(pname);
          g.getVertex(pname).assignPerson(myRoom.persons[pname]);

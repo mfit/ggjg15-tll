@@ -22,7 +22,7 @@
       }
     };
 
-    var WorldPerson = function(name, room, startPos, initOptions, prefs) {
+    var WorldPerson = function(name, graph, room, startPos, initOptions, prefs) {
       // Init the person with its 'set of believes'
       // attitudes towards things
       //
@@ -33,6 +33,7 @@
 
       this.room = room;
       this.name = name;
+      this.graph = graph;
       this.startPos = startPos;
       var k;
 
@@ -66,7 +67,6 @@
                return o;
            };
 
-           console.log(this.room);
            var dialogValues = [];
            for (var key in this.room.dialogs) {
                dialogValues.push(this.room.dialogs[key]);
@@ -87,7 +87,8 @@
             console.log(other_character);
 
             var importance = VectorDecision(this, option.prefs);
-            console.log(importance);
+            var influence = this.graph.getEdge(this.name, other_character.name);
+            console.log(influence);
             // TODO something with this.npc
             // TODO something with this.option
             return "blablabla";

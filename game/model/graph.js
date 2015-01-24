@@ -17,6 +17,11 @@ Graph.prototype = {
       return this._vertices[name];
   },
 
+  getEdge: function(from, to) {
+      console.log(this._edges);
+      return this._edges[from][to];
+  },
+
   addVertex: function(name, data) {
     this._vertices[name] = new Vertex(name, data);
   },
