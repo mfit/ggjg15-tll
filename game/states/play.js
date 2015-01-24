@@ -6,18 +6,15 @@
   var dialog = require('../helper/dialog');
   var builder = require('../model/builder');
 
-  var objectPositions = {onStereo : {x : 1250, y :410},
-                         onTable : {x : 600, y : 530},
-                         onBookShelf : {x : 60, y : 345},
-                         onCommode : {x : 890, y : 370}
+  var objectPositions = {onStereo : {x : 1270, y :490},
+                         onTable : {x : 660, y : 615},
+                         onBookShelf : {x : 100, y : 430},
+                         onCommode : {x : 930, y : 460}
                          };
 
-  var _placeObject = function(context, sObject, place){
-    var object = context.add.sprite(
-        place.x,
-        place.y,
-        sObject);
-    return object;
+  var _placeObject = function(object, place){
+    object.x = place.x - object.width;
+    object.y = place.y - object.height;
   };
 
   function Play() {}
@@ -41,12 +38,20 @@
         'background');
       bg.scale.setTo(0.25,0.25);
 
+      // beerBottle
+      // vodkaBottle
+      // clock
+
       this.partyObjects = this.game.add.group();
-      var vBottle1 = _placeObject(this.game, 'vodkaBottle', objectPositions.onStereo);
+      var vBottle1 = this.game.add.sprite(
+        0,
+        0,
+        "beerBottle");
       vBottle1.scale.setTo(0.04,0.04);
+      _placeObject(vBottle1, objectPositions.onCommode);
       vBottle1.inputEnabled = false;
       vBottle1.events.onInputDown.add(this.dialogHelper.startObjectDialogPanel, this);
-      vBottle1.objName = "vodkaBottle";
+      vBottle1.objName = "beerBottle";
       this.partyObjects.add(vBottle1);
 
       // //
