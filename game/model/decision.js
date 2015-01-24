@@ -44,7 +44,38 @@
     };
 
     WorldPerson.prototype = {
+        npcTalk: function() {
+            //TODO choose npcName
+            selectNPC(npcName);
+            getOptions();
+            //TODO choose optionId
+            selectOption(optionId);
+            handleComment();
+        },
 
+        getOptions: function() {
+           //TODO choose 3 options
+           return [{id:"HALLO",  txt:"Hallo"},
+                   {id:"HALLO2", txt:"Hallo2"},
+                   {id:"HALLO3", txt:"Hallo3"}
+           ];
+        },
+
+        selectNPC: function(npcName) {
+            this.npc = npcName;
+        },
+
+        selectOption: function(id) {
+            this.option = id;
+        },
+
+        handleComment: function() {
+            var response = undefined;
+            // TODO something with this.npc
+            // TODO something with this.option
+            response = "blabla";
+            return response;
+        },
     };
 
     var WorldOption = function(name, initOptions, attrs) {
