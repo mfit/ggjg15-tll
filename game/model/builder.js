@@ -40,16 +40,14 @@
       this.game.room = myRoom;
 
       //
-      // Set up decicionOptions
+      // Set up decisionOptions
       //
-      for (var name in config.decicionOptions) {
-        myRoom.addOption(name, propDomain, config.decicionOptions[name]);
+      for (var name in config.decisionOptions) {
+        myRoom.addOption(name, propDomain, config.decisionOptions[name]);
       }
 
       // Dialog options pool
-      // DEMO : limit to index 0 , 1
-      // for (var i = 0; i < config.baseDialogOptions.length; i++)
-      for (var i = 0; i < 2; i++)
+      for (var i = 0; i < config.baseDialogOptions.length; i++)
       {
           var dialogOption = config.baseDialogOptions[i];
           myRoom.addDialog(dialogOption[0], dialogOption[1], dialogOption[2]);

@@ -59,26 +59,6 @@
       vBottle1.objName = "beerBottle";
       this.partyObjects.add(vBottle1);
 
-      // //
-      // // Add player sprite
-      // // Setting up a controller
-      // this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'runner');
-      // this.sprite.inputEnabled = true;
-      // this.sprite.scale.setTo(2.5, 2.5);
-      // this.sprite.anchor.setTo(0.5, 0.5);
-      // this.sprite.animations.add('run', [0,1,0,2]);
-      // this.sprite.animations.play('run', 8, true);
-      // this.game.controller = new contr.KeyboardController(
-      //         this.game.input.keyboard,
-      //         {left:Phaser.Keyboard.A,
-      //           right: Phaser.Keyboard.D,
-      //           up: Phaser.Keyboard.W,
-      //           down: Phaser.Keyboard.S,
-      //           jump: Phaser.Keyboard.W,
-      //           block: Phaser.Keyboard.S
-      //         }
-      // );
-
       //
       // use a group for other characters
       //
@@ -156,18 +136,20 @@
       this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
       this.dialogBox.drawRect(50, 50, this.game.width-100, this.game.height-100);
 
-      var places = ["steakhouse", "strip club", "irish pub", "playground"];
+      console.log(this.game.myRoom);
+      var places = Object.keys(this.game.myRoom.options);
+
 
       var testText = 'You are on a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? Should they go to'
       // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
       for(var i = 0; i < places.length - 1; i++){
-        testText += " a " + places[i] + ",";
+        testText += " the " + places[i] + ",";
       }
-      testText += " or to a " + places[places.length-1] + "? ";
-      testText += 'Your objective is to convice the rest of the guests to go to the place where you want to go.';
+      testText += " or to the " + places[places.length-1] + "? ";
+      testText += 'Your objective is to convice the rest of the guests to go to the place where you want to go...';
       var output = this.addLineBreakToText(testText, 50);
-      output += '\n\nAnd you want to go to the ';
-      output += places[Math.floor(Math.random()*places.length)] + ".";
+      output += '\n\nAnd you want to go to ... the ';
+      output += places[Math.floor(Math.random()*places.length)] + "!";
 
       var style = { font: '30px Helvetica', fill: '#ffffff', align: 'center'};
 
