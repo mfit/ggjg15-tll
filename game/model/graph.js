@@ -90,7 +90,6 @@ function test()
   g.addVertex('Fritz', {data: 10});
   g.addVertex('Sarah', {data: 15});
   g.addVertex('HAL9000');
-  var data = {};
   g.addEdge("Susi",  "Sarah" , {influence: 5});
   g.addEdge("Susi",  "Fritz" , {influence: 10});
   g.addEdge("Fritz", "Susi"  , {influence: 20});
