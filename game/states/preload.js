@@ -27,6 +27,7 @@ Preload.prototype = {
     this.load.image('clock', 'assets/uhr.png');
     this.load.image('beerBottle', 'assets/beer.png');
     this.load.image('beerBottle', 'assets/beer.png');
+    this.load.image('fish', 'assets/fiisch.png');
 
     //
     // Load text / config

@@ -17,6 +17,8 @@
     object.y = place.y - object.height;
   };
 
+  var fishBounds = {upper_x : 1210, lower_x : 1170, left: true};
+
   function Play() {}
   Play.prototype = {
     create: function() {
@@ -165,6 +167,16 @@
         output, style);
       this.instructionsText.anchor.setTo(0.5, 0.5);
 
+      this.fish = this.game.add.sprite(
+        0,
+        0,
+        "fish");
+      this.fish.scale.setTo(-0.2,0.2);
+      this.fish.anchor.setTo(0.5,0.5);
+      this.fish.x = fishBounds.upper_x;
+      this.fish.angle = 15;
+      this.fish.y = 530;
+
       this.IsStartTextOn = true;
 
       // //
@@ -209,6 +221,26 @@
           return;
         }
       }
+
+      if(fishBounds.left){
+          this.fish.y -= 0.05;
+          this.fish.x -= 0.2;
+          if(this.fish.x < fishBounds.lower_x + 2 && this.fish.x > fishBounds.lower_x){
+            this.fish.scale.setTo(0.2,0.2);
+            this.fish.angle = 30;
+            fishBounds.left = false;
+          }
+        }
+        else{
+          this.fish.y += 0.05;
+          this.fish.x += 0.2;
+          if(this.fish.x > fishBounds.upper_x-2 && this.fish.x < fishBounds.upper_x)
+          {
+            this.fish.angle = 15;
+            this.fish.scale.setTo(-0.2,0.2);
+            fishBounds.left = true;
+          }
+        }
 
       //
       // controller, sample direction at update time use for movement
