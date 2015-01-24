@@ -73,7 +73,7 @@
       // use a group for other characters
       //
       this.npcs = this.game.add.group();
-      var xcount = 0;
+      var xcount = 150;
       for (var pName in this.game.myRoom.persons) {
         var pers = this.game.add.sprite(
           xcount,
