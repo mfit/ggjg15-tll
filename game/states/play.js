@@ -28,8 +28,8 @@
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
       var myDemoSound = this.game.add.audio('actionsound');
-      var backgroundAudio = this.game.add.audio('background');
-      backgroundAudio.play();
+      this.backgroundAudio = this.game.add.audio('background');
+      this.backgroundAudio.play();
 
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
       var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
@@ -259,6 +259,36 @@
             fishBounds.left = true;
           }
         }
+
+
+
+        var topLeftQuarter = new Phaser.Rectangle(1130,450,1280,710);
+        var self = this;
+        //listen for pointers
+        this.game.input.onDown.add( function(pointer){
+            //this is the test, contains test for a point belonging to a rect definition
+            var inside = topLeftQuarter.contains(pointer.x,pointer.y)
+            if(inside)
+            {
+              var audiotrack = 'disco';
+              if(self.backgroundAudio.key == 'disco')
+              {
+                audiotrack = 'background';
+              }
+             // console.log(self.backgroundAudio.key);
+              self.backgroundAudio.pause();
+              self.backgroundAudio = self.game.add.audio(audiotrack);
+              self.backgroundAudio.play();
+            }
+
+            //console.log('x',pointer.x);
+            //console.log('y',pointer.y);
+            //do whatever with the result
+            //console.log('pointer is inside region top left quarter', inside)
+        });
+
+       // this.backgroundAudio = this.game.add.audio('background');
+       // this.backgroundAudio.play();
 
       //
       // controller, sample direction at update time use for movement
