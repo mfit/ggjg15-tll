@@ -44,6 +44,7 @@ Preload.prototype = {
     // Load some audio
     //
     this.game.load.audio('background','assets/sound/main.ogg');
+    this.game.load.audio('disco','assets/sound/edm_01.mp3');
 
 
     //
