@@ -90,7 +90,8 @@
           );
 //console.log(this.game.myRoom.persons[pName].startPos);
         pers.anchor.setTo(0.5, 0.5);
-        pers.scale.setTo((400+pers.y)/this.game.height, (400+pers.y)/this.game.height);
+        //pers.scale.setTo((400+pers.y)/this.game.height, (400+pers.y)/this.game.height);
+        pers.scale.setTo(0.1,0.1);
         pers.inputEnabled = false;
         pers.persName = pName;
 

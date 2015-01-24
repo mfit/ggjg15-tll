@@ -11,17 +11,17 @@
         "smoke":0
     },
     "prefs": { "music":
-{"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
- "TUG15": [0, 0.5]}
+{"George":[1, 0.4], "Jack":[1, 0.7], "Sandy":[1, 1], "Candy":[-1, 0.4], "Hans":[1, 0.2], "Gremila":[1, 0.9], "David":[1, 0.5], "Jasmine":[1, 0.7],
+ "TUG15": [1, 0.6]}
         , "talk":
-{"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
- "TUG15": [0, 0.5]}
+{"George":[-1, 0.9], "Jack":[1, 1], "Sandy":[1, 0.5], "Candy":[-1, 0.6], "Hans":[-1, 0.3], "Gremila":[1, 1], "David":[1, 0.9], "Jasmine":[1, 0.8],
+ "TUG15": [-1, 0.3]}
         , "dance":
-{"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
- "TUG15": [0, 0.5]}
+{"George":[1, 0.5], "Jack":[-1, 0.3], "Sandy":[-1, 0.5], "Candy":[1, 0.7], "Hans":[-1, 0], "Gremila":[1, 0.3], "David":[1, 0.7], "Jasmine":[1, 0.7],
+ "TUG15": [1, 0.8]}
         , "games":
-{"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
- "TUG15": [0, 0.5]}
+{"George":[1, 0.7], "Jack":[-1, 0.9], "Sandy":[-1, 0.8], "Candy":[1, 0.6], "Hans":[1, 0.7], "Gremila":[1, 1], "David":[1, 0.6], "Jasmine":[-1, 0.8],
+ "TUG15": [1, 0.8]}
         , "light":
 {"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
  "TUG15": [0, 0.5]}
@@ -32,8 +32,8 @@
 {"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
  "TUG15": [0, 0.5]}
         , "drunk":
-{"George":[0, 0.5], "Jack":[0, 0.5], "Sandy":[0, 0.5], "Candy":[0, 0.5], "Hans":[0, 0.5], "Gremila":[0, 0.5], "David":[0, 0.5], "Jasmine":[0, 0.5],
- "TUG15": [0, 0.5]}
+{"George":[1, 0.5], "Jack":[1, 0.8], "Sandy":[1, 0.6], "Candy":[0, 0], "Hans":[-1, 1], "Gremila":[1, 0.9], "David":[1, 0.9], "Jasmine":[1, 0.95],
+ "TUG15": [-1, 1]}
     },
     "edges": {
           "influenceMap": {
