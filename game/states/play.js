@@ -89,12 +89,12 @@
           this.game.myRoom.persons[pName].startPos[0],
           this.game.myRoom.persons[pName].startPos[1],
 
-          'person' // TODO real asset
+          pName // Asset is loaded with same key as Playername
           );
-//console.log(this.game.myRoom.persons[pName].startPos);
+        //console.log(this.game.myRoom.persons[pName].startPos);
         pers.anchor.setTo(0.5, 0.5);
         //pers.scale.setTo((400+pers.y)/this.game.height, (400+pers.y)/this.game.height);
-        pers.scale.setTo(0.1,0.1);
+        pers.scale.setTo(0.5,0.5);
         pers.inputEnabled = false;
         pers.persName = pName;
 
