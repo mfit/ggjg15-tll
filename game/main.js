@@ -2,7 +2,7 @@
 
 //global variables
 window.onload = function () {
-  var game = new Phaser.Game(800, 600, Phaser.AUTO, 'project-init');
+  var game = new Phaser.Game(1280, 800, Phaser.AUTO, 'project-init');
 
   // Game States
   game.state.add('boot', require('./states/boot'));

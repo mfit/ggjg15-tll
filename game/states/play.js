@@ -60,7 +60,7 @@
       pers.inputEnabled = true;
       pers.persName = "Fritz";
 
-      pers.events.onInputDown.add(this.dialogHelper.startLobbyingDialog, this);
+      pers.events.onInputDown.add(this.dialogHelper.showLobbyingDialogPanel, this);
 
       this.npcs.add(pers);
 
@@ -73,7 +73,7 @@
       pers2.inputEnabled = true;
 
       // Add click handler ( handler, context )
-      pers2.events.onInputDown.add(this.dialogHelper.startLobbyingDialog, this);
+      pers2.events.onInputDown.add(this.dialogHelper.showLobbyingDialogPanel, this);
       pers2.persName = "Suzy";
       this.npcs.add(pers2);
 
