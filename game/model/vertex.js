@@ -11,8 +11,34 @@ Vertex.prototype = {
   },
 
   addEdges: function(edges) {
-    this._edges.concat(edges);
+    this._edges.push(edges);
   },
+
+  getNeighborWithMaxProperty: function(name, property, graphObj) {
+    if (this._edges.length == 0) {
+      return null;
+    }
+
+    return graphObj.getVertexWithMaxProperty(property, this.getVerticesOfEdges(graphObj));
+  },
+
+  getNeighborWithMinProperty: function(name, property, graphObj) {
+    if (this._edges.length == 0) {
+      return null;
+    }
+
+    return graphObj.getVertexWithMinProperty(property, this.getVerticesOfEdges(graphObj));
+  },
+
+  getVerticesOfEdges: function(graphObj) {
+    var vertices = {};
+
+    for (var i = 0; i < this._edges.length; i++) {
+        vertices[this._edges[i]._to] = graphObj._vertices[this._edges[i]._to];
+    }
+
+    return vertices;
+  }
 }
 
 
