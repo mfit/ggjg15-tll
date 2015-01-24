@@ -25,10 +25,12 @@
 
 
       var bg = this.game.add.sprite(
-        0,
-        0,
+        -10,
+        -10,
         'background');
-      bg.scale.setTo(0.2,0.2);
+      //bg.width = this.game.width;
+      //bg.height = this.game.height;
+      bg.scale.setTo(0.25,0.25);
 
       // //
       // // Add player sprite
@@ -110,7 +112,7 @@
       this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
       this.dialogBox.drawRect(50, 50, this.game.width-100, this.game.height-100);
 
-      var places = ["steakhouse", "strip club", "irish pub", "playground"];
+      var places = ["steakhouse", "strip club", "irish pub", "playground", "school"];
 
       var testText = 'You are on a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? Should they go to'
       // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
