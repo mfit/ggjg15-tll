@@ -39,20 +39,24 @@
 
       this.game.room = myRoom;
 
+      //
       // Set up decicionOptions
+      //
       for (var name in config.decicionOptions) {
         myRoom.addOption(name, propDomain, config.decicionOptions[name]);
       }
 
       // Dialog options pool
-      for (var i = 0; i < config.baseDialogOptions.length; i++)
+      // DEMO : limit to index 0 , 1
+      // for (var i = 0; i < config.baseDialogOptions.length; i++)
+      for (var i = 0; i < 2; i++)
       {
           var dialogOption = config.baseDialogOptions[i];
           myRoom.addDialog(dialogOption[0], dialogOption[1], dialogOption[2]);
       }
 
       //
-      // TODO :  setup graph from config
+      // Setup Graph
       //
 
       for (pname in myRoom.persons) {
