@@ -11,9 +11,12 @@ var display = require('../helper/display');
         console.log("Starting dialog with " + sprite);
         console.log(this.game.textData.NAME.format(sprite.persName));
       },
+      startObjectDialogPanel: function(sprite) {
+        console.log("OBJECT: " + sprite.objName);
+      },
       showLobbyingDialogPanel: function(sprite) {
         data = {text:"Startsay", options: [{text:"Text", callback:function () {}}]};
-      
+
       if(this.game.dialog_open)
       {
         return;
@@ -34,7 +37,7 @@ var display = require('../helper/display');
 
 
 
-      
+
 
         bmp.rect(0, 0, this.game.width, 500);
         //bmp_person.rect(0, this.game.height/3, this.game.width, this.game.height);
@@ -56,7 +59,7 @@ var display = require('../helper/display');
         var dialogBox = this.game.add.sprite(0, 500, rt);
         //var person_profile = this.game.add.sprite(0, 0, rt_person);
 
-      
+
       var profile = this.game.add.sprite(
         500,
         400,
@@ -124,7 +127,7 @@ var display = require('../helper/display');
 /*           this.game.debug.geom(circle1,'',false);
            this.game.debug.geom(circle2,'',false);
            this.game.debug.geom(circle3,'',false);
-  */ 
+  */
           var name = new Phaser.BitmapText(rt, this.game.width-400, 0, 'nokia', sprite.persName + ":", 24);
 
           rt.render(spr, {x:0, y:0});
@@ -201,7 +204,7 @@ var display = require('../helper/display');
             //this.game.state.start('play');
             }, rt);
         }, rt);
-       
+
       }
     }
 

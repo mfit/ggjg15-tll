@@ -21,6 +21,7 @@ Preload.prototype = {
     this.load.image('sandy_profile', 'assets/cyberpunk_sandy_01.png');
 
     this.load.image('background', 'assets/vorgluehraum2.png');
+    this.load.image('vodkaBottle', 'assets/vodka.png');
 
     //
     // Load text / config
