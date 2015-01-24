@@ -18,7 +18,7 @@
       }
     };
 
-    var WorldPerson = function(name, initOptions, prefs) {
+    var WorldPerson = function(name, startPos, initOptions, prefs) {
       // Init the person with its 'set of believes'
       // attitudes towards things
       //
@@ -28,7 +28,7 @@
       // Init all options to zero , weigth zero
 
       this.name = name;
-
+      this.startPos = startPos;
       var k;
 
       this.preferences = {};
