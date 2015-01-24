@@ -2,15 +2,16 @@
 
 var Graph = require("../model/graph");
 
-function GameMaster(graph, maxRound) {
-  this.init(graph, maxRound);
+function GameMaster(graph, maxRound, config) {
+  this.init(graph, maxRound, config);
 }
 
 GameMaster.prototype = {
-  init: function(graph, maxRound) {
-      this._tick     = 0;
+  init: function(graph, maxRound, config) {
+      this._tick     = -1;
       this._graph    = graph;
       this._maxRound = maxRound;
+      this._config = config;
   },
 
   tick: function() {
@@ -30,15 +31,19 @@ GameMaster.prototype = {
           return;
       }
 
-      for (var index = 0; index < interactions.length; index++) {
-          if (interactions[index] === undefined) {
+      if (interactions.length <= this._tick)
+      {
+          console.error("interactions for tick do not exist", this._tick, interactions);
+          return;
+      }
+
+      for (var index = 0; index < interactions[this._tick].length; index++) {
+          if (interactions[this._tick][index] === undefined) {
               continue;
           }
 
-          this.interact(interactions[index].from,
-                        interactions[index].to,
-                        interactions[index].topic,
-                        interactions[index].props,
+          this.interact(interactions[this._tick][index][0],
+                        interactions[this._tick][index][1],
                         propertyChangeCallback);
       }
   },
@@ -47,10 +52,10 @@ GameMaster.prototype = {
       console.log("finalStep");
   },
 
-  interact: function(from, to, topic, props, callback) {
+  interact: function(from, to, callback) {
 
       return callback(this._graph._vertices[from],
-                      this._graph._vertices[to], this._tick, topic, props);
+                      this._graph._vertices[to], this._tick);
 
   },
 
