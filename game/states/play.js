@@ -110,22 +110,26 @@
       this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
       this.dialogBox.drawRect(50, 50, this.game.width-100, this.game.height-100);
 
-      var text = '';
-      text += 'Lorem ipsum dolor sit amet, consetetur sadipscing \nelitr, sed diam nonumy';
-      text += 'eirmod tempor \ninvidunt ut labore\n et dolore magna aliquyam erat, sed diam voluptua\n';
-      text += 'At vero eos et accusam et justo\n duo dolores et ea rebum. Stet clita\nkasd gubergren,';
-      text += 'no sea takimata sanctus \nest Lorem ipsum dolor sit amet.\n';
-      text += 'Lorem ipsum dolor sit amet, consetetur sadipscing \nelitr, sed diam nonumy';
+      var places = ["steakhouse", "strip club", "irish pub", "playground"];
 
-      var testText = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';      
-      var output = this.addLineBreakToText(testText, 20);
+      var testText = 'You are on a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? Should they go to'
+      // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
+      for(var i = 0; i < places.length - 1; i++){
+        testText += " a " + places[i] + ",";
+      }
+      testText += " or to a " + places[places.length-1] + "? ";
+      testText += 'Your objective is to convice the rest of the guests to go to the place where you want to go.';
+      var output = this.addLineBreakToText(testText, 50);
+      output += '\n\nAnd you want to go to the ';
+      output += places[Math.floor(Math.random()*places.length)] + ".";
 
       var style = { font: '30px Helvetica', fill: '#ffffff', align: 'center'};
 
       this.instructionsText = this.game.add.text(this.game.world.centerX,
          this.game.world.centerY,
-        text, style);
+        output, style);
       this.instructionsText.anchor.setTo(0.5, 0.5);
+
       this.IsStartTextOn = true;
 
       // //
