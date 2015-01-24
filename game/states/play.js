@@ -99,22 +99,6 @@
 
       }
 
-
-
-
-      var pers2 = this.game.add.sprite(
-        2* this.game.width/3,
-        3*this.game.height/5,
-        'person');
-      pers2.anchor.setTo(0.5, 0.5);
-      pers2.scale.setTo(0.7, 0.7);
-      pers2.inputEnabled = false;
-
-      // Add click handler ( handler, context )
-      pers2.events.onInputDown.add(this.dialogHelper.showLobbyingDialogPanel, this);
-      pers2.persName = "Suzy";
-      this.npcs.add(pers2);
-
       //---------------------------------------------------------------------------------------------
       this.addLineBreakToText = function(text, maxCharNumInLine) {
         var charArray = text.split('');
