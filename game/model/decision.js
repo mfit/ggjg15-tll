@@ -114,12 +114,11 @@
             console.log(option);
             console.log(other_character);
 
-            var importance = VectorDecision(this, option.prefs);
-            var influence = this.graph.getEdge(this.name, other_character.name);
-            console.log(influence);
+            var importance = CalculateResponse(this.graph, other_character, this, option); // care its around
+
             // TODO something with this.npc
             // TODO something with this.option
-            return "blablabla";
+            return importance;
         },
     };
 
@@ -161,6 +160,39 @@
           return attrweight;
       }).reduce(function(v, o) {return v+o;}));
     };
+
+    function CalculateResponse(graph, initPerson, targetPerson, option) {
+        var influence = graph.getEdge(initPerson.name, targetPerson.name).getData('influence');
+        console.log("influence", influence);
+
+        var allkeys = Object.keys(initPerson.preferences);
+
+        // how important the topic is to the target person
+        var importance = VectorDecision(targetPerson, option.prefs);
+        console.log("importance", importance);
+
+        // if influence is low we prefer other topics
+        var finalP = Math.pow(importance/2.0, 2 - influence*2.0);
+        var finalN = Math.pow(importance/2.0, influence*2.0);
+
+        console.log("final", finalP, finalN);
+        if (finalP < 0 || finalN < 0 || finalP > 1 || finalN > 1)
+            console.warn("Values are off");
+
+        for (var prefKey in allkeys) {
+            var old = targetPerson.prefWeights[prefKey];
+            var newWeight = old;
+            if (option.prefs.hasOwnProperty(prefKey))
+            {
+                newWeight = (old + finalP)/2.0;
+            } else 
+            {
+                newWeight = (old + finalN)/2.0;
+            }
+            targetPerson.prefWeights[prefKey] = newWeight;
+        }
+        return importance;
+    }
 
 
     // function Decision(person, options) {

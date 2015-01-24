@@ -184,6 +184,27 @@
 
       this.IsStartTextOn = true;
 
+      this.game.input.keyboard.onDownCallback = function(e){
+        if(e.keyCode >= 49 && e.keyCode <= 57){
+          var num = e.keyCode-49;
+          var counter = 0;
+          for (var pName in this.game.myRoom.persons) {
+            if(counter == num) {
+              console.log("*********************************");
+              console.log("NAME: " + pName);
+              console.log("*********************************");
+              console.log("MUSIC: " + this.game.myRoom.persons[pName].preferences.music);
+              console.log("TALK : " + this.game.myRoom.persons[pName].preferences.talk);
+              console.log("DANCE: " + this.game.myRoom.persons[pName].preferences.dance);
+              console.log("GAMES: " + this.game.myRoom.persons[pName].preferences.games);
+              console.log("DRUNK: " + this.game.myRoom.persons[pName].preferences.drunk);
+              console.log("*********************************");
+            }
+            counter++;
+          }
+        }
+      };
+
       // //
       // // Buttons
       // //
