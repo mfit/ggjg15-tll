@@ -135,13 +135,14 @@
     };
 
     function CalculateResponse(graph, initPerson, targetPerson, option) {
-        var influence = graph.getEdge(targetPerson.name, initPerson.name).getData('influence');
+        var influence = graph.getEdge(initPerson.name, targetPerson.name).getData('influence');
         console.log("influence", influence);
 
         var allkeys = Object.keys(initPerson.preferences);
 
         // how important the topic is to the target person
         var importance = VectorDecision(targetPerson, option.prefs);
+        console.log("importance", importance);
 
         // if influence is low we prefer other topics
         var finalP = Math.pow(importance/2.0, 2 - influence*2.0);

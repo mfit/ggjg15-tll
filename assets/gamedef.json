@@ -68,8 +68,6 @@
          , ["Yes, it was very interesting!", "Sure, it was okay.", "Reading is for losers."], {"Sandy": "I liked fifty shaded of gray."}]
        , ["Attraction", "For some reason, I'm attracted to you.", {}
          , ["You know ... I kinda feel the same about you", "...", "Oh gosh."], {"George": "Last Christmas, I gave you my heart."}]
-     //  , ["Lemonade", "You don't think that was just lemonade in your glass, do you?", {}
-       //  , ["", "...", "Oh gosh."], {"George": "Last Christmas, I gave you my heart."}]
        , ["Trouble", "It looks like you're in trouble. Can I help?", {}
          , ["Yes, you are a lifesaver.", "No, thanks.", "Not from you!"], {"Candy": "Do you play chess?"}]
        , ["Darts", "Do you play darts?", {}
