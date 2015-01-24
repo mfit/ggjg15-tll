@@ -57,7 +57,7 @@
         2*this.game.height/3,
         'person');
       pers.anchor.setTo(0.5, 0.5);
-      pers.inputEnabled = true;
+      pers.inputEnabled = false;
       pers.persName = "Fritz";
 
       pers.events.onInputDown.add(this.dialogHelper.showLobbyingDialogPanel, this);
@@ -70,12 +70,75 @@
         'person');
       pers2.anchor.setTo(0.5, 0.5);
       pers2.scale.setTo(0.7, 0.7);
-      pers2.inputEnabled = true;
+      pers2.inputEnabled = false;
 
       // Add click handler ( handler, context )
       pers2.events.onInputDown.add(this.dialogHelper.showLobbyingDialogPanel, this);
       pers2.persName = "Suzy";
       this.npcs.add(pers2);
+
+      //---------------------------------------------------------------------------------------------
+      this.addLineBreakToText = function(text, maxCharNumInLine) {
+        var charArray = text.split('');
+        var output = "";
+        var counter = 0;
+        for(var i = 0; i < charArray.length; i ++) {
+          //console.log(charArray[i]);
+          if(counter<maxCharNumInLine){
+            output += charArray[i];
+          }
+          else {
+            if(charArray[i] == " "){
+              output += "\n";
+              counter = 0;
+              continue;
+            }              
+            else
+              output += charArray[i];
+          }
+          counter++;
+        }
+        return output;
+      };
+      //--------------------------------------------------------------------------------------------
+        this.lineBreakCounter = function(text) {
+        var charArray = text.split('');
+        var counter = 0;
+        for(var i = 0; i < charArray.length; i ++) {
+          if(charArray[i] == "\n"){
+            counter++;
+          }
+        }
+        return counter;
+      };
+
+      this.dialogBox = this.game.add.graphics(0,0);
+      this.dialogBox.beginFill(0x001170, 0.5);
+      this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
+      this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
+      this.dialogBox.drawRect(50, 50, this.game.width-100, this.game.height-100);
+
+var places = ["steakhouse", "strip club", "irish pub", "playground"];
+
+      var testText = 'You are on a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? Should they go to'
+      // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
+      for(var i = 0; i < places.length - 1; i++){
+        testText += " a " + places[i] + ",";
+      }
+      testText += " or to a " + places[places.length-1] + "? ";
+      testText += 'Your objective is to convice the rest of the guests to go to the place where you want to go.';
+      var output = this.addLineBreakToText(testText, 50);
+      output += '\n\nAnd you want to go to the ';
+      output += places[Math.floor(Math.random()*places.length)] + ".";
+
+      var style = { font: '30px Helvetica', fill: '#ffffff', align: 'center'};
+
+      this.instructionsText = this.game.add.text(this.game.world.centerX,
+         this.game.world.centerY,
+        output, style);
+      this.instructionsText.anchor.setTo(0.5, 0.5);
+
+      this.IsStartTextOn = true;
 
       // //
       // // Buttons
@@ -104,7 +167,18 @@
 
     },
     update: function() {
-
+     if(this.game.input.activePointer.justPressed()) {
+      // move to antoher game state on button-press
+        if(this.IsStartTextOn) {          
+          this.instructionsText.destroy();
+          this.dialogBox.destroy();
+          this.IsStartTextOn = false;
+          this.npcs.forEach(function(item){
+            item.inputEnabled = true;
+          });
+          return;
+        }
+      }
 
       //
       // controller, sample direction at update time use for movement
