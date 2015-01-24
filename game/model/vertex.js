@@ -16,7 +16,7 @@ Vertex.prototype = {
 
   getNeighborWithMaxProperty: function(property, graphObj) {
     if (this._edges.length == 0) {
-      return null;
+      return undefined;
     }
 
     return graphObj.getVertexWithMaxProperty(property, this.getVerticesOfEdges(graphObj));
@@ -24,7 +24,7 @@ Vertex.prototype = {
 
   getNeighborWithMinProperty: function(property, graphObj) {
     if (this._edges.length == 0) {
-      return null;
+      return undefined;
     }
 
     return graphObj.getVertexWithMinProperty(property, this.getVerticesOfEdges(graphObj));
@@ -41,7 +41,7 @@ Vertex.prototype = {
   },
 
   getVertexWithMinPropertyEdge: function(property, graphObj) {
-    var vertex = null;
+    var vertex = undefined;
     var minVal = undefined;
     for (var i = 0; i < this._edges.length; i++) {
         if (this._edges[i]._data != undefined && (
@@ -56,7 +56,7 @@ Vertex.prototype = {
   },
 
   getVertexWithMaxPropertyEdge: function(property, graphObj) {
-    var vertex = null;
+    var vertex = undefined;
     var minVal = undefined;
     for (var i = 0; i < this._edges.length; i++) {
         if (this._edges[i]._data != undefined && (

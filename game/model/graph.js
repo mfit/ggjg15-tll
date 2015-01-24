@@ -24,15 +24,16 @@ Graph.prototype = {
 
   getVertexWithMaxProperty: function(property, dataset) {
     // naive way
-    var vertex   = null;
-    var maxValue = 0;
+    var vertex   = undefined;
+    var maxValue = undefined;
 
     if (dataset == undefined) {
         dataset = this._vertices;
     }
 
     for (var key in dataset) {
-        if (dataset[key]._data[property] > maxValue) {
+        if (dataset[key]._data != undefined &&
+            (dataset[key]._data[property] > maxValue || maxValue == undefined)) {
           vertex   = dataset[key];
           maxValue = vertex._data[property];
         }
@@ -43,15 +44,17 @@ Graph.prototype = {
 
   getVertexWithMinProperty: function(property, dataset) {
     // naive way
-    var vertex   = null;
-    var minValue = -1;
+    var vertex   = undefined;
+    var minValue = undefined;
 
     if (dataset == undefined) {
         dataset = this._vertices;
     }
 
     for (var key in dataset) {
-        if (minValue == -1 || dataset[key]._data[property] < minValue) {
+        if (dataset[key]._data != undefined &&
+            (minValue == undefined || dataset[key]._data[property] < minValue)
+           ) {
           vertex   = dataset[key];
           minValue = vertex._data[property];
         }
@@ -86,21 +89,27 @@ function test()
   g.addVertex('Susi',  {data: 5});
   g.addVertex('Fritz', {data: 10});
   g.addVertex('Sarah', {data: 15});
+  g.addVertex('HAL9000');
   var data = {};
   g.addEdge("Susi",  "Sarah" , {influence: 5});
   g.addEdge("Susi",  "Fritz" , {influence: 10});
   g.addEdge("Fritz", "Susi"  , {influence: 20});
   g.addEdge("Fritz", "Sarah" , {influence: 10});
+  g.addEdge("HAL9000", "Fritz");
 
   console.log(g.getVertexWithMaxProperty("data")._name === "Sarah");
   console.log(g.getVertexWithMinProperty("data")._name === "Susi");
-  console.log(g.getNeighborWithMinProperty("Susi", "data")._name === "Fritz");
-  console.log(g.getNeighborWithMaxProperty("Susi", "data")._name === "Sarah");
+  console.log(g.getNeighborWithMinProperty("Susi", "data")._name  === "Fritz");
+  console.log(g.getNeighborWithMaxProperty("Susi", "data")._name  === "Sarah");
   console.log(g.getNeighborWithMaxProperty("Fritz", "data")._name === "Sarah");
   console.log(g.getNeighborWithMinProperty("Fritz", "data")._name === "Susi");
-
   console.log(g.getVertexWithMinPropertyEdge("Fritz", "influence")._name === "Sarah");
-  console.log(g.getVertexWithMaxPropertyEdge("Susi", "influence")._name === "Fritz");
+  console.log(g.getVertexWithMaxPropertyEdge("Fritz", "influence")._name === "Susi");
+  console.log(g.getVertexWithMinPropertyEdge("Susi", "influence")._name  === "Sarah");
+  console.log(g.getVertexWithMaxPropertyEdge("Susi", "influence")._name  === "Fritz");
+  console.log(g.getVertexWithMaxPropertyEdge("HAL9000", "influence") == undefined);
+  console.log(g.getVertexWithMinPropertyEdge("HAL9000", "influence") == undefined);
+
 }
 
 
