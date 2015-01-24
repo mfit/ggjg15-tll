@@ -57,16 +57,16 @@
           }
     },
     "persons": [
-    {"name": "Player", "startPosition":[850, 400]},
-    {"name": "George", "startPosition":[850, 400]},
-    {"name": "Jack", "startPosition":[1100, 430]},
-    {"name": "Sandy", "startPosition":[1100, 750]},
-    {"name": "Candy", "startPosition":[470, 610]},
-    {"name": "Hans", "startPosition":[1000, 350]},
-    {"name": "Gremila", "startPosition":[250, 500]},
-    {"name": "David", "startPosition":[400, 350]},
-    {"name": "Jasmine", "startPosition":[600, 600]},
-    {"name": "TUG15", "startPosition":[750, 400]}]
+    {"name": "Player", "startPosition":[850, 400], "icon":"person.png"},
+    {"name": "George", "startPosition":[850, 450], "icon":"georgeKlein.png"},
+    {"name": "Sandy", "startPosition":[1100, 680], "icon":"sandyKlein.png"},
+    {"name": "Hans", "startPosition":[1000, 450], "icon":"hansKlein.png"},
+    {"name": "Jack", "startPosition":[1050, 480], "icon":"jackKlein.png"},
+    {"name": "Gremila", "startPosition":[250, 500], "icon":"gremilaKlein.png"},
+    {"name": "David", "startPosition":[400, 450], "icon":"davidKlein.png"},
+    {"name": "Jasmine", "startPosition":[600, 600], "icon":"hansKlein.png"},
+    {"name": "TUG15", "startPosition":[750, 400], "icon":"tug15Klein.png"},
+    {"name": "Candy", "startPosition":[470, 610], "icon":"candyKlein.png"}]
     , "baseDialogOptions" : [
          [ "MusicIsSweet", "The Canteen Band released a new album!", {"talk": 0.2, "music": 0.8}
          , ["Nice!", "Cool", "Fuck off"], {"Jack": "Cool I love Star Wars"}]

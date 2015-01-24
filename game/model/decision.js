@@ -19,6 +19,34 @@
       },
       addDialog: function(key, text, prefs) {
           this.dialogs[key] = {"text":text, "prefs":prefs};
+      },
+      evaluate: function() {
+        var p, o, winStruct = {};
+
+        // Prepare the options-to-persons result-object ...
+        for (o in this.options) {
+          winStruct[o] = [];
+        }
+
+        for (p in this.persons) {
+
+          // forall persons, get the evaluation value (attitude towards..) foreach option
+          // store in tuple with (value, optionkey)
+          var pers = this.persons[p],
+            evaluations = Object.keys(this.options).map(function (optkey) {
+              return [decisionHandler(pers, this.options[optkey]), optkey];
+            });
+          // sort it
+          evaluations.sort(function(a, b) { return a[0] - b[0]} );
+          console.log(evaluations);
+
+          // Pop the last one - it's the favourite option
+          var winner = evaluations.pop();
+          winStruct[winner[1]].push(p);
+        }
+
+        console.log(winStruct);
+        return winStruct;
       }
     };
 

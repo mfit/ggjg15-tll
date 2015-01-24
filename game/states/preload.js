@@ -33,19 +33,9 @@ Preload.prototype = {
     // Load text / config
     //
     this.game.load.text('textData', 'assets/texts.json');
-    this.game.load.text('levelData', 'assets/gamedef.json');
 
-
-    //
-    // Load a spritesheet ... with params:
-    //    asset-handle, file path,
-    //    width, height, number of frames,
-    //    margin, spacing
-    //
-    this.load.spritesheet('runner', 'assets/chmap.png',
-        20, 20, 3
-        // 0, 0
-    );
+    // the main game config : loaded in boot-state
+    //  this.game.load.text('levelData', 'assets/gamedef.json');
 
     //
     // Load some audio
@@ -62,6 +52,12 @@ Preload.prototype = {
       'assets/fonts/nokia.png',
       'assets/fonts/nokia.xml');
 
+
+    // Load character sprites
+    var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
+    for (var p in gameSetup.persons) {
+      this.game.load.image(gameSetup.persons[p].name, 'assets/' + gameSetup.persons[p].icon);
+    }
 
   },
   create: function() {

@@ -39,9 +39,11 @@
 
       this.game.room = myRoom;
 
-      // Set up decicionOptions
-      for (var name in config.decicionOptions) {
-        myRoom.addOption(name, propDomain, config.decicionOptions[name]);
+      //
+      // Set up decisionOptions
+      //
+      for (var name in config.decisionOptions) {
+        myRoom.addOption(name, propDomain, config.decisionOptions[name]);
       }
 
       // Dialog options pool
@@ -52,7 +54,7 @@
       }
 
       //
-      // TODO :  setup graph from config
+      // Setup Graph
       //
 
       for (pname in myRoom.persons) {
