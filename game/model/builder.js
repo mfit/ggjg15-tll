@@ -25,9 +25,15 @@
       for ( personIndex in config.persons ) {
         var name = config.persons[personIndex].name;
         var startPos = config.persons[personIndex].startPosition;
-        var personPrefs = Object.keys(config.prefs).map(function(k) {
+        var personPrefs2 = Object.keys(config.prefs).map(function(k) {
           return config.prefs[k][name];
         });
+        personPrefs = {};
+        for (var i = 0; i < personPrefs2.length; i++)
+        {
+          var keys = Object.keys(config.prefs);
+          personPrefs[keys[i]] = personPrefs2[i];
+        }
         myRoom.addPerson(new world.Person(name,g,myRoom,startPos,propDomain, personPrefs));
       }
 
