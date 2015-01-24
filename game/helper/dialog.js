@@ -50,41 +50,8 @@
     };
 
 
-    var WorldState = function() {
-
-      // TODOO : init world state (prob with all actors, graph etc
-
-    };
-
-    WorldState.prototype = {
-      tick: function() {
-        // world tick - do influence calculation
-        // who talks to who etc
-
-        // ...
-
-      }
-    };
-
-
-    var WorldPerson = function(attitudeSettings) {
-      // Init the person with its 'set of believes' / attitudes towards the propositions
-      //
-
-      this.atts = attitudeSettings;
-    };
-
-    WorldPerson.prototype = {
-
-    };
-
     module.exports = {
       DialogHandler:DialogHandler,
-
-      WorldPerson: WorldPerson,
-      WorldState: WorldState,
       Dialog: Dialog,
-
-
     };
 }());

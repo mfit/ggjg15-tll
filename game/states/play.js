@@ -5,6 +5,7 @@
   var display = require('../helper/display');
 
   var dialog = require('../helper/dialog');
+  var decision = require('../model/decision');
 
   function Play() {}
   Play.prototype = {
