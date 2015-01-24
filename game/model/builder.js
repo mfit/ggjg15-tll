@@ -42,9 +42,12 @@
       //
       // Set up decisionOptions
       //
+      console.log("Builder, setting up decision Options:");
+      console.log(config.decisionOptions);
       for (var name in config.decisionOptions) {
         myRoom.addOption(name, propDomain, config.decisionOptions[name]);
       }
+      console.log(myRoom.options);
 
       // Dialog options pool
       for (var i = 0; i < config.baseDialogOptions.length; i++)
