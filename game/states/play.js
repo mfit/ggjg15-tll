@@ -77,6 +77,54 @@
       pers2.persName = "Suzy";
       this.npcs.add(pers2);
 
+      //---------------------------------------------------------------------------------------------
+      this.addLineBreakToText = function(text, maxCharNumInLine) {
+        var charArray = text.split('');
+        var output = "";
+        var counter = 0;
+        for(var i = 0; i < charArray.length; i ++) {
+          //console.log(charArray[i]);
+          if(counter<maxCharNumInLine){
+            output += charArray[i];
+          }
+          else {
+            if(charArray[i] == " "){
+              output += "\n";
+              counter = 0;
+              continue;
+            }              
+            else
+              output += charArray[i];
+          }
+          counter++;
+        }
+        return output;
+      };
+      //--------------------------------------------------------------------------------------------
+
+      this.dialogBox = this.game.add.graphics(0,0);
+      this.dialogBox.beginFill(0x001170, 0.5);
+      this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
+      this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
+      this.dialogBox.drawRect(50, 50, this.game.width-100, this.game.height-100);
+
+      var text = '';
+      text += 'Lorem ipsum dolor sit amet, consetetur sadipscing \nelitr, sed diam nonumy';
+      text += 'eirmod tempor \ninvidunt ut labore\n et dolore magna aliquyam erat, sed diam voluptua\n';
+      text += 'At vero eos et accusam et justo\n duo dolores et ea rebum. Stet clita\nkasd gubergren,';
+      text += 'no sea takimata sanctus \nest Lorem ipsum dolor sit amet.\n';
+      text += 'Lorem ipsum dolor sit amet, consetetur sadipscing \nelitr, sed diam nonumy';
+
+      var testText = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.';      
+      var output = this.addLineBreakToText(testText, 20);
+
+      var style = { font: '30px Helvetica', fill: '#ffffff', align: 'center'};
+
+      this.instructionsText = this.game.add.text(this.game.world.centerX,
+         this.game.world.centerY,
+        text, style);
+      this.instructionsText.anchor.setTo(0.5, 0.5);
+
       // //
       // // Buttons
       // //
@@ -104,7 +152,11 @@
 
     },
     update: function() {
-
+      if(this.game.input.activePointer.justPressed()) {
+      // move to antoher game state on button-press
+        this.instructionsText.destroy();
+        this.dialogBox.destroy();
+      }
 
       //
       // controller, sample direction at update time use for movement
