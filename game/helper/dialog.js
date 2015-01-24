@@ -17,17 +17,16 @@ var display = require('../helper/display');
       showLobbyingDialogPanel: function(sprite) {
 
         var player = this.game.room.persons["Player"];
-        console.log(player);
+
         var opt_list = [],
                   wo = sprite.worldObject;
-
-        for (var i=0; i < wo.getOptions().length; i++) {
-            console.log(wo.getOptions());
+        var chosenOptions = wo.getOptions();
+        for (var i=0; i < chosenOptions.length; i++) {
           opt_list.push(
-                  {text:     wo.getOptions()[i].text,
+                  {text:     chosenOptions[i].text,
                    callback: (function(option, worldObject) {
                        return function() { return wo.handleComment(player, option); };
-                   })(wo.getOptions()[i], wo)
+                   })(chosenOptions[i], wo)
                   }
           );
         }
@@ -66,6 +65,7 @@ var display = require('../helper/display');
         var buttons = [];
 
         for (var buttonIndex = 0; buttonIndex < amountOfOptions; buttonIndex++) {
+
             var option = display.makeButton(this.game, this.game.width - 400, 60, this.data.options[buttonIndex].text, 'o1');
             var button = this.game.add.sprite(400, 620 + buttonIndex * 60, option);
             button.inputEnabled = true;
@@ -89,7 +89,6 @@ var display = require('../helper/display');
                     rt.render(spr,  {x:  0, y:0});
                     rt.render(name, {x:400, y:0});
 
-                    console.log(responseTxt);
                     var answer = display.makeButton(self.game,
                                                     self.game.width - 400,
                                                     170,
