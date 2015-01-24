@@ -97,9 +97,21 @@
 
         // add to group
         this.npcs.add(pers);
-
-
       }
+
+      // end button
+      var evalButtonSprite = display.makeButton(this.game, 480, 30, "Do evaluation (also, rename this button)", 'evalbutton');
+      this.goCalcButton = this.game.add.sprite(0,0, evalButtonSprite);
+      this.goCalcButton.inputEnabled = true;
+      this.goCalcButton.events.onInputDown.add(function() {
+
+        // Evaluation
+
+        var winstruct = this.game.myRoom.evaluate();
+
+        console.log(winstruct);
+
+      }, this);
 
       //---------------------------------------------------------------------------------------------
       this.addLineBreakToText = function(text, maxCharNumInLine) {
@@ -142,8 +154,14 @@
       this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
       this.dialogBox.drawRect(50, 50, this.game.width-100, this.game.height-100);
 
+      console.log("Current room settings : ");
       console.log(this.game.myRoom);
+
+      // Setting available places from room / config object
       var places = Object.keys(this.game.myRoom.options);
+
+      // ths.Object.keys(this.game.myRoom.options);
+
 
 
       var testText = 'You are on a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? Should they go to'
@@ -196,32 +214,6 @@
           }
         }
       };
-
-      // //
-      // // Buttons
-      // //
-      // var buttonBmp = display.makeButton(this.game, 80, 30, "Button1", 'b1');
-      // var buttonBmp2 = display.makeButton(this.game, 80, 30, "XYZ .. 2",'b2');
-      // var buttonBmp3 = display.makeButton(this.game, 80, 30, "----", 'b3');
-
-      // // button from sprite
-      // var mybutton = this.game.add.sprite(50, 10, buttonBmp);
-      // mybutton.inputEnabled = true; // have to enable input to capture events
-      // mybutton.events.onInputDown.add(
-      //   function(sprite) {
-      //     // switching to another state on click:
-      //     this.game.state.start('gameover');
-      //   }, this);
-
-      // // button from factory
-      // var mybutton2 = this.game.add.button(160, 10, buttonBmp2, function() {
-      //   myDemoSound.play();
-      // }, this, buttonBmp3, buttonBmp);
-      // mybutton2.onInputOver.add(function() { console.log("over"); });
-
-      // // background = game.add.tileSprite(0, 0, 800, 600, 'background');
-
-
     },
     update: function() {
      if(this.game.input.activePointer.justPressed()) {

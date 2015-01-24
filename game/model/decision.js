@@ -3,7 +3,7 @@
 
 
     var RoomState = function(decisionHandler) {
-
+      this.decisionHandler = decisionHandler;
       this.options = {};
       this.persons = {};
       this.dialogs = {};
@@ -14,14 +14,17 @@
       addPerson: function(p) {
         this.persons[p.name] = p;
       },
-      addOption: function(o) {
-        this.options[o.name] = {"txt":o[1], "key":o[0], "prefs":o[2]};
+      // addOption: function(o) {
+      //   this.options[o.name] = {"txt":o[1], "key":o[0], "prefs":o[2]};
+      // },
+      addOption: function(key, text, prefs) {
+        this.options[key] = {"text":text, "prefs":prefs};
       },
       addDialog: function(key, text, prefs) {
           this.dialogs[key] = {"text":text, "prefs":prefs};
       },
       evaluate: function() {
-        var p, o, winStruct = {};
+        var p, o, winStruct = {}, self = this;
 
         // Prepare the options-to-persons result-object ...
         for (o in this.options) {
@@ -34,7 +37,7 @@
           // store in tuple with (value, optionkey)
           var pers = this.persons[p],
             evaluations = Object.keys(this.options).map(function (optkey) {
-              return [decisionHandler(pers, this.options[optkey]), optkey];
+              return [self.decisionHandler(pers, self.options[optkey]), optkey];
             });
           // sort it
           evaluations.sort(function(a, b) { return a[0] - b[0]} );
@@ -188,7 +191,7 @@
             {
                 console.log("Option", option.prefs[prefKey]);
                 newWeight = (old + finalP)/2.0;
-            } else 
+            } else
             {
                 newWeight = (old + finalN)/2.0;
             }

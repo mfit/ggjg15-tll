@@ -64,7 +64,7 @@
     {"name": "Jack", "startPosition":[1050, 480], "icon":"jackKlein.png"},
     {"name": "Gremila", "startPosition":[250, 500], "icon":"gremilaKlein.png"},
     {"name": "David", "startPosition":[400, 450], "icon":"davidKlein.png"},
-    {"name": "Jasmine", "startPosition":[600, 600], "icon":"hansKlein.png"},
+    {"name": "Jasmine", "startPosition":[600, 600], "icon":"jasmineKlein.png"},
     {"name": "TUG15", "startPosition":[750, 400], "icon":"tug15Klein.png"},
     {"name": "Candy", "startPosition":[470, 610], "icon":"candyKlein.png"}]
     , "baseDialogOptions" : [
