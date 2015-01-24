@@ -2,11 +2,20 @@
     'user strict';
 
 
-    var RoomState = function() {
+    var RoomState = function(decisionHandler) {
 
       this.options = {};
       this.persons = {};
 
+    };
+
+    RoomState.prototype = {
+      addPerson: function(p) {
+        this.persons[p.name] = p;
+      },
+      addOption: function(o) {
+        this.options[o.name] = o;
+      }
     };
 
     var WorldPerson = function(name, initOptions, prefs) {
@@ -44,7 +53,10 @@
     };
 
     WorldPerson.prototype = {
+      inputInfluence: function(what) {
+        // influence the person by talking to her
 
+      }
     };
 
     var WorldOption = function(name, initOptions, attrs) {
