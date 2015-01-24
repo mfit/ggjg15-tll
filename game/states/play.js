@@ -17,7 +17,8 @@
 
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
-      var myDemoSound = this.game.add.audio('actionsound');
+      var backgroundAudio = this.game.add.audio('background');
+      backgroundAudio.play();
 
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
 
