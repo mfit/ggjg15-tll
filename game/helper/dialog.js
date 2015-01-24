@@ -27,6 +27,8 @@ var display = require('../helper/display');
 
         data = {text:"Startsay", options: opt_list};
 
+        console.log(data);
+
       if(this.game.dialog_open)
       {
         return;
@@ -55,7 +57,7 @@ var display = require('../helper/display');
         var spr = new Phaser.Sprite(rt, 0, 0, bmp.texture);
        // var spr_person = new Phaser.Sprite(rt_person, 0, 0, bmp_person.texture);
         //var text = this.addLineBreakToText(this.game.textData.HELLO+" "+this.game.textData.NAME.format(sprite.persName)+this.game.textData.HELLO+" "+this.game.textData.NAME.format(sprite.persName)+this.game.textData.HELLO+" "+this.game.textData.NAME.format(sprite.persName),60);
-        var name = new Phaser.BitmapText(rt, 0, 0, 'nokia', sprite.persName + ":", 24);
+        var name = new Phaser.BitmapText(rt, 0, 0, 'nokia', wo.name + ":", 24);
         var txt2 = new Phaser.BitmapText(rt, 0, 0, 'nokia', data.text, 24);
   //      var lineCount = this.lineBreakCounter(text);
 //console.log(lineCount);
@@ -129,6 +131,8 @@ var display = require('../helper/display');
 
         //option1Button.events.onInputOver.add(function() { console.log(option1.txt); });
 
+        var self = this;
+
         option1Button.events.onInputDown.add(
         function() {
           option1Button.kill();
@@ -138,19 +142,19 @@ var display = require('../helper/display');
            this.game.debug.geom(circle2,'',false);
            this.game.debug.geom(circle3,'',false);
   */
-          var name = new Phaser.BitmapText(rt, this.game.width-400, 0, 'nokia', sprite.persName + ":", 24);
+          var name = new Phaser.BitmapText(rt, self.game.width-400, 0, 'nokia', sprite.persName + ":", 24);
 
           rt.render(spr, {x:0, y:0});
           rt.render(name, {x:400, y:0});
 
-          var answer = display.makeButton(this.game, this.game.width-400 , 170, this.game.textData.BYE, 'a1');
-          var answerButton = this.game.add.sprite(400,530, answer);
+          var answer = display.makeButton(self.game, self.game.width-400 , 170, self.game.textData.BYE, 'a1');
+          var answerButton = self.game.add.sprite(400,530, answer);
           answerButton.inputEnabled = true;
 
           answerButton.events.onInputDown.add(
             function() {
             answerButton.kill();
-            this.game.dialog_open = false;
+            self.game.dialog_open = false;
             rt.clear();
             profile.kill();
             //this.game.state.start('play');
