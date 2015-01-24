@@ -20,6 +20,8 @@ Preload.prototype = {
     this.load.image('person', 'assets/person.png');
     this.load.image('sandy_profile', 'assets/cyberpunk_sandy_01.png');
 
+    this.load.image('background', 'assets/vorgluehraum.png');
+
     //
     // Load text / config
     //
