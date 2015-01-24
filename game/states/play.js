@@ -6,6 +6,20 @@
   var dialog = require('../helper/dialog');
   var builder = require('../model/builder');
 
+  var objectPositions = {onStereo : {x : 1250, y :410},
+                         onTable : {x : 600, y : 530},
+                         onBookShelf : {x : 60, y : 345},
+                         onCommode : {x : 890, y : 370}
+                         };
+
+  var _placeObject = function(context, sObject, place){
+    var object = context.add.sprite(
+        place.x,
+        place.y,
+        sObject);
+    return object;
+  };
+
   function Play() {}
   Play.prototype = {
     create: function() {
@@ -25,7 +39,15 @@
         0,
         0,
         'background');
-      bg.scale.setTo(0.2,0.2);
+      bg.scale.setTo(0.25,0.25);
+
+      this.partyObjects = this.game.add.group();
+      var vBottle1 = _placeObject(this.game, 'vodkaBottle', objectPositions.onStereo);
+      vBottle1.scale.setTo(0.04,0.04);
+      vBottle1.inputEnabled = false;
+      vBottle1.events.onInputDown.add(this.dialogHelper.startObjectDialogPanel, this);
+      vBottle1.objName = "vodkaBottle";
+      this.partyObjects.add(vBottle1);
 
       // //
       // // Add player sprite
@@ -190,6 +212,9 @@
           this.dialogBox.destroy();
           this.IsStartTextOn = false;
           this.npcs.forEach(function(item){
+            item.inputEnabled = true;
+          });
+          this.partyObjects.forEach(function(item){
             item.inputEnabled = true;
           });
           return;

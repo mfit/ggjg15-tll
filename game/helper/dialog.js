@@ -11,6 +11,9 @@ var display = require('../helper/display');
         console.log("Starting dialog with " + sprite);
         console.log(this.game.textData.NAME.format(sprite.persName));
       },
+      startObjectDialogPanel: function(sprite) {
+        console.log("OBJECT: " + sprite.objName);
+      },
       showLobbyingDialogPanel: function(sprite) {
 
         var opt_list = [],
