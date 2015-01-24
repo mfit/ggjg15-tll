@@ -19,8 +19,8 @@ var display = require('../helper/display');
         var opt_list = [],
           wo = sprite.worldObject;
 
-        for (var i=0; i < wo.getOptions.length; i++) {
-          opt_list.push({text: wo.getOptions[i].txt, callback: function() {
+        for (var i=0; i < wo.getOptions().length; i++) {
+          opt_list.push({text: wo.getOptions()[i].txt, callback: function() {
             wo.handleComment(i);
           }});
         }
