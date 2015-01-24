@@ -20,8 +20,13 @@ var display = require('../helper/display');
 
         var opt_list = [],
                   wo = sprite.worldObject;
+
         var chosenOptions = wo.getOptions();
         for (var i=0; i < chosenOptions.length; i++) {
+          if ( ! chosenOptions[i] ) {
+            console.log("WARNING ! Dialog option without text for player " + wo.name);
+            continue;
+          }
           opt_list.push(
                   {text:     chosenOptions[i].text,
                    callback: (function(option, worldObject) {
@@ -31,7 +36,7 @@ var display = require('../helper/display');
           );
         }
 
-        this.data = {text:"Startsay", options: opt_list};
+        this.data = {text:"Hello !", options: opt_list};
 
         if(this.game.dialog_open) {
           return;
