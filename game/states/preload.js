@@ -26,6 +26,7 @@ Preload.prototype = {
     // Load text / config
     //
     this.game.load.text('textData', 'assets/texts.json');
+    this.game.load.text('levelData', 'assets/gamedef.json');
 
 
     //
