@@ -1,4 +1,12 @@
 {
+"interactions" : [
+      [["George", "Jack"]
+      ,["Candy", "Sandy"]
+      ],
+      [["George", "Jack"]
+      ,["Candy", "Sandy"]
+      ]
+    ],
 "attributes": {
         "music":0,
         "talk":0,
@@ -74,11 +82,11 @@
          , ["I'm hell of a player!", "Maybe later.", "No way!"], {"Jack": "I'm busy with my training schedule."}]
        , ["Movie", "The new Star Wars movie just started.", {}
          , ["Yes, I'm a huge fan!", "I've already seen it.", "Do I look like a nerd?"], {"Gremila": "Jar Jar Binks is my favorite character."}]
-       , ["Disco", "Do you like the moonwalk?", {}
+       , ["Disco", "Do you like the moonwalk?", {"dance":0.9}
          , ["Of course.", "Not my style", "No, I don't like it."], {"Hans": "I already walked on the moon."}]
        , ["Dog", "You wanna go for a walk with the dog?", {}
          , ["Let's get some fresh air.", "Maybe later.", "I'm rather a cat person."], {"Hans": "I'm not that used to oxygen yet."}]
-       , ["Culture", "Do you want to enjoy the biggest cultural achievements of mankind?", {}
+       , ["Culture", "Do you want to enjoy the biggest cultural achievements of mankind?", {"talk":1.0}
          , ["I am very interested in this experience.", "Why not.", "What a waste of time!"], {"Hans": "I'm not that used to oxygen yet."}]
        , ["DrunkNSmoky", "Let's go for a smoke and get wasted!!!", {"music":0.8, "drunk":1.0}
          , ["Yeah, dude.", "Yes, why not.", "I do not smoke."], {"TUG15": "101010!!!!"}]

@@ -82,10 +82,7 @@
           }
       }
 
-      console.log(g._edges);
-
-      console.log(myRoom);
-      return myRoom;
+      return [myRoom, g, config];
 
     },
   };

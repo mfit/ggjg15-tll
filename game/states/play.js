@@ -6,6 +6,7 @@
   var dialog = require('../helper/dialog');
   var builder = require('../model/builder');
   var player = require('../model/player.js');
+  var gamemaster = require('../model/gamemaster.js');
 
   var objectPositions = {onStereo : {x : 1270, y :490},
                          onTable : {x : 660, y : 615},
@@ -35,7 +36,12 @@
 
       //this.game.player = new player.Player();
 
-      this.game.myRoom = new builder.WorldBuilder().buildFromConfig(this.game, gameSetup);
+      var data = new builder.WorldBuilder().buildFromConfig(this.game, gameSetup);
+      this.game.myRoom = data[0];
+      this.game.graph = data[1];
+      this.game.config = data[2];
+      this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config);
+
 
       var bg = this.game.add.sprite(
         0,

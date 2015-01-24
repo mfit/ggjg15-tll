@@ -151,14 +151,15 @@
 
       var allkeys = Object.keys(person.preferences);
 
-      return Math.sqrt(allkeys.map(function(k) {
-          if (!option.hasOwnProperty(k)) {
-              option[k] = 0.0;
-          }
-          var attrweight = Math.pow(person.preferences[k] - option[k], 2) *
-          person.prefWeights[k];
-          return attrweight;
-      }).reduce(function(v, o) {return v+o;}));
+        // forall options :
+        return Math.pow(allkeys.map(function(k) {
+            if (!option.hasOwnProperty(k)) {
+                option[k] = 0.0;
+            }
+            var attrweight = Math.pow(person.preferences[k] - option[k], 2) *
+            person.prefWeights[k];
+            return attrweight;
+        }).reduce(function(v, o) {return v+o;}), 1/allkeys.length);
     };
 
     function CalculateResponse(graph, initPerson, targetPerson, option) {
@@ -179,16 +180,19 @@
         if (finalP < 0 || finalN < 0 || finalP > 1 || finalN > 1)
             console.warn("Values are off");
 
-        for (var prefKey in allkeys) {
+        console.log("attrs");
+        for (var prefKey in initPerson.preferences) {
             var old = targetPerson.prefWeights[prefKey];
             var newWeight = old;
             if (option.prefs.hasOwnProperty(prefKey))
             {
+                console.log("Option", option.prefs[prefKey]);
                 newWeight = (old + finalP)/2.0;
             } else 
             {
                 newWeight = (old + finalN)/2.0;
             }
+            console.log(prefKey, targetPerson.preferences[prefKey], old, newWeight);
             targetPerson.prefWeights[prefKey] = newWeight;
         }
         return importance;
@@ -261,7 +265,8 @@
       Person : WorldPerson,
       Option: WorldOption,
       Decision: VectorDecision,
-      RoomState: RoomState
+      RoomState: RoomState,
+      CalculateResponse: CalculateResponse
     };
 
 

@@ -1,6 +1,7 @@
 (function() {
     'user strict';
 var display = require('../helper/display');
+var decision = require('../model/decision.js');
     var DialogHandler = function(game) {
       this.game = game;
     };
@@ -15,6 +16,8 @@ var display = require('../helper/display');
         console.log("OBJECT: " + sprite.objName);
       },
       showLobbyingDialogPanel: function(sprite) {
+        var that = this;
+        console.log("THIS", this);
 
         var player = this.game.room.persons["Player"];
 
@@ -110,6 +113,14 @@ var display = require('../helper/display');
                             self.game.dialog_open = false;
                             rt.clear();
                             profile.kill();
+                            that.game.gamemaster.playRound(that.game.config.interactions,
+                                function(from, to, tick) {
+                                    var fromPlayer = that.game.room.persons[from._name];
+                                    var toPlayer = that.game.room.persons[to._name];
+                                    decision.CalculateResponse(that.game.graph, fromPlayer, toPlayer, fromPlayer.getOptions()[0]);
+                            
+                         });
+
                         },rt
                     );
                 }
