@@ -6,6 +6,7 @@
 
   var dialog = require('../helper/dialog');
   var decision = require('../model/decision');
+  var builder = require('../model/builder');
 
   function Play() {}
   Play.prototype = {
@@ -21,6 +22,9 @@
       var myDemoSound = this.game.add.audio('actionsound');
 
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
+      var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
+
+      this.game.myRoom = new builder.WorldBuilder().buildFromConfig(gameSetup);
 
 
       var bg = this.game.add.sprite(

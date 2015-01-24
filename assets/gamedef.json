@@ -68,5 +68,29 @@
        , "Intellectual", "The new book about dolphins is amazing, isn#t it", {"talk": 0.8, "tidy":0.5}
        , "DrunkNSmoky", "Let's go for a smoke and get wasted!!!", {"music":0.8, "smoke":0.6, "drunk":1.0}
        ]
-    ]
+    ],
+    "decisionOptions": {
+        "Skybar": {
+          "music":0,
+          "talk":0,
+          "dance":0,
+          "games":0,
+          "drunk":0,
+
+          "light":0,
+          "tidy":0,
+          "smoke":0,
+          },
+        "The Shelter": {
+          "music":0,
+          "talk":0,
+          "dance":0,
+          "games":0,
+          "drunk":0,
+
+          "light":0,
+          "tidy":0,
+          "smoke":0,
+        }
+      },
 }
