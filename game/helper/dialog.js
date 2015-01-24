@@ -27,8 +27,6 @@ var display = require('../helper/display');
 
         data = {text:"Startsay", options: opt_list};
 
-        console.log(data);
-
       if(this.game.dialog_open)
       {
         return;
