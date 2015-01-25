@@ -11,6 +11,9 @@ GameOver.prototype = {
     this.titleText = this.game.add.text(this.game.world.centerX,100, 'And this is what we did ...', style);
     this.titleText.anchor.setTo(0.5, 0.5);
 
+
+    // this.back
+
     var statustext = "";
     var max = [0, ''];
     for(var opt in this.game.winStruct) {

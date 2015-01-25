@@ -31,8 +31,8 @@
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
       var myDemoSound = this.game.add.audio('actionsound');
-      this.backgroundAudio = this.game.add.audio('background');
-      this.backgroundAudio.play();
+      this.game.backgroundAudio = this.game.add.audio('background');
+      this.game.backgroundAudio.play();
 
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
       var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
@@ -217,7 +217,7 @@
     },
     update: function() {
       this.tickSkipCount = (this.tickSkipCount +1) % this.tickSkip;
-      if (this.tickSkip != 0) return;
+      if (this.tickSkipCount != 0) return;
 
      if(this.game.input.activePointer.justPressed()) {
       // move to antoher game state on button-press
@@ -266,14 +266,14 @@
             if(inside)
             {
               var audiotrack = 'disco';
-              if(self.backgroundAudio.key == 'disco')
+              if(self.game.backgroundAudio.key == 'disco')
               {
                 audiotrack = 'background';
               }
              // console.log(self.backgroundAudio.key);
-              self.backgroundAudio.pause();
-              self.backgroundAudio = self.game.add.audio(audiotrack);
-              self.backgroundAudio.play();
+              self.game.backgroundAudio.pause();
+              self.game.backgroundAudio = self.game.add.audio(audiotrack);
+              self.game.backgroundAudio.play();
             }
 
             //console.log('x',pointer.x);
@@ -282,8 +282,8 @@
             //console.log('pointer is inside region top left quarter', inside)
         });
 
-       // this.backgroundAudio = this.game.add.audio('background');
-       // this.backgroundAudio.play();
+       // this.game.backgroundAudio = this.game.add.audio('background');
+       // this.game.backgroundAudio.play();
 
     },
   };

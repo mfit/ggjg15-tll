@@ -43,6 +43,8 @@
 
         var p, o, winStruct = {}, self = this;
 
+        InfluencerDiscussion(this);
+
         // Prepare the options-to-persons result-object ...
         for (o in this.options) {
           winStruct[o] = [];
@@ -69,6 +71,59 @@
         return winStruct;
       }
     };
+
+    var InfluencerDiscussion = function(room) {
+        // TODO:
+        // Alpha:
+        // Select the character with the highest influence
+        // Find his winner
+        // He offers that option to the other characters (call CalculateResponse)
+
+        // Omega
+        // Find the character with the lowest influence (influence from alpha to character)
+        // Find his winner
+        // If his winner is the same option as alpha's do nothing
+        // Otherwise he offers his option to the other characters (call CalculateResponse)
+
+        // Calculate the winners of the remaining characters
+        // Then do the normal evaluation
+
+        var max = [0, ''], alpha, omega, min = [999, ''], sum;
+        for (from in room.influenceGraph._vertices)
+        {
+          if (from === 'Player') continue;
+          sum = 0;
+          for (to in room.influenceGraph._vertices)
+          {
+            if (from === 'Player' || from === to) continue;
+            var edge = room.influenceGraph.getEdge(from, to);
+            sum += edge.getData('influence');
+          }
+          if (sum > max[0]) {
+            max = [sum, from];
+          }
+        }
+        alpha = max[1];
+
+        sum = 0;
+        for (to in room.influenceGraph._vertices) {
+          if (to === 'Player') continue;
+          if (alpha !== to) {
+            sum += room.influenceGraph.getEdge(alpha, to).getData('influence');
+          }
+          if (sum < min[0]) {
+            min = [sum, to];
+          }
+        }
+
+        omega = min[1];
+
+        console.log ("Alpha / Omega = ");
+        console.log(alpha);
+        console.log(omega);
+
+
+    }
 
     var WorldPerson = function(name, game, graph, room, startPos, initOptions, prefs) {
       this.game = game;
@@ -149,7 +204,7 @@
             console.log(other_character);
 
             var importance = CalculateResponse(this.graph, other_character, this, option); // care its around
-            
+
             // TODO something with this.npc
             // TODO something with this.option
             // TODO change portrait image according to mood

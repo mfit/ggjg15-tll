@@ -85,6 +85,8 @@
           }
       }
 
+      myRoom.influenceGraph = g;
+
       return [myRoom, g, config];
 
     },
