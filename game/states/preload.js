@@ -19,7 +19,7 @@ Preload.prototype = {
     this.load.image('person', 'assets/gremila.png');
     this.load.image('sandy_profile', 'assets/cyberpunk_sandy_01.png');
 
-    this.load.image('background', 'assets/vorgluehraum5.png');
+    this.load.image('background', 'assets/vorgluehraum6.png');
     this.load.image('vodkaBottle', 'assets/vodka.png');
     this.load.image('beerBottle', 'assets/beer.png');
     this.load.image('cup', 'assets/cup.png');
