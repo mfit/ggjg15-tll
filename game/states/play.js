@@ -109,6 +109,13 @@
         // Do Evaluation
         var winstruct = this.game.myRoom.evaluate();
         console.log(winstruct);
+
+        this.game.winStruct = winstruct;
+
+        // TODO : possibly remove with some kind of anim - characters move left or right
+        // to signal their option-choice ??
+        this.game.state.start('gameover');
+
       }, this);
 
       //
@@ -140,7 +147,7 @@
 
 
 
-      var testText = 'You are on a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? Should they go to'
+      var testText = 'You are at a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? What do we do now ? Should they go to'
       // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
       for(var i = 0; i < places.length - 1; i++){
         testText += " the " + places[i] + ",";
@@ -258,20 +265,6 @@
        // this.backgroundAudio = this.game.add.audio('background');
        // this.backgroundAudio.play();
 
-      //
-      // controller, sample direction at update time use for movement
-      //
-      // var contrDir;
-      // contrDir = this.game.controller.getDirection();
-
-      // Move by adding to sprite's absolute body x,y
-      //
-      // this.sprite.body.x += 3 * contrDir.x;
-      // this.sprite.body.y += 3 * contrDir.y;
-
-      // Move by setting the velocity
-      // var playerSpeed = 150;
-      // this.sprite.body.velocity.setTo(150 * contrDir.x, 150 * contrDir.y);
     },
   };
 
