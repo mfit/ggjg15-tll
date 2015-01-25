@@ -78,6 +78,19 @@
     this.y = y;
     this.txt = false;
     this.fontsize = 18;
+    this.enabled = false;
+    this.cachedData = {};
+  }
+
+  ObjectInfoOutput.prototype.updateVis = function(state) {
+    this.enabled = state;
+    if (!state) {
+      if (this.txt) {
+        this.txt.destroy();
+      }
+    } else {
+      this.update(this.cachedData);
+    }
   }
 
   ObjectInfoOutput.prototype.update = function(obj) {
@@ -89,6 +102,10 @@
     if (this.txt) {
       this.txt.destroy();
     }
+
+    this.cachedData = obj;
+
+    if (!this.enabled) { return; }
 
     var content = ''; // JSON.stringify(obj);
     var persCount = 0, subx = this.x;

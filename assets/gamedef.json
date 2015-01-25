@@ -88,7 +88,7 @@
     {"name": "Candy", "startPosition":[470, 610], "icon":"candyKlein.png"}]
     , "baseDialogOptions" : [
          [ "Disco1", "The Canteen Band released a new album!", {"dance": 0.8, "music": 0.8, "drunk": 0.4}
-         , ["Nice!", "Cool", "Fuck off"], {"Jack": "Cool, I love Star Wars"}]
+         , ["Nice!", "Cool", "F*** off"], {"Jack": "Cool, I love Star Wars"}]
        , [ "Disco2", "Did you go to the dance lessons last night?", {"dance": 1, "talk": -0.3}
          , ["Yes, I really liked it!", "No, I'm sorry.", "Do I look like I care?"], {"Hans": "I had to."}]
        , ["Disco3", "Do you like the moonwalk?", {"dance":0.9}

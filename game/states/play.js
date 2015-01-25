@@ -24,6 +24,7 @@
   function Play() {}
   Play.prototype = {
     create: function() {
+      var self = this;
 
       // for reducing framerate .. (see update() )
       this.tickSkip = 10;
@@ -44,7 +45,7 @@
       this.game.myRoom = data[0];
       this.game.graph = data[1];
       this.game.config = data[2];
-      this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config);
+      this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config, this.game.myRoom, this.game);
 
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
@@ -223,6 +224,9 @@
             }
             counter++;
           }
+        }
+        if (e.keyCoOde = 72) { // 'h'
+          self.infoPanel.updateVis(!self.infoPanel.enabled);
         }
       };
 
