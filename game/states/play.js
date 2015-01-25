@@ -108,6 +108,7 @@
       //
       // end button (possibly remove when game has scripted end)
       //
+      /*
       var evalButtonSprite = display.makeButton(this.game, 480, 30, "Do evaluation (also, rename this button)", 'evalbutton');
       this.goCalcButton = this.game.add.sprite(0,0, evalButtonSprite);
       this.goCalcButton.inputEnabled = true;
@@ -123,6 +124,7 @@
         this.game.state.start('gameover');
 
       }, this);
+      */
 
       //
       // next bit never called - remove ?
@@ -185,7 +187,7 @@
 
 
       var credButtonSprite = display.makeButton(this.game, 200, 30, "Credits", 'credbutton');
-      this.goCredButton = this.game.add.sprite(500,0, credButtonSprite);
+      this.goCredButton = this.game.add.sprite(0,0, credButtonSprite);
       this.goCredButton.inputEnabled = true;
       this.goCredButton.events.onInputDown.add(function() {
         this.game.state.start('credits');
