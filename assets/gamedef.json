@@ -60,7 +60,7 @@
           , "David" :   {"George": 0.7, "Jack": 0.2, "Sandy": 0.3, "Candy": 0.7, "Hans": 0.6, "Gremila": 0.7,               "Jasmine": 0.6, "TUG15": 0.7, "Player": 1.0}
           , "Jasmine" : {"George": 0.6, "Jack": 0.4, "Sandy": 0.2, "Candy": 0.6, "Hans": 0.7, "Gremila": 0.6, "David": 0.5,                 "TUG15": 0.1, "Player": 1.0}
           , "TUG15" :   {"George": 0.8, "Jack": 0.3, "Sandy": 0.8, "Candy": 0.8, "Hans": 0.7, "Gremila": 0.5, "David": 0.7, "Jasmine": 0.1              , "Player": 1.0}
-          , "Player" :  {"George": 0.6, "Jack": 0.3, "Sandy": 0.2, "Candy": 0.7, "Hans": 0.8, "Gremila": 0.3, "David": 0.7, "Jasmine": 0.8, "TUG15": 0.9               }
+          , "Player" :  {"George": 0.5, "Jack": 0.5, "Sandy": 0.5, "Candy": 0.5, "Hans": 0.5, "Gremila": 0.5, "David": 0.5, "Jasmine": 0.5, "TUG15": 0.5               }
           }
         , "anotherMapThatIsAutomaticallyAddedToTheGraph": {
             "George" :  {               "Jack": 0.3, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}

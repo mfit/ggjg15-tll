@@ -108,6 +108,7 @@
       //
       // end button (possibly remove when game has scripted end)
       //
+      /*
       var evalButtonSprite = display.makeButton(this.game, 480, 30, "Do evaluation (also, rename this button)", 'evalbutton');
       this.goCalcButton = this.game.add.sprite(0,0, evalButtonSprite);
       this.goCalcButton.inputEnabled = true;
@@ -123,6 +124,7 @@
         this.game.state.start('gameover');
 
       }, this);
+      */
 
       //
       // next bit never called - remove ?
@@ -162,7 +164,9 @@
 
       this.infoPanel = new display.ObjectInfoOutput(this.game, 50, 50);
 
-      var testText = 'You are at a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? What do we do now? Should they go to'
+      var testText = 'You are at a party with your friends and the party draws to its end.\
+      The question now is, where should everyone go together after the party?\
+      What do we do now? Should they go to'
       // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
       for(var i = 0; i < places.length - 2; i++){
         testText += " the " + places[i] + ",";
@@ -185,7 +189,7 @@
 
 
       var credButtonSprite = display.makeButton(this.game, 200, 30, "Credits", 'credbutton');
-      this.goCredButton = this.game.add.sprite(500,0, credButtonSprite);
+      this.goCredButton = this.game.add.sprite(0,0, credButtonSprite);
       this.goCredButton.inputEnabled = true;
       this.goCredButton.events.onInputDown.add(function() {
         this.game.state.start('credits');
