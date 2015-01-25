@@ -1,4 +1,4 @@
-(function() {
+
     'user strict';
 
 
@@ -7,7 +7,6 @@
       this.options = {};
       this.persons = {};
       this.dialogs = {};
-
     };
 
     RoomState.prototype = {
@@ -27,6 +26,21 @@
         /**
          * determine each person's decision / place-to-go-thing-to-do
          */
+        // TODO:
+        // Alpha:
+        // Select the character with the highest influence
+        // Find his winner
+        // He offers that option to the other characters (call CalculateResponse)
+
+        // Omega
+        // Find the character with the lowest influence (influence from alpha to character)
+        // Find his winner
+        // If his winner is the same option as alpha's do nothing
+        // Otherwise he offers his option to the other characters (call CalculateResponse)
+
+        // Calculate the winners of the remaining characters
+        // Then do the normal evaluation
+
         var p, o, winStruct = {}, self = this;
 
         // Prepare the options-to-persons result-object ...
@@ -56,7 +70,8 @@
       }
     };
 
-    var WorldPerson = function(name, graph, room, startPos, initOptions, prefs) {
+    var WorldPerson = function(name, game, graph, room, startPos, initOptions, prefs) {
+      this.game = game;
       // Init the person with its 'set of believes'
       // attitudes towards things
       //
@@ -101,14 +116,27 @@
                return o;
            };
 
+           var possibleAttributes = Object.keys(this.game.config.attributes);
+           var attrs = shuffle(possibleAttributes);
+
+           console.log('choosen values: ' + attrs[0] + ' ' + attrs[1] + ' ' + attrs[2]);
            var dialogValues = [];
            for (var key in this.room.dialogs) {
+               if(this.room.dialogs[key].prefs[attrs[0]] == undefined &&
+                  this.room.dialogs[key].prefs[attrs[1]] == undefined &&
+                  this.room.dialogs[key].prefs[attrs[2]] == undefined) {
+                      continue;
+               }
                dialogValues.push(this.room.dialogs[key]);
            }
+
            var opt = shuffle(dialogValues);
 
            //TODO choose 3 options
            return [opt[0], opt[1], opt[2]];
+           // TODO: 3 random options:
+           // - select 3 out of the 5 attributes
+           // - for each attribute select a random option that includes that attribute
         },
 
 
@@ -121,9 +149,10 @@
             console.log(other_character);
 
             var importance = CalculateResponse(this.graph, other_character, this, option); // care its around
-
+            
             // TODO something with this.npc
             // TODO something with this.option
+            // TODO change portrait image according to mood
             return importance;
         },
     };
@@ -168,7 +197,7 @@
                 option[k] = 0.0;
             }
             var attrweight = Math.pow(person.preferences[k] - option[k], 2) *
-            person.prefWeights[k];
+            (1 - person.prefWeights[k]);
             return attrweight;
         }).reduce(function(v, o) {return v+o;}), 1/norm_n);
     };
@@ -207,6 +236,7 @@
             targetPerson.prefWeights[prefKey] = newWeight;
         }
         return importance;
+        // TODO: modify influence (decrease influence if importance was low / increase otherwise)
     }
 
 
@@ -289,4 +319,4 @@
     }
 
 
-}());
+// someone deleted the upper part ... }());

@@ -168,6 +168,20 @@
         output, style);
       this.instructionsText.anchor.setTo(0.5, 0.5);
 
+      //----------------------------------------------------------------------------------------------------------------------------
+      //Credits
+
+
+      var credButtonSprite = display.makeButton(this.game, 200, 30, "Credits", 'credbutton');
+      this.goCredButton = this.game.add.sprite(500,0, credButtonSprite);
+      this.goCredButton.inputEnabled = true;
+      this.goCredButton.events.onInputDown.add(function() {
+        this.game.state.start('credits');
+
+      }, this);
+
+      //----------------------------------------------------------------------------------------------------------------------------
+
       this.fish = this.game.add.sprite(
         0,
         0,
