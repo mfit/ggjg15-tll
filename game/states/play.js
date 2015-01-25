@@ -199,7 +199,7 @@
 
       //----------------------------------------------------------------------------------------------------------------------------
       //Credits
-
+/*
 
       var credButtonSprite = display.makeButton(this.game, 200, 30, "Credits", 'credbutton');
       this.goCredButton = this.game.add.sprite(0,0, credButtonSprite);
@@ -208,7 +208,7 @@
         this.game.state.start('credits');
 
       }, this);
-
+*/
       //----------------------------------------------------------------------------------------------------------------------------
 
       this.IsStartTextOn = true;

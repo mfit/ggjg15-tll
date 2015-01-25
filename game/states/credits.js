@@ -42,7 +42,7 @@ Credits.prototype = {
   },
   update: function () {
     if(this.game.input.activePointer.justPressed()) {
-      this.game.state.start('play');
+      this.game.state.start('menu');
     }
   }
 };
