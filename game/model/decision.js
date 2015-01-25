@@ -280,6 +280,7 @@
     };
 
     function CalculateResponse(graph, initPerson, targetPerson, option) {
+        console.log(initPerson, "talks to", targetPerson);
         var influence = graph.getEdge(initPerson.name, targetPerson.name).getData('influence');
         console.log("influence", influence);
 
