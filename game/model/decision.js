@@ -1,4 +1,4 @@
-(function() {
+
     'user strict';
 
 
@@ -7,7 +7,6 @@
       this.options = {};
       this.persons = {};
       this.dialogs = {};
-
     };
 
     RoomState.prototype = {
@@ -71,7 +70,8 @@
       }
     };
 
-    var WorldPerson = function(name, graph, room, startPos, initOptions, prefs) {
+    var WorldPerson = function(name, game, graph, room, startPos, initOptions, prefs) {
+      this.game = game;
       // Init the person with its 'set of believes'
       // attitudes towards things
       //
@@ -116,10 +116,20 @@
                return o;
            };
 
+           var possibleAttributes = Object.keys(this.game.config.attributes);
+           var attrs = shuffle(possibleAttributes);
+
+           console.log('choosen values: ' + attrs[0] + ' ' + attrs[1] + ' ' + attrs[2]);
            var dialogValues = [];
            for (var key in this.room.dialogs) {
+               if(this.room.dialogs[key].prefs[attrs[0]] == undefined &&
+                  this.room.dialogs[key].prefs[attrs[1]] == undefined &&
+                  this.room.dialogs[key].prefs[attrs[2]] == undefined) {
+                      continue;
+               }
                dialogValues.push(this.room.dialogs[key]);
            }
+
            var opt = shuffle(dialogValues);
 
            //TODO choose 3 options
@@ -139,9 +149,10 @@
             console.log(other_character);
 
             var importance = CalculateResponse(this.graph, other_character, this, option); // care its around
-
+            
             // TODO something with this.npc
             // TODO something with this.option
+            // TODO change portrait image according to mood
             return importance;
         },
     };
@@ -308,4 +319,4 @@
     }
 
 
-}());
+// someone deleted the upper part ... }());
