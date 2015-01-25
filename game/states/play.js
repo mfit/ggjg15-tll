@@ -7,6 +7,7 @@
   var builder = require('../model/builder');
   var player = require('../model/player.js');
   var gamemaster = require('../model/gamemaster.js');
+  var renderFish = false;
 
   var objectPositions = {onStereo : {x : 1270, y :490},
                          onTable : {x : 660, y : 615},
@@ -154,6 +155,18 @@
       this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
       this.dialogBox.drawRect(50, 50, this.game.width-100, this.game.height-100);
 */
+
+      this.fish = this.game.add.sprite(
+        0,
+        0,
+        "fish");
+      this.fish.scale.setTo(-0.2,0.2);
+      this.fish.anchor.setTo(0.5,0.5);
+      this.fish.x = fishBounds.upper_x;
+      this.fish.angle = 15;
+      this.fish.y = 530;
+      this.fish.alpha = 0;
+
       console.log("Current room settings : ");
       console.log(this.game.myRoom);
 
@@ -197,16 +210,6 @@
       }, this);
 
       //----------------------------------------------------------------------------------------------------------------------------
-
-      this.fish = this.game.add.sprite(
-        0,
-        0,
-        "fish");
-      this.fish.scale.setTo(-0.2,0.2);
-      this.fish.anchor.setTo(0.5,0.5);
-      this.fish.x = fishBounds.upper_x;
-      this.fish.angle = 15;
-      this.fish.y = 530;
 
       this.IsStartTextOn = true;
 
@@ -255,6 +258,8 @@
           this.partyObjects.forEach(function(item){
             item.inputEnabled = true;
           });
+          renderFish = true;
+          this.fish.alpha = 1;
           return;
         }
 
@@ -263,7 +268,8 @@
         this.infoPanel.update(this.game.myRoom.persons);
       }
 
-      if(fishBounds.left){
+      if(renderFish){
+        if(fishBounds.left){
           this.fish.y -= 0.05;
           this.fish.x -= 0.2;
           if(this.fish.x < fishBounds.lower_x + 2 && this.fish.x > fishBounds.lower_x){
@@ -282,6 +288,7 @@
             fishBounds.left = true;
           }
         }
+      }
 
         //Dance-Party
         //-------------------------------------------------------------------------------------
