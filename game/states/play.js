@@ -25,6 +25,7 @@
   Play.prototype = {
     create: function() {
 
+      // for reducing framerate .. (see update() )
       this.tickSkip = 10;
       this.tickSkipCount = 0;
 
@@ -45,6 +46,7 @@
       this.game.config = data[2];
       this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config);
 
+      this.dialogHelper = new dialog.DialogHandler(this.game);
 
       var bg = this.game.add.sprite(
         0,
@@ -216,8 +218,10 @@
       };
     },
     update: function() {
-      this.tickSkipCount = (this.tickSkipCount +1) % this.tickSkip;
-      if (this.tickSkipCount != 0) return;
+
+      // reduce framerate .. ?
+      // this.tickSkipCount = (this.tickSkipCount +1) % this.tickSkip;
+      // if (this.tickSkipCount != 0) return;
 
      if(this.game.input.activePointer.justPressed()) {
       // move to antoher game state on button-press

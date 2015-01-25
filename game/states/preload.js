@@ -16,11 +16,10 @@ Preload.prototype = {
     //
     // Load a single image
     //
-    this.load.image('character', 'assets/character.png');
     this.load.image('person', 'assets/gremila.png');
     this.load.image('sandy_profile', 'assets/cyberpunk_sandy_01.png');
 
-    this.load.image('background', 'assets/vorgluehraum2.png');
+    this.load.image('background', 'assets/vorgluehraum5.png');
     this.load.image('vodkaBottle', 'assets/vodka.png');
     this.load.image('beerBottle', 'assets/beer.png');
     this.load.image('cup', 'assets/cup.png');
@@ -56,8 +55,13 @@ Preload.prototype = {
     // Load character sprites
     var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
     for (var p in gameSetup.persons) {
+      if (gameSetup.persons[p].name === 'Player') {
+          continue;
+      }
       this.game.load.image(gameSetup.persons[p].name, 'assets/' + gameSetup.persons[p].icon);
-      this.game.load.image('profile_' + gameSetup.persons[p].name, 'assets/profiles/' + gameSetup.persons[p].name.toLowerCase() + '_normal_01.png');
+      this.game.load.image('normal_profile_' + gameSetup.persons[p].name, 'assets/profiles/' + gameSetup.persons[p].name.toLowerCase() + '_normal_01.png');
+      this.game.load.image('angry_profile_' + gameSetup.persons[p].name, 'assets/profiles/' + gameSetup.persons[p].name.toLowerCase() + '_angry_01.png');
+      this.game.load.image('smile_profile_' + gameSetup.persons[p].name, 'assets/profiles/' + gameSetup.persons[p].name.toLowerCase() + '_smile_01.png');
     }
 
   },

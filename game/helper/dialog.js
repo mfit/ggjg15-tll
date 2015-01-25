@@ -66,8 +66,16 @@ var decision = require('../model/decision.js');
 
         var dialogBox = this.game.add.sprite(0, 500, rt);
 
-        var profile = this.game.add.sprite(500, 400, 'profile_' + wo.name);
-        profile.anchor.setTo(1.3, 0);
+        var mood = 'normal';
+        if (this.game.graph.getEdge("Player", sprite.persName).getData('influence') < 0.3) {
+            mood = 'angry';
+        } else if (this.game.graph.getEdge("Player", sprite.persName).getData('influence') > 0.6) {
+            mood = 'smile';
+        }
+
+        console.log('mood ' + mood);
+        this.profile = this.game.add.sprite(500, 400, mood + '_profile_' + wo.name);
+        this.profile.anchor.setTo(1.3, 0);
 
         var amountOfOptions = this.data.options.length;
         var buttons = [];
@@ -97,6 +105,22 @@ var decision = require('../model/decision.js');
                     rt.render(spr,  {x:  0, y:0});
                     rt.render(name, {x:400, y:0});
 
+
+                    var mood = 'normal';
+                    if (self.game.graph.getEdge("Player", sprite.persName).getData('influence') < 0.3) {
+                        mood = 'angry';
+                    } else if (self.game.graph.getEdge("Player", sprite.persName).getData('influence') > 0.6) {
+                        mood = 'smile';
+                    }
+
+                    console.log('new mood ' + mood);
+
+                    self.profile.kill();
+                    self.profile = self.game.add.sprite(500, 400, mood + '_profile_' + wo.name);
+                    self.profile.anchor.setTo(1.3, 0);
+
+
+
                     var answer = display.makeButton(self.game,
                                                     self.game.width - 400,
                                                     170,
@@ -112,7 +136,7 @@ var decision = require('../model/decision.js');
                             answerButton.kill();
                             self.game.dialog_open = false;
                             rt.clear();
-                            profile.kill();
+                            self.profile.kill();
                             that.game.gamemaster.playRound(that.game.config.interactions,
                                 function(from, to, tick) {
                                     var fromPlayer = that.game.room.persons[from._name];
