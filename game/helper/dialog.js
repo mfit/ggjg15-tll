@@ -118,7 +118,7 @@ var decision = require('../model/decision.js');
                                     var fromPlayer = that.game.room.persons[from._name];
                                     var toPlayer = that.game.room.persons[to._name];
                                     decision.CalculateResponse(that.game.graph, fromPlayer, toPlayer, fromPlayer.getOptions()[0]);
-                            
+
                          });
 
                         },rt
@@ -131,43 +131,43 @@ var decision = require('../model/decision.js');
       }
     }
 
-    var Dialog = function(person) {
+    // var Dialog = function(person) {
 
-      // Initialise this class when a dialog starts
-      //
+    //   // Initialise this class when a dialog starts
+    //   //
 
-      // Basic dialog :
-      //  1. person says hello
-      //  2. player chooses a dialog option
-      //  3. person reacts
+    //   // Basic dialog :
+    //   //  1. person says hello
+    //   //  2. player chooses a dialog option
+    //   //  3. person reacts
 
-      this.person = person;
+    //   this.person = person;
 
-      this.greeting = "hi";
+    //   this.greeting = "hi";
 
-      this.player_options = [
-        "what about X",
-        "i really like Y",
-        "i dont like Z, do you ?"
-      ];
-    };
+    //   this.player_options = [
+    //     "what about X",
+    //     "i really like Y",
+    //     "i dont like Z, do you ?"
+    //   ];
+    // };
 
-    Dialog.prototype = {
-      reaction : function (lobbyingObject, attitude) {
-        // the person's reaction to the suggestion that
-        // {lobbyingObject} is to be treated with {attitude} ?
+    // Dialog.prototype = {
+    //   reaction : function (lobbyingObject, attitude) {
+    //     // the person's reaction to the suggestion that
+    //     // {lobbyingObject} is to be treated with {attitude} ?
 
-        // TODO: calculate the influence
-        // ( = change this.person.atts )
+    //     // TODO: calculate the influence
+    //     // ( = change this.person.atts )
 
-        // TODO : calculate the reaction as message
-        return "Ok...!";
-      }
-    };
+    //     // TODO : calculate the reaction as message
+    //     return "Ok...!";
+    //   }
+    // };
 
 
     module.exports = {
       DialogHandler:DialogHandler,
-      Dialog: Dialog,
+      // Dialog: Dialog,
     };
 }());
