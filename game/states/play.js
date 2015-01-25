@@ -25,11 +25,15 @@
   Play.prototype = {
     create: function() {
 
+      // for reducing framerate .. (see update() )
+      this.tickSkip = 10;
+      this.tickSkipCount = 0;
+
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
       var myDemoSound = this.game.add.audio('actionsound');
-      this.backgroundAudio = this.game.add.audio('background');
-      this.backgroundAudio.play();
+      this.game.backgroundAudio = this.game.add.audio('background');
+      this.game.backgroundAudio.play();
 
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
       var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
@@ -42,6 +46,7 @@
       this.game.config = data[2];
       this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config);
 
+      this.dialogHelper = new dialog.DialogHandler(this.game);
 
       var bg = this.game.add.sprite(
         0,
@@ -216,6 +221,11 @@
       this.doDance = false;
     },
     update: function() {
+
+      // reduce framerate .. ?
+      // this.tickSkipCount = (this.tickSkipCount +1) % this.tickSkip;
+      // if (this.tickSkipCount != 0) return;
+
      if(this.game.input.activePointer.justPressed()) {
       // move to antoher game state on button-press
         if(this.IsStartTextOn) {
@@ -281,14 +291,18 @@
               self.doDance = !self.doDance;
 
               var audiotrack = 'disco';
-              if(self.backgroundAudio.key == 'disco')
+              if(self.game.backgroundAudio.key == 'disco')
               {
                 audiotrack = 'background';
               }
+<<<<<<< HEAD
 
-              self.backgroundAudio.pause();
-              self.backgroundAudio = self.game.add.audio(audiotrack);
-              self.backgroundAudio.play();
+=======
+             // console.log(self.backgroundAudio.key);
+              self.game.backgroundAudio.pause();
+              self.game.backgroundAudio = self.game.add.audio(audiotrack);
+              self.game.backgroundAudio.play();
+>>>>>>> 618d356f2de1a6309b01d5880e05992946cde901
             }
 
             //console.log('x',pointer.x);
@@ -297,8 +311,8 @@
             //console.log('pointer is inside region top left quarter', inside)
         });
 
-       // this.backgroundAudio = this.game.add.audio('background');
-       // this.backgroundAudio.play();
+       // this.game.backgroundAudio = this.game.add.audio('background');
+       // this.game.backgroundAudio.play();
 
     },
   };
