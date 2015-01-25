@@ -115,7 +115,6 @@
       // }
 
       if ( typeof obj[k] === 'object') {
-        console.log(obj[k]);
         content+= '\n---' + k + ' ---';;
         for (var k2 in obj[k].preferences) {
           content+= '  ,  ' + k2 + ':' + obj[k].preferences[k2] + '('+ obj[k].prefWeights[k2].toFixed(2) + ')';

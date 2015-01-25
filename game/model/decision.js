@@ -261,14 +261,14 @@
 
       var allkeys = Object.keys(person.preferences),
         // what norm ? nth or 2nd ?
-        // norm_n = allkeys.length
-        norm_n = 2
+        norm_n = allkeys.length
+        // norm_n = 2
         ;
 
         var optionsCopy = {};
 
         // forall options :
-        return 1 - 1.0/Math.sqrt(20)*Math.pow(allkeys.map(function(k) {
+        var imp = 1 - 1.0/Math.pow(20, 1/5.0)*Math.pow(allkeys.map(function(k) {
             var pref = 0;
             if (optionPrefs.hasOwnProperty(k)) {
               pref = optionPrefs[k];
@@ -277,6 +277,10 @@
             (1 - person.prefWeights[k]);
             return attrweight;
         }).reduce(function(v, o) {return v+o;}), 1/norm_n);
+        imp = 0.5 + (imp - 0.5)*5;
+        if (imp < 0) imp = 0;
+        if (imp > 1) imp = 1;
+        return imp;
     };
 
     function CalculateResponse(graph, initPerson, targetPerson, option) {
@@ -290,14 +294,6 @@
         var importance = VectorDecision(targetPerson, option.prefs);
         console.log("importance", importance);
 
-        // if influence is low we prefer other topics
-        var finalP = Math.pow(importance, 2 - influence*2.0);
-        var finalN = Math.pow(importance, influence*2.0);
-
-        console.log("final", finalP, finalN);
-        if (finalP < 0 || finalN < 0 || finalP > 1 || finalN > 1)
-            console.warn("Values are off");
-
         console.log("attrs");
         for (var prefKey in initPerson.preferences) {
             var old = targetPerson.prefWeights[prefKey];
@@ -305,10 +301,12 @@
             if (option.prefs.hasOwnProperty(prefKey))
             {
                 console.log("Option", option.prefs[prefKey]);
-                newWeight = (old + finalP)/2.0;
+                newWeight = (old*(1 - importance) + importance);
             } else
             {
-                newWeight = (old*0.7 + 0.3*finalN);
+                newWeight = (old*0.7 - 0.3*importance);
+                if (newWeight < 0)
+                  newWeight = 0;
             }
             console.log(prefKey, targetPerson.preferences[prefKey], old, newWeight);
             targetPerson.prefWeights[prefKey] = newWeight;
@@ -318,7 +316,7 @@
         if (importance <= 0.5) {
 
           var newInfluence = influence - 0.5 * importance;
-          if (newInfluence > 0) {
+          if (newInfluence < 0) {
             newInfluence = 0;  }
             graph.getEdge(initPerson.name, targetPerson.name).setData('influence', newInfluence);
         } else {
