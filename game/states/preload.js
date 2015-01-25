@@ -21,7 +21,7 @@ Preload.prototype = {
 
     this.load.image('start', 'assets/startbild.png');
     this.load.image('end', 'assets/endbild.png');
-    this.load.image('background', 'assets/vorgluehraum5.png');
+    this.load.image('background', 'assets/vorgluehraum6.png');
     this.load.image('vodkaBottle', 'assets/vodka.png');
     this.load.image('beerBottle', 'assets/beer.png');
     this.load.image('cup', 'assets/cup.png');

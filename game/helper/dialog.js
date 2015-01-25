@@ -32,9 +32,9 @@ var decision = require('../model/decision.js');
           }
           opt_list.push(
                   {text:     chosenOptions[i].text,
-                   callback: (function(option, worldObject) {
-                       return function() { return wo.handleComment(player, option); };
-                   })(chosenOptions[i], wo)
+                   callback: (function(option, worldObject, playerName) {
+                       return function() { return wo.handleComment(player, option, playerName); };
+                   })(chosenOptions[i], wo, sprite.persName)
                   }
           );
         }

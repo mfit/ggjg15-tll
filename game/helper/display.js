@@ -71,7 +71,46 @@
         return output;
       };
 
+
+  function ObjectInfoOutput(game, x, y) {
+    this.game = game;
+    this.x = x;
+    this.y = y;
+    this.txt = false;
+    this.fontsize = 18;
+  }
+
+  ObjectInfoOutput.prototype.update = function(obj) {
+    /**
+     * Output a struct in 2 hierarchies
+     * output the all - persons info
+     */
+
+    if (this.txt) {
+      this.txt.destroy();
+    }
+
+    var content = ''; // JSON.stringify(obj);
+    var persCount = 0, subx = this.x;
+    for (var k in obj) {
+      // if ((persCount++) % 4 == 0) {
+      //   subx+=150;
+      // }
+
+      if ( typeof obj[k] === 'object') {
+        console.log(obj[k]);
+        content+= '\n---' + k + ' ---';;
+        for (var k2 in obj[k].preferences) {
+          content+= '  ,  ' + k2 + ':' + obj[k].preferences[k2] + '('+ obj[k].prefWeights[k2].toFixed(2) + ')';
+        }
+      }
+    }
+    this.txt = this.game.add.bitmapText(this.x, this.y, 'nokia', content, this.fontsize);
+
+  }
+
   module.exports = {
+    ObjectInfoOutput:ObjectInfoOutput,
     makeButton:makeButton,
     ButtonGraphicFactory:ButtonGraphicFactory,
     addLineBreakToText:addLineBreakToText
