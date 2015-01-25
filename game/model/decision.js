@@ -265,25 +265,22 @@
 
       var allkeys = Object.keys(person.preferences),
         // what norm ? nth or 2nd ?
-        norm_n = allkeys.length
-        // norm_n = 2
+        // norm_n = allkeys.length
+        norm_n = 2
         ;
 
         var optionsCopy = {};
+        var numPrefs = Object.keys(optionPrefs).length;
 
         // forall options :
-        var imp = 1 - 1.0/Math.pow(20, 1/5.0)*Math.pow(allkeys.map(function(k) {
-            var pref = 0;
-            if (optionPrefs.hasOwnProperty(k)) {
+        var imp = 1 - 1.0/Math.sqrt(4*numPrefs)*Math.pow(allkeys.map(function(k) {
+            var pref = -0.5;
+            if (optionPrefs.hasOwnProperty(k))
               pref = optionPrefs[k];
-            }
             var attrweight = Math.pow(person.preferences[k] - pref, 2) *
             (1 - person.prefWeights[k]);
             return attrweight;
         }).reduce(function(v, o) {return v+o;}), 1/norm_n);
-        imp = 0.5 + (imp - 0.5)*5;
-        if (imp < 0) imp = 0;
-        if (imp > 1) imp = 1;
         return imp;
     };
 
@@ -296,6 +293,7 @@
 
         // how important the topic is to the target person
         var importance = VectorDecision(targetPerson, option.prefs);
+
         console.log("importance", importance);
 
         console.log("attrs");
@@ -305,12 +303,14 @@
             if (option.prefs.hasOwnProperty(prefKey))
             {
                 console.log("Option", option.prefs[prefKey]);
-                newWeight = (old*(1 - importance) + importance);
+                var positive = Math.pow(old, 2 - 2*importance);
+                newWeight = positive;
+
+
             } else
             {
-                newWeight = (old*0.7 - 0.3*importance);
-                if (newWeight < 0)
-                  newWeight = 0;
+                var negative = Math.pow(old, 2*importance);
+                newWeight = negative;
             }
             console.log(prefKey, targetPerson.preferences[prefKey], old, newWeight);
             targetPerson.prefWeights[prefKey] = newWeight;

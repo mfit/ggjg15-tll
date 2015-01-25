@@ -232,7 +232,7 @@
             counter++;
           }
         }
-        if (e.keyCoOde == 72) { // 'h'
+        if (e.keyCode == 72) { // 'h'
           self.infoPanel.updateVis(!self.infoPanel.enabled);
         }
       };

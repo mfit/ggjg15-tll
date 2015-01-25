@@ -67,9 +67,9 @@ var decision = require('../model/decision.js');
         var dialogBox = this.game.add.sprite(0, 500, rt);
 
         var mood = 'normal';
-        if (this.game.graph.getEdge("Player", sprite.persName).getData('influence') < 0.3) {
+        if (this.game.graph.getEdge("Player", sprite.persName).getData('influence') < 0.4) {
             mood = 'angry';
-        } else if (this.game.graph.getEdge("Player", sprite.persName).getData('influence') > 0.6) {
+        } else if (this.game.graph.getEdge("Player", sprite.persName).getData('influence') > 0.7) {
             mood = 'smile';
         }
 
@@ -107,9 +107,9 @@ var decision = require('../model/decision.js');
 
 
                     var mood = 'normal';
-                    if (self.game.graph.getEdge("Player", sprite.persName).getData('influence') < 0.3) {
+                    if (self.game.graph.getEdge("Player", sprite.persName).getData('influence') < 0.4) {
                         mood = 'angry';
-                    } else if (self.game.graph.getEdge("Player", sprite.persName).getData('influence') > 0.6) {
+                    } else if (self.game.graph.getEdge("Player", sprite.persName).getData('influence') > 0.7) {
                         mood = 'smile';
                     }
 
