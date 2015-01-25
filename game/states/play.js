@@ -212,8 +212,16 @@
       //----------------------------------------------------------------------------------------------------------------------------
 
       this.IsStartTextOn = true;
+      var that = this;
 
       this.game.input.keyboard.onDownCallback = function(e){
+        if (e.keyCode == 73)
+        {
+          that.offset -= 0.1;
+        } else if (e.keyCode == 74)
+        {
+          that.offset += 0.1;
+        }
         if(e.keyCode >= 49 && e.keyCode <= 57){
           var num = e.keyCode-49;
           var counter = 0;
@@ -239,6 +247,7 @@
 
       // shall the characters dance?
       this.doDance = false;
+      this.offset = 0.3;
     },
     update: function() {
 
@@ -295,12 +304,13 @@
 
         if (this.doDance)
         {
+          var that = this;
             this.npcs.forEach(function(sprite){
               if (!sprite.hasOwnProperty('customScaleX'))
               {
                 sprite.customScaleX = sprite.scale.x;
               }
-              sprite.scale.setTo(((Math.sin(0.3 + Date.now()/500*3.14)))*sprite.customScaleX, sprite.scale.y);
+              sprite.scale.setTo(((Math.sin(that.offset + Date.now()/500*3.14)))*sprite.customScaleX, sprite.scale.y);
             });
 
 
@@ -311,6 +321,7 @@
         var topLeftQuarter = new Phaser.Rectangle(1130,450,1280,710);
         var self = this;
         //listen for pointers
+
         this.game.input.onDown.add( function(pointer){
             //this is the test, contains test for a point belonging to a rect definition
             var inside = topLeftQuarter.contains(pointer.x,pointer.y)
