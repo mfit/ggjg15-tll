@@ -268,7 +268,7 @@
         var optionsCopy = {};
 
         // forall options :
-        return 1.0/Math.sqrt(20)*Math.pow(allkeys.map(function(k) {
+        return 1 - 1.0/Math.sqrt(20)*Math.pow(allkeys.map(function(k) {
             var pref = 0;
             if (optionPrefs.hasOwnProperty(k)) {
               pref = optionPrefs[k];
@@ -316,10 +316,18 @@
 
         // modify influence (decrease influence if importance was low / increase otherwise)
         if (importance <= 0.5) {
-            graph.getEdge(initPerson.name, targetPerson.name).setData('influence', influence - 0.5 * importance);
+
+          var newInfluence = influence - 0.5 * importance;
+          if (newInfluence > 0) {
+            newInfluence = 0;  }
+            graph.getEdge(initPerson.name, targetPerson.name).setData('influence', newInfluence);
         } else {
-            graph.getEdge(initPerson.name, targetPerson.name).setData('influence', influence + 0.5 * (- 0.5 + importance));
+          var newInfluence = influence + 0.5 * (- 0.5 + importance);
+          if (newInfluence > 1){
+            newInfluence = 1; }
+            graph.getEdge(initPerson.name, targetPerson.name).setData('influence', newInfluence);
         }
+
         var influenceNew = graph.getEdge(initPerson.name, targetPerson.name).getData('influence');
         console.log("Old influence", influence, "New influence", influenceNew);
         return importance;
