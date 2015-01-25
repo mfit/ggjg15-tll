@@ -136,12 +136,21 @@
       //   return counter;
       // };
 
+
+
+      this.dialogBox = this.game.add.sprite(
+        0,
+        0,
+        'end');
+       this.dialogBox.scale.setTo(0.25,0.25);
+
+/*
       this.dialogBox = this.game.add.graphics(0,0);
       this.dialogBox.beginFill(0x001170, 0.5);
       this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
       this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
       this.dialogBox.drawRect(50, 50, this.game.width-100, this.game.height-100);
-
+*/
       console.log("Current room settings : ");
       console.log(this.game.myRoom);
 
@@ -150,7 +159,7 @@
 
       // ths.Object.keys(this.game.myRoom.options);
 
-
+      this.infoPanel = new display.ObjectInfoOutput(this.game, 50, 50);
 
       var testText = 'You are at a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? What do we do now ? Should they go to'
       // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
@@ -240,6 +249,10 @@
           });
           return;
         }
+
+
+        // update the debug panel / info panel
+        this.infoPanel.update(this.game.myRoom.persons);
       }
 
       if(fishBounds.left){
@@ -296,7 +309,6 @@
                 audiotrack = 'background';
               }
 
-             // console.log(self.backgroundAudio.key);
               self.game.backgroundAudio.pause();
               self.game.backgroundAudio = self.game.add.audio(audiotrack);
               self.game.backgroundAudio.play();

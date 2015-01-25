@@ -1,5 +1,6 @@
 
 'use strict';
+var display = require('../helper/display');
 function Menu() {}
 
 /**
@@ -12,50 +13,35 @@ Menu.prototype = {
   create: function() {
 
 
-    //
-    // Bring a title image onto the stage
-    //
-    var title_image = this.game.add.image(0, 0, 'title');
+      var title = this.game.add.sprite(
+        0,
+        0,
+        'start');
+      title.scale.setTo(0.25,0.25);
 
-
-    //
-    // Set angular movement and tweening to a sprite:
-    //
-    // this.sprite = this.game.add.sprite(this.game.world.centerX, 138, 'character');
-    // this.sprite.anchor.setTo(0.5, 0.5);
-    // this.sprite.angle = -20;
-    //     this.game.add.tween(this.sprite).to({angle: 20}, 1000, Phaser.Easing.Linear.NONE, true, 0, 1000, true);
-
-    //
-    // Render Text
-    //
-    // Note : text rendering is slow - switch to bitmaps prob. better
-    //
-    //
-    // Define styles:
-    var styleLarge = { font: '65px Helvetica', fill: '#ffffff', align: 'center'};
-    var style = { font: '16px Helvetica', fill: '#ffffff', align: 'center'};
-
-    // Large title text
-    this.titleText = this.game.add.text(this.game.world.centerX,
-      300,
-      'Game Title',
-      styleLarge);
-    this.titleText.anchor.setTo(0.5, 0.5);
-
-    // Smaller subtitle text
-    this.instructionsText = this.game.add.text(this.game.world.centerX,
-      400,
-      'Click anywhere to start', style);
-    this.instructionsText.anchor.setTo(0.5, 0.5);
 
 
   },
   update: function() {
-    if(this.game.input.activePointer.justPressed()) {
-      // move to antoher game state on button-press
-      this.game.state.start('play');
-    }
+
+
+      var topLeftQuarter = new Phaser.Rectangle(550,520,185,70);
+        var self = this;
+        //listen for pointers
+        this.game.input.onDown.add( function(pointer){
+            //this is the test, contains test for a point belonging to a rect definition
+            var inside = topLeftQuarter.contains(pointer.x,pointer.y)
+            if(inside)
+            {
+
+             self.game.state.start('play');
+            }
+
+            //console.log('x',pointer.x);
+            //console.log('y',pointer.y);
+            //do whatever with the result
+            //console.log('pointer is inside region top left quarter', inside)
+        });
   }
 };
 
