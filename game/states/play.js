@@ -25,7 +25,6 @@
   Play.prototype = {
     create: function() {
 
-      this.dialogHelper = new dialog.DialogHandler(this.game);
 
       var myDemoSound = this.game.add.audio('actionsound');
       this.backgroundAudio = this.game.add.audio('background');
@@ -42,6 +41,7 @@
       this.game.config = data[2];
       this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config);
 
+      this.dialogHelper = new dialog.DialogHandler(this.game);
 
       var bg = this.game.add.sprite(
         0,

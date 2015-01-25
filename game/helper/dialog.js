@@ -66,7 +66,15 @@ var decision = require('../model/decision.js');
 
         var dialogBox = this.game.add.sprite(0, 500, rt);
 
-        var profile = this.game.add.sprite(500, 400, 'profile_' + wo.name);
+        var mood = 'normal';
+        if (this.game.graph.getEdge("Player", sprite.persName).getData('influence') < 0.3) {
+            mood = 'angry';
+        } else if (this.game.graph.getEdge("Player", sprite.persName).getData('influence') > 0.6) {
+            mood = 'smile';
+        }
+
+        console.log('mood ' + mood);
+        var profile = this.game.add.sprite(500, 400, mood + '_profile_' + wo.name);
         profile.anchor.setTo(1.3, 0);
 
         var amountOfOptions = this.data.options.length;

@@ -56,8 +56,13 @@ Preload.prototype = {
     // Load character sprites
     var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
     for (var p in gameSetup.persons) {
+      if (gameSetup.persons[p].name === 'Player') {
+          continue;
+      }
       this.game.load.image(gameSetup.persons[p].name, 'assets/' + gameSetup.persons[p].icon);
-      this.game.load.image('profile_' + gameSetup.persons[p].name, 'assets/profiles/' + gameSetup.persons[p].name.toLowerCase() + '_normal_01.png');
+      this.game.load.image('normal_profile_' + gameSetup.persons[p].name, 'assets/profiles/' + gameSetup.persons[p].name.toLowerCase() + '_normal_01.png');
+      this.game.load.image('angry_profile_' + gameSetup.persons[p].name, 'assets/profiles/' + gameSetup.persons[p].name.toLowerCase() + '_angry_01.png');
+      this.game.load.image('smile_profile_' + gameSetup.persons[p].name, 'assets/profiles/' + gameSetup.persons[p].name.toLowerCase() + '_smile_01.png');
     }
 
   },
