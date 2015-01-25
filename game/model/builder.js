@@ -34,7 +34,7 @@
           var keys = Object.keys(config.prefs);
           personPrefs[keys[i]] = personPrefs2[i];
         }
-        myRoom.addPerson(new world.Person(name,g,myRoom,startPos,propDomain, personPrefs));
+        myRoom.addPerson(new world.Person(name,this.game, g,myRoom,startPos,propDomain, personPrefs));
       }
 
       this.game.room = myRoom;
