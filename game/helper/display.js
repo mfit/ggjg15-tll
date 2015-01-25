@@ -48,9 +48,33 @@
   }
 
 
+  function addLineBreakToText(text, maxCharNumInLine) {
+        var charArray = text.split('');
+        var output = "";
+        var counter = 0;
+        for(var i = 0; i < charArray.length; i ++) {
+          //console.log(charArray[i]);
+          if(counter<maxCharNumInLine){
+            output += charArray[i];
+          }
+          else {
+            if(charArray[i] == " "){
+              output += "\n";
+              counter = 0;
+              continue;
+            }
+            else
+              output += charArray[i];
+          }
+          counter++;
+        }
+        return output;
+      };
+
   module.exports = {
     makeButton:makeButton,
     ButtonGraphicFactory:ButtonGraphicFactory,
+    addLineBreakToText:addLineBreakToText
 
   };
 

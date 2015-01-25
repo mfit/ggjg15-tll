@@ -35,6 +35,7 @@
                                 prefWeights: {music:1, talk:0}},
                                {music:0.5, talk:0.5}));
 
-    assert(prefers_one_cares_about_both > prefers_one_cares_about_one);
+    assert(prefers_one_cares_about_both > prefers_one_cares_about_one,
+      "mismatch with strong weight must be stronger than dislike with low weight");
 
 }());

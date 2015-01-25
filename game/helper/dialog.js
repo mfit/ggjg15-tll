@@ -39,7 +39,7 @@ var decision = require('../model/decision.js');
           );
         }
 
-        this.data = {text:"Hello !", options: opt_list};
+        this.data = {text:["Hello !", "Hi there ...", "What's up?", "...", ""][Math.floor(Math.random()*4)], options: opt_list};
 
         if(this.game.dialog_open) {
           return;
