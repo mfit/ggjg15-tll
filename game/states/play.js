@@ -99,54 +99,37 @@
         this.npcs.add(pers);
       }
 
-      // end button
+      //
+      // end button (possibly remove when game has scripted end)
+      //
       var evalButtonSprite = display.makeButton(this.game, 480, 30, "Do evaluation (also, rename this button)", 'evalbutton');
       this.goCalcButton = this.game.add.sprite(0,0, evalButtonSprite);
       this.goCalcButton.inputEnabled = true;
       this.goCalcButton.events.onInputDown.add(function() {
-
-        // Evaluation
-
+        // Do Evaluation
         var winstruct = this.game.myRoom.evaluate();
-
         console.log(winstruct);
+
+        this.game.winStruct = winstruct;
+
+        // TODO : possibly remove with some kind of anim - characters move left or right
+        // to signal their option-choice ??
+        this.game.state.start('gameover');
 
       }, this);
 
-      //---------------------------------------------------------------------------------------------
-      this.addLineBreakToText = function(text, maxCharNumInLine) {
-        var charArray = text.split('');
-        var output = "";
-        var counter = 0;
-        for(var i = 0; i < charArray.length; i ++) {
-          //console.log(charArray[i]);
-          if(counter<maxCharNumInLine){
-            output += charArray[i];
-          }
-          else {
-            if(charArray[i] == " "){
-              output += "\n";
-              counter = 0;
-              continue;
-            }
-            else
-              output += charArray[i];
-          }
-          counter++;
-        }
-        return output;
-      };
-      //--------------------------------------------------------------------------------------------
-        this.lineBreakCounter = function(text) {
-        var charArray = text.split('');
-        var counter = 0;
-        for(var i = 0; i < charArray.length; i ++) {
-          if(charArray[i] == "\n"){
-            counter++;
-          }
-        }
-        return counter;
-      };
+      //
+      // next bit never called - remove ?
+      //   this.lineBreakCounter = function(text) {
+      //   var charArray = text.split('');
+      //   var counter = 0;
+      //   for(var i = 0; i < charArray.length; i ++) {
+      //     if(charArray[i] == "\n"){
+      //       counter++;
+      //     }
+      //   }
+      //   return counter;
+      // };
 
       this.dialogBox = this.game.add.graphics(0,0);
       this.dialogBox.beginFill(0x001170, 0.5);
@@ -164,14 +147,14 @@
 
 
 
-      var testText = 'You are on a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? Should they go to'
+      var testText = 'You are at a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? What do we do now ? Should they go to'
       // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
       for(var i = 0; i < places.length - 1; i++){
         testText += " the " + places[i] + ",";
       }
       testText += " or to the " + places[places.length-1] + "? ";
       testText += 'Your objective is to convice the rest of the guests to go to the place where you want to go...';
-      var output = this.addLineBreakToText(testText, 50);
+      var output = display.addLineBreakToText(testText, 50);
       output += '\n\nAnd you want to go to ... the ';
       output += places[Math.floor(Math.random()*places.length)] + "!";
 
@@ -282,20 +265,6 @@
        // this.backgroundAudio = this.game.add.audio('background');
        // this.backgroundAudio.play();
 
-      //
-      // controller, sample direction at update time use for movement
-      //
-      // var contrDir;
-      // contrDir = this.game.controller.getDirection();
-
-      // Move by adding to sprite's absolute body x,y
-      //
-      // this.sprite.body.x += 3 * contrDir.x;
-      // this.sprite.body.y += 3 * contrDir.y;
-
-      // Move by setting the velocity
-      // var playerSpeed = 150;
-      // this.sprite.body.velocity.setTo(150 * contrDir.x, 150 * contrDir.y);
     },
   };
 

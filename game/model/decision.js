@@ -24,6 +24,9 @@
           this.dialogs[key] = {"text":text, "prefs":prefs};
       },
       evaluate: function() {
+        /**
+         * determine each person's decision / place-to-go-thing-to-do
+         */
         var p, o, winStruct = {}, self = this;
 
         // Prepare the options-to-persons result-object ...
@@ -152,7 +155,12 @@
       // Calculate preference
       //
 
-      var allkeys = Object.keys(person.preferences);
+      var allkeys = Object.keys(person.preferences),
+        // what norm ? nth or 2nd ?
+        // norm_n = allkeys.length
+        norm_n = 2
+        ;
+
 
         // forall options :
         return Math.pow(allkeys.map(function(k) {
@@ -162,7 +170,7 @@
             var attrweight = Math.pow(person.preferences[k] - option[k], 2) *
             (1 - person.prefWeights[k]);
             return attrweight;
-        }).reduce(function(v, o) {return v+o;}), 1/allkeys.length);
+        }).reduce(function(v, o) {return v+o;}), 1/norm_n);
     };
 
     function CalculateResponse(graph, initPerson, targetPerson, option) {
