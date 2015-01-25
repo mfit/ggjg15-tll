@@ -22,6 +22,24 @@
       addDialog: function(key, text, prefs) {
           this.dialogs[key] = {"text":text, "prefs":prefs};
       },
+      getPersonsFavourite: function(personKey) {
+        var pers = this.persons[personKey],
+            self = this,
+
+            // get the evaluation value (attitude towards..) foreach option
+            // store in tuple with (value, optionkey)
+            evaluations = Object.keys(this.options).map(function (optkey) {
+              return [self.decisionHandler(pers, self.options[optkey].prefs), optkey];
+            });
+
+          // sort it
+          evaluations.sort(function(a, b) { return a[0] - b[0]} );
+          console.log(evaluations);
+
+          // Pop the last one - it's the favourite option
+          var winner = evaluations.pop();
+          return winner[1];
+      },
       evaluate: function() {
         /**
          * determine each person's decision / place-to-go-thing-to-do
@@ -51,20 +69,8 @@
         }
 
         for (p in this.persons) {
-
-          // forall persons, get the evaluation value (attitude towards..) foreach option
-          // store in tuple with (value, optionkey)
-          var pers = this.persons[p],
-            evaluations = Object.keys(this.options).map(function (optkey) {
-              return [self.decisionHandler(pers, self.options[optkey]), optkey];
-            });
-          // sort it
-          evaluations.sort(function(a, b) { return a[0] - b[0]} );
-          console.log(evaluations);
-
-          // Pop the last one - it's the favourite option
-          var winner = evaluations.pop();
-          winStruct[winner[1]].push(p);
+          var winkey = this.getPersonsFavourite(p)
+          winStruct[winkey].push(p);
         }
 
         console.log(winStruct);
@@ -99,30 +105,37 @@
             var edge = room.influenceGraph.getEdge(from, to);
             sum += edge.getData('influence');
           }
+          console.log(from + " " + sum);
           if (sum > max[0]) {
             max = [sum, from];
           }
         }
         alpha = max[1];
 
-        sum = 0;
+        console.log(alpha + "'s fav: " + room.getPersonsFavourite(alpha));
+        console.log(room.options[room.getPersonsFavourite(alpha)]);
+
+        var temp;
         for (to in room.influenceGraph._vertices) {
           if (to === 'Player') continue;
           if (alpha !== to) {
-            sum += room.influenceGraph.getEdge(alpha, to).getData('influence');
+            temp = room.influenceGraph.getEdge(alpha, to).getData('influence');
           }
-          if (sum < min[0]) {
-            min = [sum, to];
+          if (temp < min[0]) {
+            min = [temp, to];
           }
         }
 
         omega = min[1];
 
+        console.log(omega + "'s fav: ");
+        console.log(room.options[room.getPersonsFavourite(omega)]);
+
+        // room.decisionHandler(room.persons[alpha],
+
         console.log ("Alpha / Omega = ");
         console.log(alpha);
         console.log(omega);
-
-
     }
 
     var WorldPerson = function(name, game, graph, room, startPos, initOptions, prefs) {
@@ -234,7 +247,7 @@
 
     }
 
-    function VectorDecision(person, option) {
+    function VectorDecision(person, optionPrefs) {
       //
       // Calculate preference
       //
@@ -245,13 +258,15 @@
         norm_n = 2
         ;
 
+        var optionsCopy = {};
 
         // forall options :
         return Math.pow(allkeys.map(function(k) {
-            if (!option.hasOwnProperty(k)) {
-                option[k] = 0.0;
+            var pref = 0;
+            if (optionPrefs.hasOwnProperty(k)) {
+              pref = optionPrefs[k];
             }
-            var attrweight = Math.pow(person.preferences[k] - option[k], 2) *
+            var attrweight = Math.pow(person.preferences[k] - pref, 2) *
             (1 - person.prefWeights[k]);
             return attrweight;
         }).reduce(function(v, o) {return v+o;}), 1/norm_n);

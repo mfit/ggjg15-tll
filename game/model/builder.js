@@ -47,6 +47,8 @@
       for (var name in config.decisionOptions) {
         myRoom.addOption(name, propDomain, config.decisionOptions[name]);
       }
+
+      console.log("OPTIONS");
       console.log(myRoom.options);
 
       // Dialog options pool

@@ -25,7 +25,7 @@ GameOver.prototype = {
       if(this.game.winStruct[opt].length>max[0]) max = [this.game.winStruct[opt].length, opt];
     }
 
-    statustext+="\n\n ... so we everyone went to the " + opt + "!";
+    statustext+="\n\n ... so everyone went to the " + max[1] + "!";
 
 
     this.statusText = this.game.add.text(this.game.world.centerX / 2, 250,
