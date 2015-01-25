@@ -274,7 +274,7 @@
 
         // forall options :
         var imp = 1 - 1.0/Math.sqrt(4*numPrefs)*Math.pow(allkeys.map(function(k) {
-            var pref = -0.5;
+            var pref = -1;
             if (optionPrefs.hasOwnProperty(k))
               pref = optionPrefs[k];
             var attrweight = Math.pow(person.preferences[k] - pref, 2) *
