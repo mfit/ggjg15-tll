@@ -2,16 +2,18 @@
 
 var Graph = require("../model/graph");
 
-function GameMaster(graph, maxRound, config) {
-  this.init(graph, maxRound, config);
+function GameMaster(graph, maxRound, config, room, game) {
+  this.init(graph, maxRound, config, room, game);
 }
 
 GameMaster.prototype = {
-  init: function(graph, maxRound, config) {
+  init: function(graph, maxRound, config, room, game) {
       this._tick     = -1;
       this._graph    = graph;
       this._maxRound = maxRound;
       this._config = config;
+      this._room     = room;
+      this.game = game;
   },
 
   tick: function() {
@@ -33,7 +35,16 @@ GameMaster.prototype = {
 
       if (interactions.length <= this._tick)
       {
-          console.error("interactions for tick do not exist", this._tick, interactions);
+          console.log("interactions for tick do not exist", this._tick, interactions);
+          var winstruct = this._room.evaluate();
+          console.log(winstruct);
+
+          this.game.winStruct = winstruct;
+
+          // TODO : possibly remove with some kind of anim - characters move left or right
+          // to signal their option-choice ??
+          this.game.state.start('gameover');
+
           return;
       }
 

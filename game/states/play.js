@@ -45,7 +45,7 @@
       this.game.myRoom = data[0];
       this.game.graph = data[1];
       this.game.config = data[2];
-      this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config);
+      this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config, this.game.myRoom, this.game);
 
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
@@ -137,12 +137,21 @@
       //   return counter;
       // };
 
+
+
+      this.dialogBox = this.game.add.sprite(
+        0,
+        0,
+        'end');
+       this.dialogBox.scale.setTo(0.25,0.25);
+
+/*
       this.dialogBox = this.game.add.graphics(0,0);
       this.dialogBox.beginFill(0x001170, 0.5);
       this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
       this.dialogBox.bounds = new PIXI.Rectangle(50, 50, this.game.width-100, this.game.height-100);
       this.dialogBox.drawRect(50, 50, this.game.width-100, this.game.height-100);
-
+*/
       console.log("Current room settings : ");
       console.log(this.game.myRoom);
 
@@ -303,7 +312,7 @@
               {
                 audiotrack = 'background';
               }
-             // console.log(self.backgroundAudio.key);
+
               self.game.backgroundAudio.pause();
               self.game.backgroundAudio = self.game.add.audio(audiotrack);
               self.game.backgroundAudio.play();
