@@ -25,6 +25,9 @@
   Play.prototype = {
     create: function() {
 
+      this.tickSkip = 10;
+      this.tickSkipCount = 0;
+
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
       var myDemoSound = this.game.add.audio('actionsound');
@@ -199,6 +202,9 @@
       };
     },
     update: function() {
+      this.tickSkipCount = (this.tickSkipCount +1) % this.tickSkip;
+      if (this.tickSkip != 0) return;
+
      if(this.game.input.activePointer.justPressed()) {
       // move to antoher game state on button-press
         if(this.IsStartTextOn) {
