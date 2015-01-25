@@ -78,8 +78,10 @@
          , ["I like Rock.", "Just what they are playing at the radio.", "I hate music."], {"TUG15": "I just like electronic music."}]
        , ["Disco5", "Whould you sing something for me?", {"dance":0.1, "music":0.9}
          , [" ** Aaatemlos... durch die Nacht!!! ** ", "Maybe some other time", "Sorry, but I can't sing"], {"Gremila": "Oh...oh... I'd rather not, Hans doesn't want to here me sing... ever again..."}]
-       , ["Disco6", "Whould you sing something for me?", {"dance":0.1, "music":0.9}
-         , [" ** Aaatemlos... durch die Nacht!!! ** ", "Maybe some other time", "Sorry, but I can't sing"], {"Gremila": "Oh...oh... I'd rather not, Hans doesn't want to here me sing... ever again..."}]
+       , ["Disco6", "Do you like pole dancing?", {"dance":0.7, "music":0.5, "drunk":0.8}
+         , ["I always wanted to see one of those famous pole dancers", "Meh....", "You can shove yourself the pole up your...."], {"Sandy": "I was once a pole dancer myself"}]
+       , ["Disco7", "Want to check out the new DJ?", {"dance":0.8, "music":0.9, "drunk":0.8}
+         , ["Yes beacuse I'm always looking for new talents", "I'm not sure. Don't the sound all the same?", "HELL NO!!! I can press play myself"], {"Candy": "I rather listen to Bach"}]
 
        , ["Bar1", "Do you play darts?", {"talk":0.7, "games":0.9, "music":0.3, "drunk":0.4}
          , ["I'm hell of a player!", "Maybe later.", "No way!"], {"Jack": "I'm busy with my training schedule."}]
@@ -120,6 +122,10 @@
          , ["Finally. I've waited for years.", "I don't know if I like Picasso.", "I'm more the Van Gogh person."], {"David": "Do they have any cat pictures as well?"}]
        , ["Museum3", "Mum always says: 'education is important'.", {"talk":0.8}
          , ["Definitely.", "Hmm...", "I'm already a doctor."], {"Sandy": "My mum always said: 'The others are stupid'."}]
+       , ["Museum4", "What do you think about evolution?", {"talk":0.8}
+         , ["I love Charles Darwin!", "I actually never thought about it", "It's just a theory. I'm personally a creationist"], {"Sandy": "My mum always said: 'The others are stupid'."}]
+       , ["Museum5", "Can you imagine that people in the past payed entry fees for the museum?", {"talk":0.9}
+         , ["I still donate some small amounts, whenever I visit", "Really? I didn't know that", "I wouldn't have payed in the past either, because I never go to the museum"], {"Sandy": "My mum always said: 'The others are stupid'."}]
 
 
        , ["Misc1", "The new book about dolphins is amazing, isn't it", {"talk": 0.8}
@@ -128,6 +134,10 @@
          , ["You know ... I kinda feel the same about you", "...", "Oh gosh."], {"George": "Last Christmas, I gave you my heart."}]
        , ["Misc3", "It looks like you're in trouble. Can I help?", {"talk":0.9, "drunk":0.2}
          , ["Yes, you are a lifesaver.", "No, thanks.", "Not from you!"], {"Candy": "Do you play chess?"}]
+       , ["Misc4", "Look at the fishtank, only one fish is moving", {"talk":0.8}
+         , ["Huh, awesome, I haven't noticed", "So what?", "There must have been some lazy programmers"], {"Sandy": "Those poor animals, let's free them all"}]
+       , ["Misc5", "Why are we triangles with heads?", {"talk":0.8}
+         , ["Because there is a part of the triforce in all of us", "Because the Creator could only count to three", "The designers where obviously lazy too..."], {"Sandy": "Those poor animals, let's free them all"}]
 
         ],
     "decisionOptions": {
