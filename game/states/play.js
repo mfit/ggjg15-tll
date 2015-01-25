@@ -300,7 +300,7 @@
               {
                 sprite.customScaleX = sprite.scale.x;
               }
-              sprite.scale.setTo(((Math.sin(Date.now()/200)))*sprite.customScaleX, sprite.scale.y);
+              sprite.scale.setTo(((Math.sin(0.3 + Date.now()/500*3.14)))*sprite.customScaleX, sprite.scale.y);
             });
 
 
