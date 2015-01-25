@@ -235,8 +235,14 @@
             console.log(prefKey, targetPerson.preferences[prefKey], old, newWeight);
             targetPerson.prefWeights[prefKey] = newWeight;
         }
+
+        // modify influence (decrease influence if importance was low / increase otherwise)
+        if (importance <= 0.5) {
+            graph.getEdge(initPerson.name, targetPerson.name).setData('influence', influence - 0.5 * importance);
+        } else {
+            graph.getEdge(initPerson.name, targetPerson.name).setData('influence', influence + 0.5 * importance);
+        }
         return importance;
-        // TODO: modify influence (decrease influence if importance was low / increase otherwise)
     }
 
 
