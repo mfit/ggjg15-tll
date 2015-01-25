@@ -33,7 +33,7 @@ GameMaster.prototype = {
           return;
       }
 
-      //if (interactions.length <= this._tick)
+      if (interactions.length <= this._tick)
       {
           console.log("interactions for tick do not exist", this._tick, interactions);
           var winstruct = this._room.evaluate();
