@@ -24,6 +24,7 @@
   function Play() {}
   Play.prototype = {
     create: function() {
+      var self = this;
 
       // for reducing framerate .. (see update() )
       this.tickSkip = 10;
@@ -214,6 +215,9 @@
             }
             counter++;
           }
+        }
+        if (e.keyCoOde = 72) { // 'h'
+          self.infoPanel.updateVis(!self.infoPanel.enabled);
         }
       };
 
