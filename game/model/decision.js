@@ -160,7 +160,7 @@
                 option[k] = 0.0;
             }
             var attrweight = Math.pow(person.preferences[k] - option[k], 2) *
-            person.prefWeights[k];
+            (1 - person.prefWeights[k]);
             return attrweight;
         }).reduce(function(v, o) {return v+o;}), 1/allkeys.length);
     };
