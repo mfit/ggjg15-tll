@@ -150,7 +150,7 @@
 
       // ths.Object.keys(this.game.myRoom.options);
 
-
+      this.infoPanel = new display.ObjectInfoOutput(this.game, 50, 50);
 
       var testText = 'You are at a party with your friends and the party draws to its end. The question now is, where should everyone go together after the party? What do we do now ? Should they go to'
       // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
@@ -237,6 +237,10 @@
           });
           return;
         }
+
+
+        // update the debug panel / info panel
+        this.infoPanel.update(this.game.myRoom.persons);
       }
 
       if(fishBounds.left){
