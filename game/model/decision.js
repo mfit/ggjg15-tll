@@ -307,7 +307,7 @@
                 newWeight = (old + finalP)/2.0;
             } else
             {
-                newWeight = (old + finalN)/2.0;
+                newWeight = (old*0.7 + 0.3*finalN);
             }
             console.log(prefKey, targetPerson.preferences[prefKey], old, newWeight);
             targetPerson.prefWeights[prefKey] = newWeight;
@@ -319,6 +319,8 @@
         } else {
             graph.getEdge(initPerson.name, targetPerson.name).setData('influence', influence + 0.5 * (- 0.5 + importance));
         }
+        var influenceNew = graph.getEdge(initPerson.name, targetPerson.name).getData('influence');
+        console.log("Old influence", influence, "New influence", influenceNew);
         return importance;
     }
 
