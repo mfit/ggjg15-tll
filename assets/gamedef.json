@@ -161,35 +161,35 @@
         ],
     "decisionOptions": {
         "Disco": {
-          "music":1,
-          "talk":-1,
+          "music":0.8,
+          "talk":-0.2,
           "dance":1,
           "games":-1,
-          "drunk":1
+          "drunk":0.6
           },
         "Park": {
-          "music":0,
-          "talk":1,
-          "dance":-1,
-          "games":1,
-          "drunk":1
+          "music":0.3,
+          "talk":0.9,
+          "dance":0.2,
+          "games":0.5,
+          "drunk":0.6
           },
         "Museum": {
-          "music":-1,
-          "talk":1,
+          "music":-0.9,
+          "talk":0.5,
           "dance":-1,
-          "games":-1,
+          "games":0,
           "drunk":-1
           },
         "Bar": {
-          "music":1,
+          "music":0.4,
           "talk":1,
-          "dance":0,
-          "games":1,
-          "drunk":1
+          "dance":0.1,
+          "games":0.5,
+          "drunk":0.8
           },
         "Cinema": {
-          "music":0,
+          "music":-1,
           "talk":-1,
           "dance":-1,
           "games":-1,
