@@ -216,6 +216,9 @@
           }
         }
       };
+
+      // shall the characters dance?
+      this.doDance = false;
     },
     update: function() {
 
@@ -263,7 +266,23 @@
           }
         }
 
+        //Dance-Party
+        //-------------------------------------------------------------------------------------
 
+        if (this.doDance)
+        {
+            this.npcs.forEach(function(sprite){
+              if (!sprite.hasOwnProperty('customScaleX'))
+              {
+                sprite.customScaleX = sprite.scale.x;
+              }
+              sprite.scale.setTo(((Math.sin(Date.now()/200)))*sprite.customScaleX, sprite.scale.y);
+            });
+
+
+        }
+
+        //----------------------------------------------------------------------------------------
 
         var topLeftQuarter = new Phaser.Rectangle(1130,450,1280,710);
         var self = this;
@@ -273,15 +292,21 @@
             var inside = topLeftQuarter.contains(pointer.x,pointer.y)
             if(inside)
             {
+              self.doDance = !self.doDance;
+
               var audiotrack = 'disco';
               if(self.game.backgroundAudio.key == 'disco')
               {
                 audiotrack = 'background';
               }
+<<<<<<< HEAD
+
+=======
              // console.log(self.backgroundAudio.key);
               self.game.backgroundAudio.pause();
               self.game.backgroundAudio = self.game.add.audio(audiotrack);
               self.game.backgroundAudio.play();
+>>>>>>> 618d356f2de1a6309b01d5880e05992946cde901
             }
 
             //console.log('x',pointer.x);

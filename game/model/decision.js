@@ -19,8 +19,8 @@
       addOption: function(key, text, prefs) {
         this.options[key] = {"text":text, "prefs":prefs};
       },
-      addDialog: function(key, text, prefs) {
-          this.dialogs[key] = {"text":text, "prefs":prefs};
+      addDialog: function(key, text, prefs, answers, specAnsw) {
+          this.dialogs[key] = {"text":text, "prefs":prefs, "answers":answers, "specAnswer":specAnsw};
       },
       getPersonsFavourite: function(personKey) {
         var pers = this.persons[personKey],
@@ -212,15 +212,22 @@
          * @opt_id opt id
          * other_character ? can be undefined, then it's the player ...
          */
-        handleComment: function(other_character, option) {
-            console.log(option);
-            console.log(other_character);
+        handleComment: function(other_character, option, charName) {
 
             var importance = CalculateResponse(this.graph, other_character, this, option); // care its around
 
-            // TODO something with this.npc
-            // TODO something with this.option
-            // TODO change portrait image according to mood
+            if (option.specAnswer[charName] != undefined) {
+                return option.specAnswer[charName];
+            }
+
+            if (importance < 0.30) {
+                return option.answers[2];
+            } else if (importance > 0.30) {
+                return option.answers[0];
+            } else {
+                return option.answers[1];
+            }
+
             return importance;
         },
     };
