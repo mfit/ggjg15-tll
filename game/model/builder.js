@@ -53,7 +53,7 @@
       for (var i = 0; i < config.baseDialogOptions.length; i++)
       {
           var dialogOption = config.baseDialogOptions[i];
-          myRoom.addDialog(dialogOption[0], dialogOption[1], dialogOption[2]);
+          myRoom.addDialog(dialogOption[0], dialogOption[1], dialogOption[2], dialogOption[3], dialogOption[4]);
       }
 
       //
