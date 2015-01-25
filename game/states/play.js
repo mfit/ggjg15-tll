@@ -322,6 +322,37 @@
               if(self.game.backgroundAudio.key == 'disco')
               {
                 audiotrack = 'background';
+
+
+                for (var key in self.game.graph._vertices) {
+                      self.game.graph._vertices[key].person.prefWeights['dance'] = Math.max(
+                        self.game.graph._vertices[key].person.prefWeights['dance'] - 0.2,
+                        -1.00
+                      );
+
+                      self.game.graph._vertices[key].person.prefWeights['music'] = Math.max(
+                        self.game.graph._vertices[key].person.prefWeights['music'] - 0.2,
+                        -1.00
+                      );
+                }
+              } else {
+
+
+                for (var key in self.game.graph._vertices) {
+                      self.game.graph._vertices[key].person.prefWeights['dance'] = Math.min(
+                        self.game.graph._vertices[key].person.prefWeights['dance'] + 0.2,
+                        1.00
+                      );
+
+                      self.game.graph._vertices[key].person.prefWeights['music'] = Math.min(
+                        self.game.graph._vertices[key].person.prefWeights['music'] + 0.2,
+                        1.00
+                      );
+
+                }
+
+
+
               }
 
               self.game.backgroundAudio.pause();
