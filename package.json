@@ -1,5 +1,5 @@
 {
-  "name": "project-init",
+  "name": "The Little Lobbyist",
   "private": true,
   "devDependencies": {
     "grunt": "~0.4.1",
