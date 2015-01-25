@@ -162,14 +162,14 @@
 
       this.infoPanel = new display.ObjectInfoOutput(this.game, 50, 50);
 
-      var testText = 'You are at a party with your friends and the party draws to its end. \
-      The question now is, where should everyone go together after the party? \
-      What do we do now ? Should they go to'
+      var testText = 'You are at a party with your friends and the party draws to its end.\
+      The question now is, where should everyone go together after the party?\
+      What do we do now? Should they go to'
       // irish pub, to a steakhouse or to a strip club? Your objective is to convice the rest of the guests to go to the place where you want to go.'
-      for(var i = 0; i < places.length - 1; i++){
-        testText += " the " + places[i] + ",";  // todo : one comma too many
+      for(var i = 0; i < places.length - 2; i++){
+        testText += " the " + places[i] + ",";
       }
-      testText += " or to the " + places[places.length-1] + "? ";
+      testText += " the " + places[places.length-2] + " or to the " + places[places.length-1] + "? ";
       testText += 'Your objective is to convice the rest of the guests to go to the place where you want to go...';
       var output = display.addLineBreakToText(testText, 50);
       output += '\n\nAnd you want to go to ... the ';
