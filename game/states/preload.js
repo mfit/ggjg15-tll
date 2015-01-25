@@ -19,6 +19,8 @@ Preload.prototype = {
     this.load.image('person', 'assets/gremila.png');
     this.load.image('sandy_profile', 'assets/cyberpunk_sandy_01.png');
 
+    this.load.image('start', 'assets/startbild.png');
+    this.load.image('end', 'assets/endbild.png');
     this.load.image('background', 'assets/vorgluehraum5.png');
     this.load.image('vodkaBottle', 'assets/vodka.png');
     this.load.image('beerBottle', 'assets/beer.png');
@@ -71,7 +73,7 @@ Preload.prototype = {
   update: function() {
     if(!!this.ready) {
       // switch directly to 'play' state
-      this.game.state.start('play');
+      this.game.state.start('menu');
     }
   },
   onLoadComplete: function() {
