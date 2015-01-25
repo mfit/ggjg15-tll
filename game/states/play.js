@@ -44,7 +44,7 @@
       this.game.myRoom = data[0];
       this.game.graph = data[1];
       this.game.config = data[2];
-      this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config);
+      this.game.gamemaster = new gamemaster(this.game.graph, 100, this.game.config, this.game.myRoom, this.game);
 
       this.dialogHelper = new dialog.DialogHandler(this.game);
 
@@ -295,14 +295,11 @@
               {
                 audiotrack = 'background';
               }
-<<<<<<< HEAD
 
-=======
              // console.log(self.backgroundAudio.key);
               self.game.backgroundAudio.pause();
               self.game.backgroundAudio = self.game.add.audio(audiotrack);
               self.game.backgroundAudio.play();
->>>>>>> 618d356f2de1a6309b01d5880e05992946cde901
             }
 
             //console.log('x',pointer.x);

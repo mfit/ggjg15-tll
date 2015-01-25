@@ -268,7 +268,7 @@
         var optionsCopy = {};
 
         // forall options :
-        return Math.pow(allkeys.map(function(k) {
+        return 1.0/Math.sqrt(20)*Math.pow(allkeys.map(function(k) {
             var pref = 0;
             if (optionPrefs.hasOwnProperty(k)) {
               pref = optionPrefs[k];
@@ -290,8 +290,8 @@
         console.log("importance", importance);
 
         // if influence is low we prefer other topics
-        var finalP = Math.pow(importance/2.0, 2 - influence*2.0);
-        var finalN = Math.pow(importance/2.0, influence*2.0);
+        var finalP = Math.pow(importance, 2 - influence*2.0);
+        var finalN = Math.pow(importance, influence*2.0);
 
         console.log("final", finalP, finalN);
         if (finalP < 0 || finalN < 0 || finalP > 1 || finalN > 1)
@@ -317,7 +317,7 @@
         if (importance <= 0.5) {
             graph.getEdge(initPerson.name, targetPerson.name).setData('influence', influence - 0.5 * importance);
         } else {
-            graph.getEdge(initPerson.name, targetPerson.name).setData('influence', influence + 0.5 * importance);
+            graph.getEdge(initPerson.name, targetPerson.name).setData('influence', influence + 0.5 * (- 0.5 + importance));
         }
         return importance;
     }
