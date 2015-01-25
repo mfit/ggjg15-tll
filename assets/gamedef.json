@@ -32,16 +32,16 @@
     },
     "edges": {
           "influence": {
-            "George" :  {               "Jack": 0.3, "Sandy": 0.4, "Candy": 0.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
-          , "Jack" :    {"George": 0.3,              "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
-          , "Sandy" :   {"George": 0.3, "Jack": 1.0,               "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
-          , "Candy" :   {"George": 0.3, "Jack": 1.0, "Sandy": 1.0,               "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
-          , "Hans" :    {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0,              "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
-          , "Gremila" : {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0,                 "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
-          , "David" :   {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0,               "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
-          , "Jasmine" : {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0,                 "TUG15": 1.0, "Player": 1.0}
-          , "TUG15" :   {"George": 0.3, "Jack": 1.0, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0              , "Player": 1.0}
-          , "Player" :  {"George": 0.5, "Jack": 0.5, "Sandy": 0.5, "Candy": 0.5, "Hans": 0.5, "Gremila": 0.5, "David": 0.5, "Jasmine": 0.5, "TUG15": 0.5               }
+            "George" :  {               "Jack": 0.1, "Sandy": 0.2, "Candy": 0.3, "Hans": 0.5, "Gremila": 0.2, "David": 0.3, "Jasmine": 0.1, "TUG15": 0.4, "Player": 1.0}
+          , "Jack" :    {"George": 0.8,              "Sandy": 0.5, "Candy": 0.6, "Hans": 0.3, "Gremila": 0.7, "David": 0.9, "Jasmine": 0.7, "TUG15": 0.5, "Player": 1.0}
+          , "Sandy" :   {"George": 0.4, "Jack": 0.5,               "Candy": 0.1, "Hans": 0.6, "Gremila": 0.1, "David": 0.2, "Jasmine": 0.2, "TUG15": 0.1, "Player": 1.0}
+          , "Candy" :   {"George": 0.6, "Jack": 0.2, "Sandy": 0.1,               "Hans": 0.8, "Gremila": 0.9, "David": 0.7, "Jasmine": 0.8, "TUG15": 0.6, "Player": 1.0}
+          , "Hans" :    {"George": 0.7, "Jack": 0.3, "Sandy": 0.9, "Candy": 0.5,              "Gremila": 0.1, "David": 0.7, "Jasmine": 0.6, "TUG15": 0.8, "Player": 1.0}
+          , "Gremila" : {"George": 0.9, "Jack": 0.9, "Sandy": 0.1, "Candy": 0.8, "Hans": 1.0,                 "David": 0.7, "Jasmine": 0.8, "TUG15": 0.6, "Player": 1.0}
+          , "David" :   {"George": 0.7, "Jack": 0.2, "Sandy": 0.3, "Candy": 0.7, "Hans": 0.6, "Gremila": 0.7,               "Jasmine": 0.6, "TUG15": 0.7, "Player": 1.0}
+          , "Jasmine" : {"George": 0.6, "Jack": 0.4, "Sandy": 0.2, "Candy": 0.6, "Hans": 0.7, "Gremila": 0.6, "David": 0.5,                 "TUG15": 0.1, "Player": 1.0}
+          , "TUG15" :   {"George": 0.8, "Jack": 0.3, "Sandy": 0.8, "Candy": 0.8, "Hans": 0.7, "Gremila": 0.5, "David": 0.7, "Jasmine": 0.1              , "Player": 1.0}
+          , "Player" :  {"George": 0.6, "Jack": 0.3, "Sandy": 0.2, "Candy": 0.7, "Hans": 0.8, "Gremila": 0.3, "David": 0.7, "Jasmine": 0.8, "TUG15": 0.9               }
           }
         , "anotherMapThatIsAutomaticallyAddedToTheGraph": {
             "George" :  {               "Jack": 0.3, "Sandy": 1.0, "Candy": 1.0, "Hans": 1.0, "Gremila": 1.0, "David": 1.0, "Jasmine": 1.0, "TUG15": 1.0, "Player": 1.0}
@@ -58,14 +58,14 @@
     },
     "persons": [
     {"name": "Player", "startPosition":[850, 400], "icon":"person.png"},
-    {"name": "George", "startPosition":[850, 450], "icon":"georgeKlein.png"},
+    {"name": "George", "startPosition":[750, 400], "icon":"georgeKlein.png"},
     {"name": "Sandy", "startPosition":[1100, 680], "icon":"sandyKlein.png"},
-    {"name": "Hans", "startPosition":[1000, 450], "icon":"hansKlein.png"},
-    {"name": "Jack", "startPosition":[1050, 480], "icon":"jackKlein.png"},
-    {"name": "Gremila", "startPosition":[250, 500], "icon":"gremilaKlein.png"},
+    {"name": "Hans", "startPosition":[280, 590], "icon":"hansKlein.png"},
+    {"name": "Jack", "startPosition":[1000, 450], "icon":"jackKlein.png"},
+    {"name": "Gremila", "startPosition":[200, 600], "icon":"gremilaKlein.png"},
     {"name": "David", "startPosition":[400, 450], "icon":"davidKlein.png"},
     {"name": "Jasmine", "startPosition":[600, 600], "icon":"jasmineKlein.png"},
-    {"name": "TUG15", "startPosition":[750, 400], "icon":"tug15Klein.png"},
+    {"name": "TUG15", "startPosition":[1080, 500], "icon":"tug15Klein.png"},
     {"name": "Candy", "startPosition":[470, 610], "icon":"candyKlein.png"}]
     , "baseDialogOptions" : [
          [ "Disco1", "The Canteen Band released a new album!", {"dance": 0.8, "music": 0.8, "drunk": 0.4}
