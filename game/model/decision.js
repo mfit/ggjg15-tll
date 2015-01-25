@@ -27,6 +27,21 @@
         /**
          * determine each person's decision / place-to-go-thing-to-do
          */
+        // TODO:
+        // Alpha:
+        // Select the character with the highest influence
+        // Find his winner
+        // He offers that option to the other characters (call CalculateResponse)
+
+        // Omega
+        // Find the character with the lowest influence (influence from alpha to character)
+        // Find his winner
+        // If his winner is the same option as alpha's do nothing
+        // Otherwise he offers his option to the other characters (call CalculateResponse)
+
+        // Calculate the winners of the remaining characters
+        // Then do the normal evaluation
+
         var p, o, winStruct = {}, self = this;
 
         // Prepare the options-to-persons result-object ...
@@ -109,6 +124,9 @@
 
            //TODO choose 3 options
            return [opt[0], opt[1], opt[2]];
+           // TODO: 3 random options:
+           // - select 3 out of the 5 attributes
+           // - for each attribute select a random option that includes that attribute
         },
 
 
@@ -207,6 +225,7 @@
             targetPerson.prefWeights[prefKey] = newWeight;
         }
         return importance;
+        // TODO: modify influence (decrease influence if importance was low / increase otherwise)
     }
 
 
