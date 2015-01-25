@@ -18,7 +18,7 @@ Graph.prototype = {
   },
 
   getEdge: function(from, to) {
-      console.log(this._edges);
+      // console.log(this._edges);
       return this._edges[from][to];
   },
 
@@ -34,6 +34,12 @@ Graph.prototype = {
     this._edges[from][to] = new Edge(from, to, data);
     this._vertices[from].addEdges(this._edges[from][to]);
   },
+
+  // getNPCVertices: function() {
+  //   return Object.keys(this._vertices).filter(function(key) {
+  //     return key!=='Player';
+  //   });
+  // },
 
   getVertexWithMaxProperty: function(property, dataset) {
     // naive way

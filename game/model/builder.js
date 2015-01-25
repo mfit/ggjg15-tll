@@ -47,6 +47,8 @@
       for (var name in config.decisionOptions) {
         myRoom.addOption(name, propDomain, config.decisionOptions[name]);
       }
+
+      console.log("OPTIONS");
       console.log(myRoom.options);
 
       // Dialog options pool
@@ -84,6 +86,8 @@
             g.addEdge(from, to, edgeAttrs[from][to]);
           }
       }
+
+      myRoom.influenceGraph = g;
 
       return [myRoom, g, config];
 

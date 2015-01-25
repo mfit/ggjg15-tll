@@ -25,10 +25,15 @@
   Play.prototype = {
     create: function() {
 
+      // for reducing framerate .. (see update() )
+      this.tickSkip = 10;
+      this.tickSkipCount = 0;
+
+      this.dialogHelper = new dialog.DialogHandler(this.game);
 
       var myDemoSound = this.game.add.audio('actionsound');
-      this.backgroundAudio = this.game.add.audio('background');
-      this.backgroundAudio.play();
+      this.game.backgroundAudio = this.game.add.audio('background');
+      this.game.backgroundAudio.play();
 
       this.game.textData = JSON.parse(this.game.cache.getText('textData'));
       var gameSetup = JSON.parse(this.game.cache.getText('levelData'));
@@ -211,8 +216,16 @@
           }
         }
       };
+
+      // shall the characters dance?
+      this.doDance = false;
     },
     update: function() {
+
+      // reduce framerate .. ?
+      // this.tickSkipCount = (this.tickSkipCount +1) % this.tickSkip;
+      // if (this.tickSkipCount != 0) return;
+
      if(this.game.input.activePointer.justPressed()) {
       // move to antoher game state on button-press
         if(this.IsStartTextOn) {
@@ -249,7 +262,23 @@
           }
         }
 
+        //Dance-Party
+        //-------------------------------------------------------------------------------------
 
+        if (this.doDance)
+        {
+            this.npcs.forEach(function(sprite){
+              if (!sprite.hasOwnProperty('customScaleX'))
+              {
+                sprite.customScaleX = sprite.scale.x;
+              }
+              sprite.scale.setTo(((Math.sin(Date.now()/200)))*sprite.customScaleX, sprite.scale.y);
+            });
+
+
+        }
+
+        //----------------------------------------------------------------------------------------
 
         var topLeftQuarter = new Phaser.Rectangle(1130,450,1280,710);
         var self = this;
@@ -259,15 +288,21 @@
             var inside = topLeftQuarter.contains(pointer.x,pointer.y)
             if(inside)
             {
+              self.doDance = !self.doDance;
+
               var audiotrack = 'disco';
-              if(self.backgroundAudio.key == 'disco')
+              if(self.game.backgroundAudio.key == 'disco')
               {
                 audiotrack = 'background';
               }
+<<<<<<< HEAD
+
+=======
              // console.log(self.backgroundAudio.key);
-              self.backgroundAudio.pause();
-              self.backgroundAudio = self.game.add.audio(audiotrack);
-              self.backgroundAudio.play();
+              self.game.backgroundAudio.pause();
+              self.game.backgroundAudio = self.game.add.audio(audiotrack);
+              self.game.backgroundAudio.play();
+>>>>>>> 618d356f2de1a6309b01d5880e05992946cde901
             }
 
             //console.log('x',pointer.x);
@@ -276,8 +311,8 @@
             //console.log('pointer is inside region top left quarter', inside)
         });
 
-       // this.backgroundAudio = this.game.add.audio('background');
-       // this.backgroundAudio.play();
+       // this.game.backgroundAudio = this.game.add.audio('background');
+       // this.game.backgroundAudio.play();
 
     },
   };

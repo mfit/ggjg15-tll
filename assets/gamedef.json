@@ -1,10 +1,29 @@
 {
 "interactions" : [
-      [["George", "Jack"]
+      [["Jack", "Jasmine"]
+      ,["Gremila", "TUG15"]
+      ,["Hans", "Candy"]
+      ,["Sandy", "David"]
+      ],
+      [["Gremila", "Candy"]
+      ,["Hans", "TUG15"]
+      ,["David", "Jasmine"]
+      ,["Jack", "Sandy"]
+      ],
+      [["Hans", "TUG15"]
+      ,["Gremila", "Jasmine"]
+      ,["David", "Sandy"]
+      ,["Jack", "Candy"]
+      ],
+      [["George", "David"]
+      ,["Gremila", "TUG15"]
+      ,["Hans", "Jack"]
       ,["Candy", "Sandy"]
       ],
-      [["George", "Jack"]
-      ,["Candy", "Sandy"]
+      [["Jasmine", "TUG15"]
+      ,["Hans", "Sandy"]
+      ,["Candy", "Gremila"]
+      ,["Jack", "David"]
       ]
     ],
 "attributes": {
