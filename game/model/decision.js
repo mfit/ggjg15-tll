@@ -70,6 +70,10 @@
 
         for (p in this.persons) {
           var winkey = this.getPersonsFavourite(p)
+          // last minute hack
+          if (p == 'Player') {
+              p = "You";
+          }
           winStruct[winkey].push(p);
         }
 
