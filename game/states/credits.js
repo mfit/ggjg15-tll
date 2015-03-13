@@ -42,6 +42,7 @@ Credits.prototype = {
   },
   update: function () {
     if(this.game.input.activePointer.justPressed()) {
+      this.game.backgroundAudio.stop();
       this.game.state.start('menu');
     }
   }

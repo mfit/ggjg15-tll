@@ -17,10 +17,15 @@ GameOver.prototype = {
     var style = { font: '65px Arial', fill: '#ffffff', align: 'center'};
     this.titleText = this.game.add.text(this.game.world.centerX,280, 'And this is what we did ...', style);
     this.titleText.anchor.setTo(0.5, 0.5);
-
+console.log("goal",this.game.goalPlace);
 
     // this.back
-
+    if(this.game.goalPlace != 'Cinema')
+    {
+      //console.log("WINSTRUCT",this.game.winStruct);
+      this.game.winStruct[this.game.goalPlace].unshift('You');
+      this.game.winStruct['Cinema'].splice(0,1);
+    }
     var statustext = "";
     var max = [0, ''];
     for(var opt in this.game.winStruct) {
@@ -37,7 +42,7 @@ GameOver.prototype = {
 
     this.statusText = this.game.add.text(this.game.world.centerX / 3.0, 340,
       statustext,
-      { font: '32px Arial', fill: '#ffffff', align: 'left'});
+      { font: '24px Arial', fill: '#ffffff', align: 'left'});
 
   },
   update: function () {

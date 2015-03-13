@@ -172,7 +172,7 @@
 
       // Setting available places from room / config object
       var places = Object.keys(this.game.myRoom.options);
-
+      this.game.goalPlace = places[Math.floor(Math.random()*places.length)];
       // ths.Object.keys(this.game.myRoom.options);
 
       this.infoPanel = new display.ObjectInfoOutput(this.game, 50, 50);
@@ -188,7 +188,7 @@
       testText += 'Your objective is to convice the rest of the guests to go to the place where you want to go...';
       var output = display.addLineBreakToText(testText, 50);
       output += '\n\nAnd you want to go to ... the ';
-      output += places[Math.floor(Math.random()*places.length)] + "!";
+      output += this.game.goalPlace + "!";
 
       var style = { font: '30px Helvetica', fill: '#ffffff', align: 'center'};
 
@@ -318,7 +318,7 @@
 
         //----------------------------------------------------------------------------------------
 
-        var topLeftQuarter = new Phaser.Rectangle(1130,450,1280,710);
+        var topLeftQuarter = new Phaser.Rectangle(1130,450,150,260);
         var self = this;
         //listen for pointers
 

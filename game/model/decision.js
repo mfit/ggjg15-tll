@@ -72,6 +72,7 @@
           var winkey = this.getPersonsFavourite(p)
           // last minute hack
           if (p == 'Player') {
+            //continue;
               p = "You";
           }
           winStruct[winkey].push(p);
